@@ -1,0 +1,38 @@
+<!-- Licencias y certificaciones-->
+<div class="card mat-card">
+    <div id="Licencias">
+        <div class="card-titles">
+            <h2>Licencias y certificaciones</h2>
+            <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
+        </div>
+        <div> 
+            <ul id="ulLic" class="items-list">
+                <li *ngFor="let cert of certificacion" class="bor" >
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 logo-exp">
+                                <div class="logo-image-container centrado-porcentual">
+                                    <img [src]="cert.logo">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-8 list-info">
+                                <div>
+                                    <h3 class="Licencia_Titulo">{{cert.titulo}}</h3>
+                                </div>
+                                <div class="Licencia_Entidad">
+                                    <p>{{cert.entidad}}</p>
+                                </div>
+                                <div class="Licencia_Fecha">
+                                    <p>{{cert.fecha}}</p>
+                                </div>
+                                <div class="Licencia_Descripcion">
+                                    <p>{{cert.descripcion}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </div>

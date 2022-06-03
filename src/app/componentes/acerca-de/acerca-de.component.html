@@ -1,0 +1,49 @@
+<!-- Acerca de-->
+<div id="a-objetivo" class="card mat-card">
+  <div class="card-titles">
+    <h2>Acerca de</h2>
+    <div class="btn-edit" id="btn_edit_obj" onclick="cambiar_objetivo(2)">
+      <a href="#a-objetivo" class="btn-right">
+        <i class="fa fa-pen"></i>
+      </a>
+    </div>
+  </div>
+  <div>
+    <p id="objetivo">{{ acerca_de.acercade }}</p>
+  </div>
+  <div>
+    <input
+      id="edit-acercade"
+      type="text"
+      oninput="muFunction2(this.value, 'objetivo')"
+      style="display: none"
+    />
+    <button
+      id="guarda_Experiencia"
+      nclick="GuardaCambios(2)"
+      style="display: none"
+    >
+      Guardar Cambios
+    </button>
+  </div>
+</div>
+
+<!-- 
+
+<ul>
+  <li *ngFor="let lista of arrayDatos">
+      <p>el valor{{lista}}</p>
+  </li>
+  <li [ngSwitch]="evaluacion">
+      <p *ngSwitchCase="1">Opcion 1</p>
+      <p *ngSwitchCase="2">Opcion 2</p>
+      <p *ngSwitchDefault>Parrafo por fefault</p>
+  </li>
+  <li>
+    <div *ngIf="revelar_identidad;then no_secreto else secreto"></div>
+    <ng-template #secreto><p>¿Quien es IronMan?...</p></ng-template>
+    <ng-template #no_secreto><p>{{ironman}}</p></ng-template>
+  </li>
+  
+</ul>
+-->

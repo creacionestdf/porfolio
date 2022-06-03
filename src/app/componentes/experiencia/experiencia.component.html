@@ -1,0 +1,86 @@
+<!-- Experiencia-->
+<div class="card mat-card">
+  <div id="experience">
+    <div class="card-titles">
+      <h2>Experiencia</h2>
+      <div class="btn-edit" id="btn_edit_exp">
+        <a href="#" class="btn-right" id="">
+          <i class="fa fa-pen"></i>
+        </a>
+      </div>
+    </div>
+    <div>
+      <ul id="ulExp" class="items-list">
+        <li *ngFor="let exx of experienciaList" class="bor">
+          <div class="container">
+            <div class="row">
+              <div
+                class="btn-edit edit-exp"
+                id="edit-exp0"
+                style="display: none"
+              >
+                <a class="btn-right" href="#">
+                  <i class="fa fa-pen"></i>
+                </a>
+              </div>
+              <div class="col-xs-12 col-sm-4 logo-exp">
+                <div class="logo-image-container centrado-porcentual">
+                  <img [src]="exx.imagen" />
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-8 list-info">
+                <div>
+                  <h3>{{ exx.titulo }}</h3>
+                  <input
+                    id="inp_tit0"
+                    type="text"
+                    placeholder="Titulo"
+                    style="display: none"
+                  />
+                </div>
+                <div class="cargo">
+                  <p>
+                    {{ exx.cargo }} - <span>{{ exx.jornada }}</span>
+                  </p>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Cargo"
+                    style="display: none"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Jornada"
+                    style="display: none"
+                  />
+                </div>
+                <div class="tiempo">
+                  <p>{{ exx.tiempo }}</p>
+                </div>
+                <div class="direccion">
+                  <p>{{ exx.direccion }}</p>
+                  <input
+                    id="inp_dir0"
+                    type="text"
+                    placeholder="Direccion"
+                    style="display: none"
+                  />
+                </div>
+                <div class="descripcion">
+                  <p>{{ exx.descripcion }}</p>
+                  <input
+                    id="inp_des0"
+                    type="text"
+                    placeholder="Descripcion"
+                    style="display: none"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

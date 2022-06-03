@@ -1,0 +1,115 @@
+{
+  "banner": "../assets/img/banner.jpg",
+
+  "logo": "../assets/img/logo.jpg",
+
+  "foto": "../assets/img/foto.jpg",
+
+  "nombre": "Rodrigo Maxiliano Alvarez",
+
+  "apellido": "Alvarez",
+
+  "email": "email@hotmail.com.ar",
+
+  "compania": "Informatico Freelance // Creaciones del Sur",
+
+  "residencia": "Rio Grande, TDF(Argentina)",
+
+  "acercade": "Formar parte de un grupo de trabajo con el cual podamos entre todos avanzar en nuestros conocimientos y al mismo tiempo aportar soluciones a los problemas de mi organización.",
+
+  "Titulo": [
+    {
+      "titulo": "",
+      "institucion": ""
+    }
+  ],
+
+  "experiencia": [
+    {
+      "imagen": "../assets/img/exp1.jpg",
+      "titulo": "Creaciones TDF",
+      "cargo": "Desarrollador FullStack",
+      "jornada": "Media Jornada",
+      "tiempo": "Oct 2020 - Actualidad  : ( 2 años y 1 mes )",
+      "direccion": "Tierra del Fuego, Argentina",
+      "descripcion": "Micro emprendimiento, que surgio en plena pandemia. Somos un grupo de jovenes autodidactas que nos dedicamos al desarrollo web FullStack."
+    },
+    {
+      "imagen": "../assets/img/logo.jpg",
+      "titulo": "Argentina Programa",
+      "cargo": "Desarrollador FullStack",
+      "jornada": "Media Jornada",
+      "tiempo": "Feb 2022 - Actualidad : ( 0 años y 2 mes )",
+      "direccion": "Tierra del Fuego, Argentina",
+      "descripcion": "Descripcion del puesto: Mis tareas en este trabajo fueron diseñar el modelo del Portfolio, desarrollarlo aplicando los disferentes lenguajes vistos hasta el dia de hoy."
+    }
+  ],
+
+  "skill": [
+    {
+      "titulo": "HTML",
+      "val": 40
+    },
+    {
+      "titulo": "CSS",
+      "val": 60
+    },
+    {
+      "titulo": "TypeScript",
+      "val": 20
+    },
+    {
+      "titulo": "Angular",
+      "val": 100
+    },
+    {
+      "titulo": "Json",
+      "val": 70
+    },
+    {
+      "titulo": "SQL",
+      "val": 60
+    }
+  ],
+
+  "licencia": [
+    {
+      "logo": "../assets/img/certificaciones/Cisco.jpg",
+      "titulo": "CCNA Routing and Switching",
+      "entidad": "Cisco Networking Academy",
+      "fecha": "Expedición oct. 2018 · Vencimiento: dic. 2018",
+      "descripcion": ""
+    },
+    {
+      "logo": "../assets/img/certificaciones/Mamuki.jpg",
+      "titulo": "Argentina Programa 'Sé Programar'",
+      "entidad": "Mamuki",
+      "fecha": "Expedición dic. 2022 · Sin fecha de vencimiento",
+      "descripcion": ""
+    },
+    {
+      "logo": "../assets/img/certificaciones/Utn.jpg",
+      "titulo": "Diplomatura en Programacion Web Full Stack Developer",
+      "entidad": "UTN Facultad Regional Resistencia Chaco - UTN FRRe",
+      "fecha": "Expedición nov. 2022 · Sin fecha de vencimiento",
+      "descripcion": ""
+    }
+  ],
+
+  "proyecto": [
+    {
+      "titulo": "Creaciones TDF",
+      "fecha": "05/10/2020",
+      "descripcion": "Micro emprendimiento, que surgio en plena pandemia. Nos dedicamos al desarrollo web.",
+      "link": "www.creacionestdf.ar",
+      "logo": "../assets/img/proyectos/proyecto1.jpg"
+    },
+    {
+      "titulo": "Portfolio web 2022",
+      "fecha": "20/02/2022",
+      "descripcion": "Este proyecto consiste en una breve descripcion de mis conocimiento, logros y proyectos realizados al dia de hoy, Mi curriculum digital.",
+      "link": "www.portfolio.com",
+      "logo": "../assets/img/proyectos/proyecto2.jpg"
+    }
+  ]
+}

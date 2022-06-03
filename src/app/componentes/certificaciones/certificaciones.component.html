@@ -3,12 +3,15 @@
     <div id="Licencias">
         <div class="card-titles">
             <h2>Licencias y certificaciones</h2>
-            <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
+            
         </div>
         <div> 
             <ul id="ulLic" class="items-list">
                 <li *ngFor="let cert of certificacion" class="bor" >
+                    
                     <div class="container">
+                        <!-- Btn_edit -->
+            <app-btn-edit></app-btn-edit>
                         <div class="row">
                             <div class="col-xs-12 col-sm-4 logo-exp">
                                 <div class="logo-image-container centrado-porcentual">

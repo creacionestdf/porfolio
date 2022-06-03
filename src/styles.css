@@ -1,7 +1,12 @@
 
 * { font-size: 1rem; }
+body{
+	margin: 0;
+	padding: 0;
+	background-color: rgb(54, 54, 54);
+}
 
-body { background-color: rgb(54, 54, 54); }
+
 
 /*HEADER*/
 #header {
@@ -241,3 +246,5 @@ div#Licencias
   img {
   width: 100%;
 }
+
+

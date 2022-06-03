@@ -3,12 +3,14 @@
     <div id="Proyectos">
         <div class="card-titles">
             <h2>Proyectos</h2>
-            <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
         </div>
         <div> 
             <ul class="items-list">
                 <li class="card mat-card bor" *ngFor="let pro of proyectosList" >
+                    <!-- Btn_edit -->
+                    <app-btn-edit></app-btn-edit>
                     <div class="data-container ">
+                        
                         <div class="list-info" style="display:inline; text-align:center">
                             <div><h3>{{pro.titulo}}</h3></div>
                             <div>

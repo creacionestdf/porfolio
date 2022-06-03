@@ -2,12 +2,16 @@
     <div id="skills">
         <div class="card-titles">
             <h2>Hard &amp; Soft Skills</h2>
-            <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"></i></a></div>
+            
         </div>
         <div> 
             <ul id="ulSkill">
                 <li *ngFor="let skl of skillList" class="bor">
-                    <div class="Skill-Titulo">{{skl.titulo}}</div>
+                    
+                    <div class="Skill-Titulo">
+                        <!-- Btn_edit -->
+                        <app-btn-edit></app-btn-edit>{{skl.titulo}}
+                    </div>
                     <div class="progress Skill-Barra">
                         <div 
                             class="progress-bar progress-bar-success" 

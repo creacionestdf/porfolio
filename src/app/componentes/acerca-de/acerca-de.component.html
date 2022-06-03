@@ -2,11 +2,9 @@
 <div id="a-objetivo" class="card mat-card">
   <div class="card-titles">
     <h2>Acerca de</h2>
-    <div class="btn-edit" id="btn_edit_obj" onclick="cambiar_objetivo(2)">
-      <a href="#a-objetivo" class="btn-right">
-        <i class="fa fa-pen"></i>
-      </a>
-    </div>
+    <!-- Btn_edit -->
+    <app-btn-edit></app-btn-edit>
+    
   </div>
   <div>
     <p id="objetivo">{{ acerca_de.acercade }}</p>
@@ -18,7 +16,7 @@
       oninput="muFunction2(this.value, 'objetivo')"
       style="display: none"
     />
-    <button
+    <button 
       id="guarda_Experiencia"
       nclick="GuardaCambios(2)"
       style="display: none"

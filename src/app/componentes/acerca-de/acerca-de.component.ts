@@ -9,6 +9,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 export class AcercaDeComponent implements OnInit {
   acerca_de:any;
+    
   constructor(private datosPorfolio:PorfolioService) { }
 
   ngOnInit(): void {

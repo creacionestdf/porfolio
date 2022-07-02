@@ -1,0 +1,48 @@
+<form 
+    *ngIf="showAddCert"
+    (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="foto">Foto</label>
+        <input
+          type="file"
+          id="file1"
+        />
+    </div>
+    <div class="form-control">
+        <label for="titulo">Titulo</label>
+        <input 
+        type="text" 
+        name="titulo" 
+        id="titulo" 
+        [(ngModel)]="titulo"/>
+    </div>
+     
+    <div class="form-control">
+        <label for="entidad">Entidad</label>
+        <input 
+        type="text" 
+        name="entidad" 
+        id="entidad" 
+        [(ngModel)]="entidad"/>
+    </div>
+
+    <div class="form-control">
+        <label for="fecha">Fecha</label>
+        <input 
+        type="text" 
+        name="fecha" 
+        id="fecha" 
+        [(ngModel)]="fecha"/>
+    </div>
+    
+    <div class="form-control">
+        <label for="descripcion">Descripcion</label>
+        <input 
+        type="text" 
+        name="descripcion" 
+        id="descripcion" 
+        [(ngModel)]="descripcion"/>
+    </div>
+       
+    <input type="submit" value="Guardar Certificacion" class="btn btn-block" >
+  </form>

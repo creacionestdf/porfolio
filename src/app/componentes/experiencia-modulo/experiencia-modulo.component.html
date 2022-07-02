@@ -1,0 +1,94 @@
+<li
+  class="bor tarea"
+  [ngClass]="{ borde: obj_exp.reminder }"
+  (click)="onToggle(obj_exp)"
+>
+  <!-- Btn_edit -->
+  <app-btn-edit
+    [set_link]="obj_exp.id"
+    (set_inpvisible)="mostrar($event)"
+  ></app-btn-edit>
+
+  <button [ngStyle]="{ color: 'red' }" (click)="onDelete(obj_exp)">
+    <i class="fa-solid fa-rectangle-xmark"></i>
+  </button>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 logo-exp">
+        <div class="logo-image-container centrado-porcentual">
+          <img [src]="obj_exp.imagen" />
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-8 list-info">
+        <form [formGroup]="form">
+          <div>
+            <h3>{{ obj_exp.titulo }}</h3>
+
+            <input
+              *ngIf="inp_visible"
+              id="inp_tit0"
+              type="text"
+              placeholder="Titulo"
+              formControlName="inptitulo"
+              [(ngModel)]="obj_exp.titulo"
+            />
+          </div>
+          <div class="cargo">
+            <p>
+              {{ obj_exp.cargo }} - <span>{{ obj_exp.jornada }}</span>
+            </p>
+          </div>
+          <div>
+            <input
+              *ngIf="inp_visible"
+              type="text"
+              placeholder="Cargo"
+              formControlName="inpcargo"
+              [(ngModel)]="obj_exp.cargo"
+            />
+            <input
+              *ngIf="inp_visible"
+              type="text"
+              placeholder="Jornada"
+              formControlName="inpjornada"
+              [(ngModel)]="obj_exp.jornada"
+            />
+          </div>
+          <div class="tiempo">
+            <p>{{ obj_exp.tiempo }}</p>
+          </div>
+          <div class="direccion">
+            <p>{{ obj_exp.direccion }}</p>
+            <input
+              *ngIf="inp_visible"
+              id="inp_dir0"
+              type="text"
+              placeholder="Direccion"
+              formControlName="inpdire"
+              [(ngModel)]="obj_exp.direccion"
+            />
+          </div>
+          <div class="descripcion">
+            <p>{{ obj_exp.descripcion }}</p>
+            <input
+              *ngIf="inp_visible"
+              id="inp_des0"
+              type="text"
+              placeholder="Descripcion"
+              formControlName="inpdesc"
+              [(ngModel)]="obj_exp.descripcion"
+            />
+          </div>
+          <button
+            *ngIf="inp_visible"
+            id="guarda_Experiencia"
+            (click)="guardar(obj_exp)"
+          >
+            Guardar Cambios
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</li>

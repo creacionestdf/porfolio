@@ -1,5 +1,13 @@
-<div class="btn-edit" id="btn_edit_obj" *ngIf="mostrar">
-    <a href="#a-objetivo" class="btn-right">
-      <i class="fa fa-pen"></i>
+<div 
+  class="btn-edit" 
+  id="btn_edit" 
+  *ngIf="mostrar">
+    <a 
+      href="#{{set_link}}" 
+      class="btn-right" 
+      (click)="inp_mostrar()" 
+      [ngStyle]="{'background-color':btnColor}">
+        <i class="fa fa-pen"></i>
+        {{texto}}
     </a>
 </div>

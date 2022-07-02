@@ -1,31 +1,31 @@
 {
-  "banner": "../assets/img/banner.jpg",
-
-  "logo": "../assets/img/logo.jpg",
-
-  "foto": "../assets/img/foto.jpg",
-
-  "nombre": "Rodrigo Maxiliano Alvarez",
-
-  "apellido": "Alvarez",
-
-  "email": "email@hotmail.com.ar",
-
-  "compania": "Informatico Freelance // Creaciones del Sur",
-
-  "residencia": "Rio Grande, TDF(Argentina)",
-
-  "acercade": "Formar parte de un grupo de trabajo con el cual podamos entre todos avanzar en nuestros conocimientos y al mismo tiempo aportar soluciones a los problemas de mi organización.",
-  
-  "Titulo": [
+  "perfil": [
+    {
+      "id": "1",
+      "banner": "../assets/img/banner.jpg",
+      "logo": "../assets/img/logo.jpg",
+      "foto": "../assets/img/foto.jpg",
+      "nombre": "Rodrigo Maxiliano Alvarez",
+      "apellido": "Alvarez",
+      "email": "email@hotmail.com.ar",
+      "compania": "Informatico Freelance // Creaciones del Sur",
+      "residencia": "Rio Grande, TDF(Argentina)"
+    }
+  ],
+  "acercade": [
+    {
+      "id": "1",
+      "objetivo": "Formar parte de un grupo de trabajo con el cual podamos entre todos avanzar en nuestros conocimientos y al mismo tiempo aportar soluciones a los problemas de mi organización."
+    }
+  ],
+  "titulos": [
     {
       "id": "tit1",
       "titulo": "",
       "institucion": ""
     }
   ],
-
-  "experiencia": [
+  "experiencias": [
     {
       "id": "exp1",
       "imagen": "../assets/img/exp1.jpg",
@@ -34,7 +34,8 @@
       "jornada": "Media Jornada",
       "tiempo": "Oct 2020 - Actualidad  : ( 2 años y 1 mes )",
       "direccion": "Tierra del Fuego, Argentina",
-      "descripcion": "Micro emprendimiento, que surgio en plena pandemia. Somos un grupo de jovenes autodidactas que nos dedicamos al desarrollo web FullStack."
+      "descripcion": "Micro emprendimiento, que surgio en plena pandemia. Somos un grupo de jovenes autodidactas que nos dedicamos al desarrollo web FullStack.",
+      "reminder": false
     },
     {
       "id": "exp2",
@@ -47,51 +48,55 @@
       "descripcion": "Descripcion del puesto: Mis tareas en este trabajo fueron diseñar el modelo del Portfolio, desarrollarlo aplicando los disferentes lenguajes vistos hasta el dia de hoy."
     }
   ],
-
-  "skill": [
+  "skills": [
     {
       "id": "skl1",
       "titulo": "HTML",
-      "val": 40
+      "val": 40,
+      "reminder": true
     },
     {
       "id": "skl2",
       "titulo": "CSS",
-      "val": 60
+      "val": 60,
+      "reminder": false
     },
     {
       "id": "skl3",
       "titulo": "TypeScript",
-      "val": 20
+      "val": 20,
+      "reminder": true
     },
     {
       "id": "skl4",
       "titulo": "Angular",
-      "val": 100
+      "val": 100,
+      "reminder": false
     },
     {
       "id": "skl5",
       "titulo": "Json",
-      "val": 70
+      "val": 70,
+      "reminder": true
     },
     {
       "id": "skl6",
       "titulo": "SQL",
-      "val": 60
+      "val": 60,
+      "reminder": false
     }
   ],
-
-  "licencia": [
+  "certificaciones": [
     {
-      "id": "lic1",
+      "id": "1",
       "logo": "../assets/img/certificaciones/Cisco.jpg",
       "titulo": "CCNA Routing and Switching",
       "entidad": "Cisco Networking Academy",
       "fecha": "Expedición oct. 2018 · Vencimiento: dic. 2018",
-      "descripcion": ""
+      "descripcion": "Descripcion"
     },
     {
-      "id": "lic2",
+      "id": "2",
       "logo": "../assets/img/certificaciones/Mamuki.jpg",
       "titulo": "Argentina Programa 'Sé Programar'",
       "entidad": "Mamuki",
@@ -99,7 +104,7 @@
       "descripcion": ""
     },
     {
-      "id": "lic3",
+      "id": "3",
       "logo": "../assets/img/certificaciones/Utn.jpg",
       "titulo": "Diplomatura en Programacion Web Full Stack Developer",
       "entidad": "UTN Facultad Regional Resistencia Chaco - UTN FRRe",
@@ -107,8 +112,7 @@
       "descripcion": ""
     }
   ],
-
-  "proyecto": [
+  "proyectos": [
     {
       "id": "pro1",
       "titulo": "Creaciones TDF",

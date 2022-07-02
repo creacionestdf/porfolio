@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-btn-edit',
@@ -6,12 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./btn-edit.component.css']
 })
 export class BtnEditComponent implements OnInit {
-  
-  mostrar:boolean=false; 
-  
-  constructor() { }
+  @Input() set_link:any;
 
-  ngOnInit(): void {
+  @Input() btnColor:string="";
+  @Input() texto:string="";
+
+  @Output() set_inpvisible = new EventEmitter();
+
+  @Output() btnClick= new EventEmitter();
+
+  mostrar:boolean=true; 
+  
+  //MUESTRA Btn Edit
+    inp_visible:boolean = false;
+
+  //Envia Dato
+  inp_mostrar(){
+    this.set_inpvisible.emit(true);
   }
 
+  constructor() { }
+
+  ngOnInit(): void { }
+
+  func_click(){
+    this.btnClick.emit();
+  }
 }

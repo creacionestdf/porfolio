@@ -1,0 +1,7 @@
+button{
+    border-style: none;
+}
+
+.tarea.borde{
+    border-left: 5px solid green;
+}

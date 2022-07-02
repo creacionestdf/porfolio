@@ -3,26 +3,41 @@
   <div class="card-titles">
     <h2>Acerca de</h2>
     <!-- Btn_edit -->
-    <app-btn-edit></app-btn-edit>
+    <app-btn-edit
+      [set_link]="id"
+      (set_inpvisible)="mostrar($event)"
+      btnColor="lightblue"
+      texto="EDITAR"
+    ></app-btn-edit>
+  </div>
+  <div>
+    <p id="objetivo">{{ miPorfolio[0].objetivo }}</p>
+  </div>
+  <div>
     
-  </div>
-  <div>
-    <p id="objetivo">{{ acerca_de.acercade }}</p>
-  </div>
-  <div>
-    <input
-      id="edit-acercade"
-      type="text"
-      oninput="muFunction2(this.value, 'objetivo')"
-      style="display: none"
-    />
-    <button 
-      id="guarda_Experiencia"
-      nclick="GuardaCambios(2)"
-      style="display: none"
+    <form 
+      [formGroup]="form"
+      *ngIf="inp_visible"
     >
-      Guardar Cambios
-    </button>
+      <input
+        id="edit-acercade"
+        type="text"
+        placeholder="Objetivo"
+        formControlName="inp_acercade"
+        [(ngModel)]="miPorfolio[0].objetivo"
+      />
+      <button
+       
+        id="guarda_Experiencia"
+        
+        (click)="guardar(miPorfolio[0])"
+      >Guardar Cambios
+      </button>
+    </form>
+
+    
+
+
   </div>
 </div>
 

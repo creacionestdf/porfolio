@@ -1,34 +1,31 @@
 <!-- Proyectos -->
 <div class="card mat-card">
-    <div id="Proyectos">
-        <div class="card-titles">
-            <h2>Proyectos</h2>
-        </div>
-        <div> 
-            <ul class="items-list">
-                <li class="card mat-card bor" *ngFor="let pro of proyectosList" >
-                    <!-- Btn_edit -->
-                    <app-btn-edit></app-btn-edit>
-                    <div class="data-container ">
-                        
-                        <div class="list-info" style="display:inline; text-align:center">
-                            <div><h3>{{pro.titulo}}</h3></div>
-                            <div>
-                                <p>{{pro.fecha}}</p>
-                            </div>
-                            <div>
-                                <p>{{pro.descripcion}}</p>
-                            </div>
-                            <div>
-                                <a href="">{{pro.link}}</a>
-                            </div>
-                        </div>
-                        <div class="logo-image-container" >
-                            <img [src]="pro.logo" alt="proyecto1">
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+  <div id="Proyectos">
+    <div class="card-titles">
+      <h2>Proyectos</h2>
+      <app-btn-add
+        text="{{ showAddPro ? 'Close' : 'Add' }}"
+        color="{{ showAddPro ? 'red' : 'green' }}"
+        (btnClick)="toggleAddPro()"
+      >
+      </app-btn-add>
+    </div>
+
+    <app-add-proyecto 
+        (onAddPro)="addPro($event)"
+    ></app-add-proyecto>
+
+    <div>
+      <ul class="items-list">
+        <!-- Modulo Proyectos -->
+        <app-proyecto-modulo
+        *ngFor="let proy of proyectoList" 
+        [obj_pro]="proy"
+        (onDeletePro)="deleteProyecto(proy)"
+        (onGuardarPro)="guardar(proy)"
+        >
+        </app-proyecto-modulo>
+      </ul>
     </div>
   </div>
+</div>

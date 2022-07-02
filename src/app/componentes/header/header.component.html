@@ -1,65 +1,107 @@
 <!-- HEADER-->
 <div class="card mat-card" id="first-card">
-    <div id="header">
-        <div id="logo"><img [src]="miPorfolio.logo" alt="Logo"></div>
-        <!-- Iconos Redes -->
-        <div id="redes">
-            <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
-            <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-            <a id="login" class="social-icon"  data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fa-solid fa-user"></i></a>
-        </div>
-    </div>
-    <!-- Banner -->
-    <div id="profile-background"><img [src]="miPorfolio.banner" alt="banner"></div>
-    <!-- Foto + Info_Personal -->
-    <div id="info" style="padding: 16px">
-        <div id="info-img">
-            <img class="profile-image" id="foto" [src]="miPorfolio.foto" alt="foto">
-            <!-- Btn_edit -->
-            <app-btn-edit></app-btn-edit>
-        </div>
-        <div id="info-data">
-            <div>
-                <input type="file" id="file1" onchange="showFile(this)" style="display:none">                    
-                <div><h1 id="Nombre">{{miPorfolio.nombre}}</h1></div> 
-                <div>
-                    <input 
-                        id="edit-nombre" 
-                        type="text" 
-                        oninput="muFunction2(this.value, 'Nombre')" 
-                        placeholder="" 
-                        style="display:none">
-                </div>
-                <div id="Info-company">{{miPorfolio.compania}}</div>
-                <div>
-                    <input 
-                        id="edit-company" 
-                        type="text" 
-                        oninput="muFunction2(this.value, 'Info-company')" 
-                        placeholder="" 
-                        style="display:none"
-                    >
-                </div>
-                <div id="info-contact">
-                    <p id="residencia">{{miPorfolio.residencia}}</p>
-                    <input 
-                        id="edit-residencia" 
-                        type="text" 
-                        oninput="muFunction2(this.value, 'residencia')" 
-                        placeholder="" 
-                        style="display:none"
-                    >
-                    <span>{{miPorfolio.email}}</span>
-                </div>
-            </div>
-        </div>
-        <button 
-            id="guarda_DatosPersonales" 
-            onclick="GuardaCambios(1)"
-            style="display:none">
-            Guardar Cambios
-        </button>
+  <div id="header">
+    <div id="logo"><img [src]="miPorfolio[0].logo" alt="Logo" /></div>
+    <!-- Iconos Redes -->
+    <div id="redes">
+      <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
+      <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
+      <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
+      <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
+      <a
+        id="login"
+        class="social-icon"
+        data-bs-toggle="modal"
+        data-bs-target="#loginModal"
+        ><i class="fa-solid fa-user"></i
+      ></a>
     </div>
   </div>
+  <!-- Banner -->
+  <div id="profile-background">
+    <img [src]="miPorfolio[0].banner" alt="banner" />
+  </div>
+  <!-- Foto + Info_Personal -->
+  <div id="info" style="padding: 16px">
+    
+    
+    
+      <div id="info-img">
+      <img
+        class="profile-image"
+        id="foto"
+        [src]="miPorfolio[0].foto"
+        alt="foto"
+      />
+      <!-- Btn_edit -->
+      <app-btn-edit
+        [set_link]="id"
+        (set_inpvisible)="mostrar($event)"
+        
+      ></app-btn-edit>
+    </div>
+    <form [formGroup]="form">
+    <div id="info-data">
+      <div>
+        <input
+        *ngIf="inp_visible"
+          type="file"
+          id="file1"
+        />
+        <div>
+          <h1 id="Nombre">{{ miPorfolio[0].nombre }}</h1>
+        </div>
+        <div>
+          <input
+            *ngIf="inp_visible"
+            id="edit-nombre"
+            type="text"
+            
+            formControlName="inp_nombre"
+            [(ngModel)]="miPorfolio[0].nombre"
+          />
+        </div>
+        <div id="Info-company">{{ miPorfolio[0].compania }}</div>
+        <div>
+          <input
+            *ngIf="inp_visible"
+            id="edit-company"
+            type="text"
+            
+            formControlName="inp_compania"
+            [(ngModel)]="miPorfolio[0].compania"
+          />
+        </div>
+        <div id="info-contact">
+          <p id="residencia">{{ miPorfolio[0].residencia }}</p>
+          <input
+            *ngIf="inp_visible"
+            id="edit-residencia"
+            type="text"
+            
+            formControlName="inp_residencia"
+            [(ngModel)]="miPorfolio[0].residencia"
+          />
+          <p>{{ miPorfolio[0].email }}</p>
+          <input
+            *ngIf="inp_visible"
+            id="edit-email"
+            type="text"
+            
+            formControlName="inp_email"
+            [(ngModel)]="miPorfolio[0].email"
+          />
+          
+        </div>
+      </div>
+    </div>
+    <button 
+      *ngIf="inp_visible" 
+      id="guarda_DatosPersonales" 
+      (click)="guardar(miPorfolio[0])">
+      Guardar Cambios
+    </button>
+  </form>
+  </div>
+
+</div>

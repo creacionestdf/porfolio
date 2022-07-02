@@ -12,7 +12,7 @@ import { CertificacionesComponent } from './componentes/certificaciones/certific
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
-import { SkillsComponent } from './componentes/skills/skills.component';
+
 import { LoginComponent } from './componentes/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BtnEditComponent } from './componentes/btn-edit/btn-edit.component';
@@ -24,6 +24,9 @@ import { AddCertificacionComponent } from './componentes/add-certificacion/add-c
 import { CertificacionModuloComponent } from './componentes/certificacion-modulo/certificacion-modulo.component';
 import { ProyectoModuloComponent } from './componentes/proyecto-modulo/proyecto-modulo.component';
 import { AddProyectoComponent } from './componentes/add-proyecto/add-proyecto.component';
+import { SkillComponent } from './componentes/skill/skill.component';
+import { SkillModuloComponent } from './componentes/skill-modulo/skill-modulo.component';
+import { AddSkillComponent } from './componentes/add-skill/add-skill.component';
 
 
 
@@ -37,7 +40,7 @@ import { AddProyectoComponent } from './componentes/add-proyecto/add-proyecto.co
     ExperienciaComponent,
     FooterComponent,
     ProyectosComponent,
-    SkillsComponent,
+    
     LoginComponent,
     routingComponents,
     BtnEditComponent,
@@ -48,7 +51,10 @@ import { AddProyectoComponent } from './componentes/add-proyecto/add-proyecto.co
     AddCertificacionComponent,
     CertificacionModuloComponent,
     ProyectoModuloComponent,
-    AddProyectoComponent
+    AddProyectoComponent,
+    SkillComponent,
+    SkillModuloComponent,
+    AddSkillComponent
     
     
   ],

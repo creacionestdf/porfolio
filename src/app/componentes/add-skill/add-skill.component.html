@@ -1,0 +1,35 @@
+<form 
+    *ngIf="showAddSkl"
+    (ngSubmit)="onSubmit()">
+    
+    <div class="form-control">
+        <label for="id">Id</label>
+        <input
+        type="text" 
+        name="id" 
+        id="id" 
+        [(ngModel)]="id"
+        />
+    </div>
+
+    <div class="form-control">
+        <label for="titulo">Titulo</label>
+        <input 
+        type="text" 
+        name="titulo" 
+        id="titulo" 
+        [(ngModel)]="titulo"/>
+    </div>
+
+    <div class="form-control">
+        <label for="valor">Valor</label>
+        <input
+        type="text" 
+        name="valor" 
+        id="valor" 
+        [(ngModel)]="val"
+        />
+    </div>
+          
+    <input type="submit" value="Guardar Skill" class="btn btn-block" >
+  </form>

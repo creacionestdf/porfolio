@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Cert } from '../componentes/certificaciones/faceCertificacion';
 import { Exp } from '../componentes/experiencia/faceExperiencia';
 import { Pro } from '../componentes/proyectos/faceProyecto';
+import { Skl } from "../componentes/skill/faceSkill";
 
 const httpOptions={
   headers: new HttpHeaders({
@@ -20,7 +21,7 @@ export class PorfolioService {
   private urlExp = 'http://localhost:5000/experiencias/';
   private urlCert = 'http://localhost:5000/certificaciones/';
   private urlPro = 'http://localhost:5000/proyectos/';
-  
+  private urlSkl = 'http://localhost:5000/skills/';
   
   constructor(private http: HttpClient) {}
 
@@ -109,6 +110,25 @@ export class PorfolioService {
   updateProyecto(pr: Pro): Observable<Pro> {
     const url=`${this.urlPro}/${pr.id}`
     return this.http.put<Pro>(url, pr, httpOptions)
+  }
+
+  //SKILL
+  getSkill(): Observable<Skl[]> {
+    return this.http.get<Skl[]>(this.urlSkl)
+  }
+
+  addSkill(sk: Skl): Observable<Skl>{
+    return this.http.post<Skl>(this.urlSkl, sk, httpOptions)
+  }
+
+  deleteSkill(sk: Skl): Observable<Skl>{
+    const url = `${this.urlSkl}/${sk.id}`
+    return this.http.delete<Skl>(url)
+  }
+
+  updateSkill(sk: Skl): Observable<Skl> {
+    const url=`${this.urlSkl}/${sk.id}`
+    return this.http.put<Skl>(url, sk, httpOptions)
   }
 
 }

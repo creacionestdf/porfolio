@@ -50,37 +50,37 @@
   ],
   "skills": [
     {
-      "id": "skl1",
+      "id": "1",
       "titulo": "HTML",
-      "val": 40,
+      "val": "47",
       "reminder": true
     },
     {
-      "id": "skl2",
+      "id": "2",
       "titulo": "CSS",
       "val": 60,
       "reminder": false
     },
     {
-      "id": "skl3",
+      "id": "3",
       "titulo": "TypeScript",
       "val": 20,
       "reminder": true
     },
     {
-      "id": "skl4",
+      "id": "4",
       "titulo": "Angular",
-      "val": 100,
+      "val": 95,
       "reminder": false
     },
     {
-      "id": "skl5",
+      "id": "5",
       "titulo": "Json",
       "val": 70,
       "reminder": true
     },
     {
-      "id": "skl6",
+      "id": "6",
       "titulo": "SQL",
       "val": 60,
       "reminder": false

@@ -8,6 +8,7 @@ export class UiService {
 private showAddExp:boolean=false;
 private showAddCert:boolean=false;
 private showAddPro:boolean=false;
+private showAddSkl:boolean=false;
 
 private subjet = new Subject<any>()
 
@@ -29,6 +30,12 @@ private subjet = new Subject<any>()
     //console.log('click');
     this.showAddPro=!this.showAddPro;
     this.subjet.next(this.showAddPro);
+  }
+  
+  toogleAddSkl():void{
+    //console.log('click');
+    this.showAddSkl=!this.showAddSkl;
+    this.subjet.next(this.showAddSkl);
   }
 
   onToggle():Observable<any>{

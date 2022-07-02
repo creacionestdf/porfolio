@@ -1,0 +1,52 @@
+<li class="bor">
+                    
+    <div class="sSkill-Titulo">
+        <!-- Btn_edit -->
+        <app-btn-edit 
+            [set_link]="obj_sk.id"
+            (set_inpvisible)="mostrar($event)"
+        ></app-btn-edit>
+    </div>
+
+    <!-- Btn_delete -->
+    <button [ngStyle]="{ color: 'red' }" (click)="onDelete(obj_sk)">
+        <i class="fa-solid fa-rectangle-xmark"></i>
+    </button>
+
+    <form [formGroup]="form">
+    <div class="progress Skill-Barra">
+        <input
+              *ngIf="inp_visible"
+              type="text"
+              placeholder="Skill Nombre"
+              formControlName="inptitulo"
+              [(ngModel)]="obj_sk.titulo"
+            />
+            <input
+            *ngIf="inp_visible"
+            type="text"
+            placeholder="Valor"
+            formControlName="inpvalor"
+            [(ngModel)]="obj_sk.val"
+          />
+        <p>{{obj_sk.titulo}}</p>
+        <div 
+            class="progress-bar progress-bar-success" 
+            role="progressbar" 
+            aria-valuenow="skl.val" 
+            aria-valuemin="0" 
+            aria-valuemax="100"
+            [ngStyle]="{'width':obj_sk.val+'%'}" 
+            
+            >{{obj_sk.val}}
+        </div>
+    </div>
+    <button
+    *ngIf="inp_visible"
+    id="guarda_Skill"
+    (click)="guardar(obj_sk)"
+  >
+    Guardar Cambios
+  </button>
+</form>
+</li>

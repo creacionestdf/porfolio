@@ -1,0 +1,27 @@
+<div class="card mat-card">
+  <div id="skills">
+    <div class="card-titles">
+      <h2>{{titulo}}</h2>
+      <app-btn-add
+        text="{{ showAddSkl ? 'Close' : 'Add' }}"
+        color="{{ showAddSkl ? 'red' : 'green' }}"
+        (btnClick)="toggleAddSkl()"
+      >
+      </app-btn-add>
+    </div>
+
+    <app-add-skill
+    (onAddSkl)="addSkl($event)"
+    ></app-add-skill>
+    <div>
+      <ul id="ulSkill">
+        <app-skill-modulo 
+            *ngFor="let sk of skillList"
+            [obj_sk]="sk"
+            (onDeleteSkl)="deleteSkill(sk)"
+            (onGuardarSkl)="guardar(sk)"
+            ></app-skill-modulo>
+      </ul>
+    </div>
+  </div>
+</div>

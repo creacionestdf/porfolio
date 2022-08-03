@@ -16,7 +16,7 @@ const httpOptions : any    = {
 })
 export class AcercadeService {
 
-  //URLs
+  //URL s
   private url:String = "http://localhost:8080/acercade/";
   private UrlSave = 'http://localhost:8080/acercade/actualizar';
   

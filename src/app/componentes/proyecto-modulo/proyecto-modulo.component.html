@@ -1,5 +1,6 @@
 <li class="card mat-card bor">
   <div class="container">
+
   <!-- Btn_edit -->
   <app-btn-edit
     [set_link]="obj_pro.id"
@@ -7,7 +8,8 @@
   ></app-btn-edit>
 
   <!-- Btn_delete -->
-  <button [ngStyle]="{ color: 'red' }" (click)="onDelete(obj_pro)">
+  <button [ngStyle]="{ color: 'red' }" 
+  (click)="tranferIdDelete(obj_pro)">
     <i class="fa-solid fa-rectangle-xmark"></i>
   </button>
 
@@ -56,18 +58,27 @@
         </div>
       </div>
       <div class="logo-image-container">
-        <img [src]="obj_pro.logo" alt="proyecto1" />
-        <input
-          type="file"
-          id="file1"
-        />
+        <div>
+          <img [src]="obj_pro.logo" alt="proyecto1" />
+        </div>
+        <div>
+          <input
+              *ngIf="inp_visible"
+              type="text"
+              placeholder="Logo"
+              formControlName="inplogo"
+              [(ngModel)]="obj_pro.logo"
+            />
+        </div>
+        
       </div>
       <button
           *ngIf="inp_visible"
           id="guarda_Proyecto"
+          placeholder="Guardar Cambios"
           (click)="guardar(obj_pro)"
         >
-          Guardar Cambios
+          GUARDAR CAMBIOS
         </button>
     </form>
   </div>

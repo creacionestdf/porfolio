@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class AddExperienciaComponent implements OnInit {
   @Output() onAddExp: EventEmitter<Exp> = new EventEmitter();
 
-  id: string = '';
+  id: number=0;
   imagen: string = '';
   titulo: string = '';
   cargo: string = '';

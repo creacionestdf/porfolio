@@ -3,17 +3,17 @@
   <div id="Licencias">
     <div class="card-titles">
       <h2>{{ titulo }}</h2>
+
+      <!-- BTN AGREGAR-->
       <app-btn-add
         text="{{ showAddCert ? 'Close' : 'Add' }}"
         color="{{ showAddCert ? 'red' : 'green' }}"
         (btnClick)="toggleAddCert()"
-      >
-      </app-btn-add>
+      ></app-btn-add>
     </div>
-    
-    <app-add-certificacion
-      (onAddCert)="addCert($event)"
-    ></app-add-certificacion>
+
+    <!-- FORMULARIO para agregar... -->
+    <app-add-certificacion (onAddCert)="addCert($event)"></app-add-certificacion>
 
     <div>
       <ul id="ulLic" class="items-list">
@@ -21,8 +21,8 @@
         <app-certificacion-modulo
           *ngFor="let cert of certificacionList"
           [obj_cert]="cert"
-          (onDeleteCert)="deleteCertificacion(cert)"
-          (onGuardarCert)="guardar(cert)"
+          (onDelete)="borrarCertificacion(cert)"
+          (onSave)="saveCertificacion(cert)"
         >
         </app-certificacion-modulo>
       </ul>

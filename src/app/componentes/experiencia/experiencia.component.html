@@ -1,25 +1,28 @@
 <!-- Seccion Experiencia-->
 <div class="card mat-card">
   <div id="experience">
-    
     <div class="card-titles">
-      <h2>{{titulo}}</h2>
-      <app-btn-add 
-        text="{{showAddExp ? 'Close' : 'Add'}}"
-        color="{{showAddExp ? 'red' : 'green'}}"
-        (btnClick)="toggleAddExp()">
-      </app-btn-add>
+      <h2>{{ titulo }}</h2>
+
+      <!-- BTN AGREGAR-->
+      <app-btn-add
+        text="{{ showAddExp ? 'Close' : 'Add' }}"
+        color="{{ showAddExp ? 'red' : 'green' }}"
+        (btnClick)="toggleAddExp()"
+      ></app-btn-add>
     </div>
 
-    <app-add-experiencia (onAddExp)="addExper($event)"> </app-add-experiencia>
-    
+    <!-- FORMULARIO para agregar... -->
+    <app-add-experiencia (onAddExp)="addExper($event)"></app-add-experiencia>
+
     <div>
       <ul id="ulExp" class="items-list">
         <!-- Modulo Experiencia-->
         <app-experiencia-modulo
           *ngFor="let exx of experienciaList"
           [obj_exp]="exx"
-          (onDeleteExp)="deleteExperiencia(exx)"
+          (onDelete)="borrarExperiencia(exx)"
+          (onSave)="saveExperiencia(exx)"
           (onToggleBorde)="toogleBorde(exx)"
         >
         </app-experiencia-modulo>

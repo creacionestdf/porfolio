@@ -27,7 +27,7 @@
   ],
   "experiencias": [
     {
-      "id": "exp1",
+      "id": "1",
       "imagen": "../assets/img/exp1.jpg",
       "titulo": "Creaciones TDF",
       "cargo": "Desarrollador FullStack",
@@ -38,7 +38,7 @@
       "reminder": false
     },
     {
-      "id": "exp2",
+      "id": "2",
       "imagen": "../assets/img/logo.jpg",
       "titulo": "Argentina Programa",
       "cargo": "Desarrollador FullStack",

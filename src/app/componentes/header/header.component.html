@@ -1,7 +1,7 @@
 <!-- HEADER-->
 <div class="card mat-card" id="first-card">
   <div id="header">
-    <div id="logo"><img [src]="miPorfolio[0].logo" alt="Logo" /></div>
+    <div id="logo"><img [src]="List[0].logo" alt="Logo" /></div>
     <!-- Iconos Redes -->
     <div id="redes">
       <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -19,7 +19,7 @@
   </div>
   <!-- Banner -->
   <div id="profile-background">
-    <img [src]="miPorfolio[0].banner" alt="banner" />
+    <img [src]="List[0].banner" alt="banner" />
   </div>
   <!-- Foto + Info_Personal -->
   <div id="info" style="padding: 16px">
@@ -30,14 +30,13 @@
       <img
         class="profile-image"
         id="foto"
-        [src]="miPorfolio[0].foto"
+        [src]="List[0].foto"
         alt="foto"
       />
       <!-- Btn_edit -->
       <app-btn-edit
         [set_link]="id"
         (set_inpvisible)="mostrar($event)"
-        
       ></app-btn-edit>
     </div>
     <form [formGroup]="form">
@@ -45,23 +44,24 @@
       <div>
         <input
         *ngIf="inp_visible"
-          type="file"
-          id="file1"
+        id="edit-foto"
+        type="text"
+        formControlName="inp_foto"
+        [(ngModel)]="List[0].foto"
         />
         <div>
-          <h1 id="Nombre">{{ miPorfolio[0].nombre }}</h1>
+          <h1 id="Nombre">{{ List[0].nombre }}</h1>
         </div>
         <div>
           <input
             *ngIf="inp_visible"
             id="edit-nombre"
             type="text"
-            
             formControlName="inp_nombre"
-            [(ngModel)]="miPorfolio[0].nombre"
+            [(ngModel)]="List[0].nombre"
           />
         </div>
-        <div id="Info-company">{{ miPorfolio[0].compania }}</div>
+        <div id="Info-company">{{ List[0].compania }}</div>
         <div>
           <input
             *ngIf="inp_visible"
@@ -69,27 +69,27 @@
             type="text"
             
             formControlName="inp_compania"
-            [(ngModel)]="miPorfolio[0].compania"
+            [(ngModel)]="List[0].compania"
           />
         </div>
         <div id="info-contact">
-          <p id="residencia">{{ miPorfolio[0].residencia }}</p>
+          <p id="residencia">{{ List[0].residencia }}</p>
           <input
             *ngIf="inp_visible"
             id="edit-residencia"
             type="text"
             
             formControlName="inp_residencia"
-            [(ngModel)]="miPorfolio[0].residencia"
+            [(ngModel)]="List[0].residencia"
           />
-          <p>{{ miPorfolio[0].email }}</p>
+          <p>{{ List[0].email }}</p>
           <input
             *ngIf="inp_visible"
             id="edit-email"
             type="text"
             
             formControlName="inp_email"
-            [(ngModel)]="miPorfolio[0].email"
+            [(ngModel)]="List[0].email"
           />
           
         </div>
@@ -98,7 +98,7 @@
     <button 
       *ngIf="inp_visible" 
       id="guarda_DatosPersonales" 
-      (click)="guardar(miPorfolio[0])">
+      (click)="save(List[0])">
       Guardar Cambios
     </button>
   </form>

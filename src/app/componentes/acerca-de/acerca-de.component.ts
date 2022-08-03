@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { PorfolioService } from 'src/app/servicios/porfolio.service';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AcercadeService } from "../../servicios/acercade.service";
+import { Ace } from "../acerca-de/faceAcercade";
 
 @Component({
   selector: 'app-acerca-de',
@@ -9,11 +10,12 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 })
 
 export class AcercaDeComponent implements OnInit {
+  titulo:string="Acerca de";
+  List: Ace[]=[];
   
+
   form:FormGroup;
   
-  //Json Data 
-    miPorfolio:any;
   //ID Btn_Edit
     id:string="obj";
 
@@ -21,7 +23,7 @@ export class AcercaDeComponent implements OnInit {
     inp_visible:boolean=false; 
   
   constructor(
-    private datosPorfolio:PorfolioService, 
+    private Servicio: AcercadeService,
     private formBuilder: FormBuilder) { 
       //creamos el grupo de controles para el formulario
       this.form=this.formBuilder.group({
@@ -30,13 +32,40 @@ export class AcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.obtenerAcercade();
+        
+    /*
       this.datosPorfolio.getAcerca().subscribe(data =>{ 
         this.miPorfolio=data; 
-      });
+      }); */
 
       
   }
  
+  //LISTA ...
+  private obtenerAcercade() {
+    this.Servicio.getAll().subscribe((e) => {
+      this.List = e;
+    });
+  }
+
+  //GUARDA cont del input + OCULTA input
+  public save(obj: Ace) {
+    this.Servicio.actualizar(obj).subscribe((dato) => {
+      console.log(dato);
+      this.obtenerAcercade();
+      this.mostrar(false);
+    });
+  }
+
+   
+  //MUESTRA & OCULTA input para editar campos
+  mostrar(e: boolean) {
+    this.inp_visible = e;
+  }
+
+
+  /*
 //GUARDA cont del input + OCULTA input
   guardar(obj:any){
     //Guarda contenido del input( HACER )
@@ -51,6 +80,6 @@ export class AcercaDeComponent implements OnInit {
   mostrar(e:boolean){
     this.inp_visible=e;
   }
-
+*/
 }
 

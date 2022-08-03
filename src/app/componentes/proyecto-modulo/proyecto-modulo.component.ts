@@ -10,26 +10,51 @@ import { Pro } from '../proyectos/faceProyecto';
 
 export class ProyectoModuloComponent implements OnInit {
   @Input() obj_pro:any;
-  @Output() onDeletePro: EventEmitter<Pro>= new EventEmitter();
-  @Output() onGuardarPro: EventEmitter<Pro>= new EventEmitter();
+  @Output() onDelete: EventEmitter<Pro>= new EventEmitter();
+  @Output() onSave: EventEmitter<Pro>= new EventEmitter();
 
   form:FormGroup;
 
+  //Estado Visible Input(text) + Btn_Guardar
   inp_visible:boolean=false;
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor( private formBuilder: FormBuilder) { 
     //creamos el grupo de controles para el formulario
     this.form=this.formBuilder.group({
       inptitulo:['',[]],
       inpfecha:['',[]],
       inpdescripcion:['',[]],
-      inplink:['',[]]
+      inplink:['',[]],
+      inplogo:['',[]],
      
     })
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {  this.obj_pro;}
 
+  //GUARDA cont del input + OCULTA input
+  guardar(obj:Pro){
+    //Guarda contenido del input( HACER)
+    this.mostrar(false);
+    console.log(obj);
+    this.onSave.emit(obj);
+  }
+
+  //INGRESA estado a mostrar
+  mostrar(e:boolean){
+    this.inp_visible=e;
+  }
+
+  //Envia el id del registro a borrar
+  tranferIdDelete(obj:Pro){
+    console.log("click Proyecto modulo id: "+obj.id);
+    this.onDelete.emit(obj);
+  }
+
+
+
+
+  /*
   guardar(pr:Pro){
     //Guarda contenido del input( HACER)
     this.mostrar(false);
@@ -43,5 +68,6 @@ export class ProyectoModuloComponent implements OnInit {
   mostrar(e:boolean){
     this.inp_visible=e;
   }
+  */
 
 }

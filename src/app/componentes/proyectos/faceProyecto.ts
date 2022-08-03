@@ -1,5 +1,5 @@
 export interface Pro {
-  id: string;
+  id: number;
   titulo: string;
   fecha: string;
   descripcion: string;

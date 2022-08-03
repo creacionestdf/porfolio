@@ -27,6 +27,7 @@ import { AddProyectoComponent } from './componentes/add-proyecto/add-proyecto.co
 import { SkillComponent } from './componentes/skill/skill.component';
 import { SkillModuloComponent } from './componentes/skill-modulo/skill-modulo.component';
 import { AddSkillComponent } from './componentes/add-skill/add-skill.component';
+import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.component';
 
 
 
@@ -54,7 +55,8 @@ import { AddSkillComponent } from './componentes/add-skill/add-skill.component';
     AddProyectoComponent,
     SkillComponent,
     SkillModuloComponent,
-    AddSkillComponent
+    AddSkillComponent,
+    BtnDeleteComponent
     
     
   ],

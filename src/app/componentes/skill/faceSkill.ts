@@ -1,5 +1,5 @@
 export interface Skl {
-  id: string;
+  id: number;
   titulo: string;
   val: string;
   reminder: boolean;

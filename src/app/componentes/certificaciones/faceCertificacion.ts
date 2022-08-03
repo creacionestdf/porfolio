@@ -1,5 +1,5 @@
 export interface Cert {
-  id: string;
+  id: number; //era string
   logo: string;
   titulo: string;
   entidad: string;

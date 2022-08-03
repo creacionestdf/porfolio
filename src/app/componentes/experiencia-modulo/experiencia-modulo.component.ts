@@ -10,11 +10,11 @@ import {Exp} from '../experiencia/faceExperiencia';
 
 export class ExperienciaModuloComponent implements OnInit {
   @Input() obj_exp:any;
-  @Output() onDeleteExp: EventEmitter<Exp>= new EventEmitter();
-  @Output() onToggleBorde: EventEmitter<Exp>= new EventEmitter();
+  @Output() onDelete: EventEmitter<Exp> = new EventEmitter();
+  @Output() onSave: EventEmitter<Exp> = new EventEmitter();
+  @Output() onToggleBorde: EventEmitter<Exp> = new EventEmitter();
 
   form:FormGroup;
-
 
   //Estado Visible Input(text) + Btn_Guardar
   inp_visible:boolean=false;
@@ -22,6 +22,7 @@ export class ExperienciaModuloComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { 
     //creamos el grupo de controles para el formulario
     this.form=this.formBuilder.group({
+      inpimagen:['',[]],
       inptitulo:['',[]],
       inpcargo:['',[]],
       inpjornada:['',[]],
@@ -31,14 +32,15 @@ export class ExperienciaModuloComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.obj_exp;
   }
 
   //GUARDA cont del input + OCULTA input
-  guardar(exp:any){
+  guardar(exp:Exp){
     //Guarda contenido del input( HACER)
     this.mostrar(false);
     console.log(exp);
+    this.onSave.emit(exp);
   }
 
   //INGRESA estado a mostrar
@@ -46,8 +48,11 @@ export class ExperienciaModuloComponent implements OnInit {
     this.inp_visible=e;
   }
 
-  onDelete(objBorrar:Exp){
-    this.onDeleteExp.emit(objBorrar);
+  //Envia el id del registro a borrar
+  tranferIdDelete(exp:Exp){
+    console.log("click experiencia modulo id: "+exp.id);
+    this.onDelete.emit(exp);
+    
   }
 
   onToggle(obj:Exp){

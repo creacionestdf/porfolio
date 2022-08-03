@@ -1,5 +1,5 @@
 export interface Exp {
-  id: string;
+  id: number;
   imagen: string;
   titulo: string;
   cargo: string;

@@ -2,27 +2,27 @@
 <div class="card mat-card">
   <div id="Proyectos">
     <div class="card-titles">
-      <h2>Proyectos</h2>
+      <h2>{{ titulo }}</h2>
+
+      <!-- BTN AGREGAR-->
       <app-btn-add
         text="{{ showAddPro ? 'Close' : 'Add' }}"
         color="{{ showAddPro ? 'red' : 'green' }}"
         (btnClick)="toggleAddPro()"
-      >
-      </app-btn-add>
+      ></app-btn-add>
     </div>
 
-    <app-add-proyecto 
-        (onAddPro)="addPro($event)"
-    ></app-add-proyecto>
+    <!-- FORMULARIO para agregar... -->
+    <app-add-proyecto (onAddPro)="addPro($event)"></app-add-proyecto>
 
     <div>
       <ul class="items-list">
         <!-- Modulo Proyectos -->
         <app-proyecto-modulo
-        *ngFor="let proy of proyectoList" 
-        [obj_pro]="proy"
-        (onDeletePro)="deleteProyecto(proy)"
-        (onGuardarPro)="guardar(proy)"
+          *ngFor="let proy of List" 
+          [obj_pro]="proy"
+          (onDelete)="borrarProyecto(proy)"
+          (onSave)="saveProyecto(proy)"
         >
         </app-proyecto-modulo>
       </ul>

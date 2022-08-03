@@ -1,7 +1,8 @@
 <!-- Acerca de-->
 <div id="a-objetivo" class="card mat-card">
   <div class="card-titles">
-    <h2>Acerca de</h2>
+    <h2>{{ titulo }}</h2>
+
     <!-- Btn_edit -->
     <app-btn-edit
       [set_link]="id"
@@ -10,34 +11,25 @@
       texto="EDITAR"
     ></app-btn-edit>
   </div>
+
   <div>
-    <p id="objetivo">{{ miPorfolio[0].objetivo }}</p>
+    <p id="objetivo">{{ List[0].objetivo }}</p>
   </div>
   <div>
-    
-    <form 
-      [formGroup]="form"
-      *ngIf="inp_visible"
-    >
+    <form [formGroup]="form" *ngIf="inp_visible">
       <input
         id="edit-acercade"
         type="text"
         placeholder="Objetivo"
         formControlName="inp_acercade"
-        [(ngModel)]="miPorfolio[0].objetivo"
+        [(ngModel)]="List[0].objetivo"
       />
-      <button
-       
-        id="guarda_Experiencia"
-        
-        (click)="guardar(miPorfolio[0])"
-      >Guardar Cambios
+      <button 
+        id="guarda_Experiencia" 
+        (click)="save(List[0])">
+        Guardar Cambios
       </button>
     </form>
-
-    
-
-
   </div>
 </div>
 

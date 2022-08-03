@@ -8,7 +8,8 @@ import { Skl } from "../componentes/skill/faceSkill";
 
 const httpOptions={
   headers: new HttpHeaders({
-    'Content-Type':'application/json'
+    'Content-Type':'application/json',
+      'Access-Control-Allow-Origin': '*',
   })
 }
 
@@ -18,7 +19,8 @@ const httpOptions={
 export class PorfolioService {
   private urlPer = 'http://localhost:5000/perfil/';
   private urlAcerca = 'http://localhost:5000/acercade/';
-  private urlExp = 'http://localhost:5000/experiencias/';
+  //private urlExp = 'http://localhost:5000/experiencias/';
+  private urlExp:string = "http://localhost:8080/experiencias/traer/";
   private urlCert = 'http://localhost:5000/certificaciones/';
   private urlPro = 'http://localhost:5000/proyectos/';
   private urlSkl = 'http://localhost:5000/skills/';
@@ -52,7 +54,31 @@ export class PorfolioService {
 
 
 //EXPERIENCIA:
-  getExperincia(): Observable<Exp[]> {
+
+  xgetExp1(){
+    let respuesta=new XMLHttpRequest();
+    respuesta.open('GET', 'this.urlExp');
+
+    respuesta.send();
+
+    respuesta.onreadystatechange=function(){
+      if(this.readyState===XMLHttpRequest.DONE && this.status===200){
+        let respuestaJson= JSON.parse(this.responseText);
+        console.log(respuestaJson);
+      }
+    }
+    
+  }
+
+  xgetExp2(): Observable<Exp[]>{
+    return this.http.get<Exp[]>(`${this.urlExp}`);
+  }
+
+  xgetExp3(){
+    
+  }
+
+  xgetExperincia(): Observable<Exp[]> {
     return this.http.get<Exp[]>(this.urlExp)
   }
 

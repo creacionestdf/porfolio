@@ -17,10 +17,10 @@ const httpOptions : any    = {
 export class CertificacionService {
 
   //URL de Experiencias
-  private urlCert:String = "http://localhost:8080/certificaciones/";
-  private urlCertcrea = 'http://localhost:8080/certificaciones/crear/';
-  private urlCertsav = 'http://localhost:8080/certificaciones/actualizar';
-  private urlCertdel = 'http://localhost:8080/certificaciones/borrar';
+  private urlCert:String = "porfolioweb-backend.herokuapp.com/certificaciones/";
+  private urlCertcrea = 'porfolioweb-backend.herokuapp.com/certificaciones/crear/';
+  private urlCertsav = 'porfolioweb-backend.herokuapp.com/certificaciones/actualizar';
+  private urlCertdel = 'porfolioweb-backend.herokuapp.com/certificaciones/borrar';
 
   constructor(private http: HttpClient) {}
 

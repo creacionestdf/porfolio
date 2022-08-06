@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ace } from "../componentes/acerca-de/faceAcercade";
-
+/*
 const httpOptions : any    = {
   headers: new HttpHeaders({
     //'Content-Type':  'application/json',
@@ -10,15 +10,15 @@ const httpOptions : any    = {
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
   })};
-
+*/
 @Injectable({
   providedIn: 'root'
 })
 export class AcercadeService {
 
   //URL s
-  private url:String = "https://porfolioweb-backend.herokuapp.com/acercade/";
-  private UrlSave = 'https://porfolioweb-backend.herokuapp.com/acercade/actualizar';
+  private url:String = "porfolioweb-backend.herokuapp.com/acercade/";
+  private UrlSave = 'porfolioweb-backend.herokuapp.com/acercade/actualizar';
   
 
   constructor(private http: HttpClient) {}

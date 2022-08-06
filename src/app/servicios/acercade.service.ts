@@ -17,8 +17,8 @@ const httpOptions : any    = {
 export class AcercadeService {
 
   //URL s
-  private url:String = "http://localhost:8080/acercade/";
-  private UrlSave = 'http://localhost:8080/acercade/actualizar';
+  private url:String = "https://porfolioweb-backend.herokuapp.com/acercade/";
+  private UrlSave = 'https://porfolioweb-backend.herokuapp.com/acercade/actualizar';
   
 
   constructor(private http: HttpClient) {}

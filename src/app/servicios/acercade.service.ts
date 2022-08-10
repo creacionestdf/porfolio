@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ace } from "../componentes/acerca-de/faceAcercade";
-/*
+
 const httpOptions : any    = {
   headers: new HttpHeaders({
     //'Content-Type':  'application/json',
@@ -10,14 +10,14 @@ const httpOptions : any    = {
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
   })};
-*/
+
 @Injectable({
   providedIn: 'root'
 })
 export class AcercadeService {
 
   //URL s
-  private url:String = "porfolioweb-backend.herokuapp.com/acercade/";
+  private url:String = "https://porfolioweb-backend.herokuapp.com/acercade/traer";
   private UrlSave = 'porfolioweb-backend.herokuapp.com/acercade/actualizar';
   
 
@@ -25,9 +25,13 @@ export class AcercadeService {
 
   //OBTENEMOS todos los registros...
   getAll(): Observable<Ace[]> {
-    return this.http.get<Ace[]>(this.url + "traer");
+    return this.http.get<Ace[]>(`${this.url}`);
   }
 
+  get(){
+    return this.http.get(`${this.url}`);
+  }
+  
   //GUARDAMOS cambios realizados
   actualizar(obj:Ace): Observable<Object> {
     return this.http.put<Ace>(`${this.UrlSave}/${obj.id}`,obj);

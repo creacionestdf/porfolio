@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth.service';
+import { Us } from "../login/faceUser";
 
 @Component({
   selector: 'app-login',
@@ -10,22 +12,38 @@ export class LoginComponent implements OnInit {
 
   title = 'boostrap-popup';
   loginForm!: FormGroup;
-  constructor() { }
+  user: Us=new Us();
+
+  v_email:any;
+  v_pass:any;
+
+  constructor( private serviceLog: AuthService) { }
+
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
   }
+
   get emailField(): any {
-    return this.loginForm.get('email');
+    this.v_email = this.loginForm.get('email');
+    return this.v_email;
   }
   get passwordField(): any {
-    return this.loginForm.get('password');
+    this.v_pass= this.loginForm.get('password');
+    return this.v_pass;
   }
+
   loginFormSubmit(): void {
-    console.log(this.loginForm.value);
-    // Call Api
+    this.serviceLog.loginUser(this.user).subscribe(data => { 
+      window.location.href="/porfolio"
+    },error=>alert("Por favor ingrese un user y pass correctos"));
+  }
+
+ 
+  hola(){
+    console.log("Hola click");
   }
 
   

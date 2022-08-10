@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { AuthService } from "../../auth.service";
 
 @Component({
   selector: 'app-btn-edit',
@@ -26,7 +26,7 @@ export class BtnEditComponent implements OnInit {
     this.set_inpvisible.emit(true);
   }
 
-  constructor() { }
+  constructor( public service: AuthService) { }
 
   ngOnInit(): void { }
 

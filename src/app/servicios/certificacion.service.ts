@@ -2,7 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cert } from "../componentes/certificaciones/faceCertificacion";
+import { environment } from "src/environments/environment.prod";
 
+/*
 const httpOptions : any    = {
   headers: new HttpHeaders({
     //'Content-Type':  'application/json',
@@ -10,23 +12,23 @@ const httpOptions : any    = {
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
   })};
-
+*/
 @Injectable({
   providedIn: 'root'
 })
 export class CertificacionService {
 
   //URL de Experiencias
-  private urlCert:String = "porfolioweb-backend.herokuapp.com/certificaciones/";
-  private urlCertcrea = 'porfolioweb-backend.herokuapp.com/certificaciones/crear/';
-  private urlCertsav = 'porfolioweb-backend.herokuapp.com/certificaciones/actualizar';
-  private urlCertdel = 'porfolioweb-backend.herokuapp.com/certificaciones/borrar';
+  private urlCert:String = environment.apiBaseURL+"/certificaciones";
+  private urlCertcrea = this.urlCert+'/crear/';
+  private urlCertsav = this.urlCert+'/actualizar';
+  private urlCertdel = this.urlCert+'/borrar';
 
   constructor(private http: HttpClient) {}
 
   //OBTENEMOS las certificaciones
   getAll(): Observable<Cert[]> {
-    return this.http.get<Cert[]>(this.urlCert + "traer");
+    return this.http.get<Cert[]>(this.urlCert + "/traer");
   }
 
   //CREAMOS nueva certificacion

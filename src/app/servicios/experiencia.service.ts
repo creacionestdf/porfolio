@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Exp } from '../componentes/experiencia/faceExperiencia';
-
-
+import { environment } from "src/environments/environment.prod";
+/*
   const httpOptions : any    = {
     headers: new HttpHeaders({
       //'Content-Type':  'application/json',
@@ -11,24 +11,24 @@ import { Exp } from '../componentes/experiencia/faceExperiencia';
       'Access-Control-Allow-Methods': 'GET',
       'Access-Control-Allow-Origin': '*'
     })};
-
+*/
 @Injectable({
   providedIn: 'root',
 })
 export class ExperienciaService {
   
   //URL de Experiencias
-  private urlExp:String = "http://localhost:8080/experiencias/";
-  private urlExpcrea = 'http://localhost:8080/experiencias/crear/';
-  private urlExpsav = 'http://localhost:8080/experiencias/actualizar';
-  private urlExpdel = 'http://localhost:8080/experiencias/borrar';
+  private urlExp:String = environment.apiBaseURL+"/experiencias";
+  private urlExpcrea = this.urlExp+'/crear/';
+  private urlExpsav = this.urlExp+'/actualizar';
+  private urlExpdel = this.urlExp+'/borrar';
 
   constructor(private http: HttpClient) {}
 
   //obtener experiencias
   getAll(): Observable<Exp[]> {
     //return this.http.get<Exp[]>(`${this.urlExp + 'traer'}`);
-    return this.http.get<Exp[]>(this.urlExp + "traer");
+    return this.http.get<Exp[]>(this.urlExp + "/traer");
   }
 
   //crear nueva experiencia

@@ -18,15 +18,15 @@ const httpOptions : any    = {
 export class AcercadeService {
 
   //URL s
-  private url:String = environment.apiBaseURL;
-  private UrlSave = environment.apiBaseURL + '/acercade/actualizar';
+  private url:String = environment.apiBaseURL+"/acercade"
+  private UrlSave = environment.apiBaseURL + '/actualizar';
   
 
   constructor(private http: HttpClient) {}
 
   //OBTENEMOS todos los registros...
   getAll(): Observable<Ace[]> {
-    return this.http.get<Ace[]>(this.url+"/acercade/traer");
+    return this.http.get<Ace[]>(this.url+"/traer");
   }
 
   get(){

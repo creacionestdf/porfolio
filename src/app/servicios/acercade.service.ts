@@ -21,8 +21,8 @@ const httpOptions : any    = {
 export class AcercadeService {
       
   //URL s
-  private url:String = environment.apiBaseURL+"/acercade"
-  private UrlSave = environment.apiBaseURL + '/actualizar';
+  private url:String = "/acercade"
+  private UrlSave = '/actualizar';
   
 
   constructor(private http: HttpClient) {}

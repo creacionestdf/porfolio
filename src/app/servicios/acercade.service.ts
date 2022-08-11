@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ace } from "../componentes/acerca-de/faceAcercade";
 import { environment } from "src/environments/environment.prod";
+import {HttpParams} from "@angular/common/http";
 /*
 const httpOptions : any    = {
   headers: new HttpHeaders({
@@ -11,12 +12,14 @@ const httpOptions : any    = {
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
   })};
+  
 */
+
 @Injectable({
   providedIn: 'root'
 })
 export class AcercadeService {
-
+      
   //URL s
   private url:String = environment.apiBaseURL+"/acercade"
   private UrlSave = environment.apiBaseURL + '/actualizar';
@@ -26,7 +29,7 @@ export class AcercadeService {
 
   //OBTENEMOS todos los registros...
   getAll(): Observable<Ace[]> {
-    return this.http.get<Ace[]>(this.url+"/traer");
+    return this.http.get<Ace[]>(`${this.url}/traer`);
   }
 
   get(){

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Ace } from "../componentes/acerca-de/faceAcercade";
 
 
-
+/*
 const httpOptions : any    = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -12,7 +12,7 @@ const httpOptions : any    = {
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
   })};
-  
+  */
 
 
 @Injectable({
@@ -21,7 +21,7 @@ const httpOptions : any    = {
 export class AcercadeService {
       
   //URL s
-  private url:String = "/aacercade"
+  private url:String = "/acercade"
   private UrlSave = '/actualizar';
   
 

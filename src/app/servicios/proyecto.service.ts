@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pro } from "../componentes/proyectos/faceProyecto";
-
+/*
 const httpOptions : any    = {
   headers: new HttpHeaders({
     //'Content-Type':  'application/json',
@@ -10,7 +10,7 @@ const httpOptions : any    = {
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
   })};
-
+*/
 @Injectable({
   providedIn: 'root'
 })

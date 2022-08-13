@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Skl } from '../componentes/skill/faceSkill';
 
-
+/*
 const httpOptions : any    = {
   headers: new HttpHeaders({
     //'Content-Type':  'application/json',
@@ -11,7 +11,7 @@ const httpOptions : any    = {
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
   })};
-
+*/
 @Injectable({
   providedIn: 'root'
 })

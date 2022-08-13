@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ace } from "../componentes/acerca-de/faceAcercade";
-
+import { Ace } from '../componentes/acerca-de/faceAcercade';
+import { environment } from '../../environments/environment';
 
 /*
 const httpOptions : any    = {
@@ -11,19 +11,13 @@ const httpOptions : any    = {
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET',
     'Access-Control-Allow-Origin': '*'
-  })};
-  */
-
-
+  })};*/
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AcercadeService {
-      
-  //URL s
-  private url:String = "/acercade"
-  private UrlSave = '/actualizar';
-  
+export class AcercadeService { //URL s
+  private url: String = environment.BaseUrl + '/acercade';
+  private UrlSave = environment.BaseUrl + '/actualizar';
 
   constructor(private http: HttpClient) {}
 
@@ -32,13 +26,12 @@ export class AcercadeService {
     return this.http.get<Ace[]>(`${this.url}/traer`);
   }
 
-  get(){
+  get() {
     return this.http.get(`${this.url}`);
   }
 
   //GUARDAMOS cambios realizados
-  actualizar(obj:Ace): Observable<Object> {
-    return this.http.put<Ace>(`${this.UrlSave}/${obj.id}`,obj);
+  actualizar(obj: Ace): Observable<Object> {
+    return this.http.put<Ace>(`${this.UrlSave}/${obj.id}`, obj);
   }
- 
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Exp } from '../componentes/experiencia/faceExperiencia';
-import { environment } from "src/environments/environment.prod";
+import { environment } from "src/environments/environment";
 /*
   const httpOptions : any    = {
     headers: new HttpHeaders({
@@ -18,7 +18,7 @@ import { environment } from "src/environments/environment.prod";
 export class ExperienciaService {
   
   //URL de Experiencias
-  private urlExp:String = environment.apiBaseURL+"/experiencias";
+  private urlExp:String = environment.BaseUrl+"/experiencias";
   private urlExpcrea = this.urlExp+'/crear/';
   private urlExpsav = this.urlExp+'/actualizar';
   private urlExpdel = this.urlExp+'/borrar';

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cert } from "../componentes/certificaciones/faceCertificacion";
-import { environment } from "src/environments/environment.prod";
+import { environment } from "src/environments/environment";
 
 /*
 const httpOptions : any    = {
@@ -19,7 +19,7 @@ const httpOptions : any    = {
 export class CertificacionService {
 
   //URL de Experiencias
-  private urlCert:String = environment.apiBaseURL+"/certificaciones";
+  private urlCert:String = environment.BaseUrl+"/certificaciones";
   private urlCertcrea = this.urlCert+'/crear/';
   private urlCertsav = this.urlCert+'/actualizar';
   private urlCertdel = this.urlCert+'/borrar';

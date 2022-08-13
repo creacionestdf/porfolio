@@ -2,31 +2,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pro } from "../componentes/proyectos/faceProyecto";
-/*
-const httpOptions : any    = {
-  headers: new HttpHeaders({
-    //'Content-Type':  'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET',
-    'Access-Control-Allow-Origin': '*'
-  })};
-*/
+import { environment } from "src/environments/environment";
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProyectoService {
 
  //URL de Experiencias
-  private url:String = "http://localhost:8080/proyectos/";
-  private UrlNew = 'http://localhost:8080/proyectos/crear/';
-  private UrlSave = 'http://localhost:8080/proyectos/actualizar';
-  private UrlDelete = 'http://localhost:8080/proyectos/borrar';
+  private url:String = environment.BaseUrl+"/proyectos";
+  private UrlNew = this.url +'/crear/';
+  private UrlSave = this.url +'/actualizar';
+  private UrlDelete = this.url +'/proyectos/borrar';
 
   constructor(private http: HttpClient) {}
 
   //OBTENEMOS todos los registros...
   getAll(): Observable<Pro[]> {
-    return this.http.get<Pro[]>(this.url + "traer");
+    return this.http.get<Pro[]>(this.url + "/traer");
   }
 
   //CREAMOS una nueva...

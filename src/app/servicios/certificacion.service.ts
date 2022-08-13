@@ -4,15 +4,7 @@ import { Observable } from 'rxjs';
 import { Cert } from "../componentes/certificaciones/faceCertificacion";
 import { environment } from "src/environments/environment";
 
-/*
-const httpOptions : any    = {
-  headers: new HttpHeaders({
-    //'Content-Type':  'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET',
-    'Access-Control-Allow-Origin': '*'
-  })};
-*/
+
 @Injectable({
   providedIn: 'root'
 })

@@ -2,16 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Skl } from '../componentes/skill/faceSkill';
+import { environment } from "src/environments/environment";
 
-/*
-const httpOptions : any    = {
-  headers: new HttpHeaders({
-    //'Content-Type':  'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET',
-    'Access-Control-Allow-Origin': '*'
-  })};
-*/
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,16 +12,16 @@ export class SkillService {
 
   
  //URL de Experiencias
-  private url:String = "http://localhost:8080/skills/";
-  private UrlNew = 'http://localhost:8080/skills/crear/';
-  private UrlSave = 'http://localhost:8080/skills/actualizar';
-  private UrlDelete = 'http://localhost:8080/skills/borrar';
+  private url:String = environment.BaseUrl+"/skills";
+  private UrlNew = this.url+'/crear/';
+  private UrlSave = this.url+'/actualizar';
+  private UrlDelete = this.url+'/borrar';
 
   constructor(private http: HttpClient) {}
 
   //OBTENEMOS todos los registros...
   getAll(): Observable<Skl[]> {
-    return this.http.get<Skl[]>(this.url + "traer");
+    return this.http.get<Skl[]>(this.url + "/traer");
   }
 
   //CREAMOS una nueva...

@@ -29,18 +29,11 @@ export class AcercaDeComponent implements OnInit {
       //creamos el grupo de controles para el formulario
       this.form=this.formBuilder.group({
         inp_acercade:['',[]]
-    })
+    });
   }
 
   ngOnInit(): void {
     this.obtenerAcercade();
-        
-    /*
-      this.datosPorfolio.getAcerca().subscribe(data =>{ 
-        this.miPorfolio=data; 
-      }); */
-
-      
   }
  
   //LISTA ...
@@ -66,22 +59,5 @@ export class AcercaDeComponent implements OnInit {
     this.inp_visible = e;
   }
 
-
-  /*
-//GUARDA cont del input + OCULTA input
-  guardar(obj:any){
-    //Guarda contenido del input( HACER )
-    this.mostrar(false);
-    this.datosPorfolio.updateAcerca(obj).subscribe();
-
-  }
-  
-
-
-  //INGRESA estado a mostrar
-  mostrar(e:boolean){
-    this.inp_visible=e;
-  }
-*/
 }
 

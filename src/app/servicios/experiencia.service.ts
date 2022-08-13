@@ -3,15 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Exp } from '../componentes/experiencia/faceExperiencia';
 import { environment } from "src/environments/environment";
-/*
-  const httpOptions : any    = {
-    headers: new HttpHeaders({
-      //'Content-Type':  'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET',
-      'Access-Control-Allow-Origin': '*'
-    })};
-*/
+
+
 @Injectable({
   providedIn: 'root',
 })

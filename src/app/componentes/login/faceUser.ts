@@ -1,5 +1,5 @@
 export class Us {
-    userId!:String;
+    email!:String;
     password!:String;
 
     

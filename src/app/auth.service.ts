@@ -3,23 +3,21 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Us } from "../app/componentes/login/faceUser";
 import { Observable } from "rxjs";
+import { environment } from "../environments/environment";
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  baseUrl="http://localhost:8080/login";
+  
 
-  uri = 'http://localhost:4200'; //direccion de la api
+  uri = 'https://porfolioweb-backend.herokuapp.com/api/login'; 
   token: any;
 
-  us: string = 'r';
-  ps: string = 'a';
-
   constructor(private http: HttpClient, private router: Router) {}
-  /*
-  login(em: string, pas: string) {
+  
+  login(em: String, pas: String) {
     if (!this.logIn()) {
       this.http
         .post(this.uri + '/authenticate', { email: em, password: pas })
@@ -30,11 +28,13 @@ export class AuthService {
           localStorage.setItem('auth_token', resp.token);
         });
     }
-  } */
-
+  } 
+  /*
   loginUser(user: Us): Observable<Object>{
-    return this.http.post(`${this.baseUrl}`, user);
-  }
+    const resp = this.http.post(environment.BaseUrl , user);
+    console.log(resp);
+    return resp;
+  }*/
 
   //para cerrar sesion
   logout() {
@@ -43,8 +43,8 @@ export class AuthService {
 
   //un servicio para verificar si existe la sesion
   public logIn(): boolean {
-    //return localStorage.getItem('token') !== null;
-    return true;
+    return localStorage.getItem('token') !== null;
+    //return true;
   }
 
   //enviar us y ps

@@ -6,10 +6,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
           <div class="mb-3">
-            <label for="id_email" class="form-label">Email address</label>
-            <input formControlName="email" type="email" class="form-control" id="id_email" [(ngModel)]="email">
+            <label for="id_email" class="form-label">Usuario</label>
+            <input formControlName="email" type="email" class="form-control" id="id_email" [(ngModel)]="nombreUsuario">
           </div>
           <div class="mb-3">
             <label for="id_Password" class="form-label">Password</label>

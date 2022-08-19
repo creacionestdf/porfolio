@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { AuthService } from "../../auth.service";
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-btn-edit',

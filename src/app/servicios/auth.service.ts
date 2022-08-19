@@ -1,17 +1,46 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Us } from "../app/componentes/login/faceUser";
+import { Us } from "../componentes/login/faceUser";
 import { Observable } from "rxjs";
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
+import { NuevoUsuario } from '../modelos/nuevo-usuario';
+import { LoginUsuario } from '../modelos/login-usuario';
+import { JwtDto } from '../modelos/jwt-dto';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  
+  authURL = 'https://porfolioweb-backend.herokuapp.com/auth/';
 
+    constructor(private httpClient: HttpClient) {}
+
+    public nuevo(nuevoUsuario: NuevoUsuario): Observable<any>{
+      return this.httpClient.post<any>(this.authURL + 'nuevo', nuevoUsuario);
+    }
+
+    public login(loginUsuario: LoginUsuario): Observable<JwtDto>{
+      return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUsuario);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
   uri = 'https://porfolioweb-backend.herokuapp.com/api/login'; 
   token: any;
 
@@ -29,13 +58,7 @@ export class AuthService {
         });
     }
   } 
-  /*
-  loginUser(user: Us): Observable<Object>{
-    const resp = this.http.post(environment.BaseUrl , user);
-    console.log(resp);
-    return resp;
-  }*/
-
+  
   //para cerrar sesion
   logout() {
     localStorage.removeItem('token');
@@ -51,4 +74,5 @@ export class AuthService {
   enviarDatos(url: string, body: string) {
     return this.http.post(url, body);
   }
+  */
 }

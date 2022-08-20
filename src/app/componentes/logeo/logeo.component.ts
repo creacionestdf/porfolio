@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { LoginUsuario } from 'src/app/modelos/login-usuario';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { TokenService } from 'src/app/servicios/token.service';
-import { Us } from '../login/faceUser';
+
 @Component({
   selector: 'app-logeo',
   templateUrl: './logeo.component.html',

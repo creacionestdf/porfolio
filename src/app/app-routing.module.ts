@@ -9,8 +9,8 @@ import { RegistroComponent } from "./componentes/auth/registro/registro.componen
 
 const routes: Routes = [
    
-  { path: '', component: HomeComponent},
-  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent},
+  { path: '', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'about', component: AboutComponent }
   

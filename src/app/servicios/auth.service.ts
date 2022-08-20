@@ -13,6 +13,7 @@ import { JwtDto } from '../modelos/jwt-dto';
   providedIn: 'root',
 })
 export class AuthService {
+  
   authURL = 'https://porfolioweb-backend.herokuapp.com/auth/';
 
     constructor(private httpClient: HttpClient) {}

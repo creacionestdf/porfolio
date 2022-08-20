@@ -15,7 +15,7 @@ import { ExperienciaComponent } from './componentes/experiencia/experiencia.comp
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 
-import { LoginComponent } from './componentes/login/login.component';
+import { LoginComponent } from './componentes/auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BtnEditComponent } from './componentes/btn-edit/btn-edit.component';
 import { ExperienciaModuloComponent } from './componentes/experiencia-modulo/experiencia-modulo.component';
@@ -32,6 +32,8 @@ import { AddSkillComponent } from './componentes/add-skill/add-skill.component';
 import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.component';
 import { LogeoComponent } from './componentes/logeo/logeo.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { interceptorProvider } from './servicios/interceptor-service';
+import { RegistroComponent } from './componentes/auth/registro/registro.component';
 
 
 
@@ -62,7 +64,8 @@ import { HomeComponent } from './componentes/home/home.component';
     AddSkillComponent,
     BtnDeleteComponent,
     LogeoComponent,
-    HomeComponent
+    HomeComponent,
+    RegistroComponent
     
     
   ],
@@ -72,11 +75,10 @@ import { HomeComponent } from './componentes/home/home.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule
-    
-    
-    
   ],
-  providers: [],
+  providers: [
+    interceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 

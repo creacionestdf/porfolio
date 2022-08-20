@@ -15,7 +15,7 @@ import { ExperienciaComponent } from './componentes/experiencia/experiencia.comp
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 
-import { LoginComponent } from './componentes/auth/login/login.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { BtnEditComponent } from './componentes/btn-edit/btn-edit.component';
 import { ExperienciaModuloComponent } from './componentes/experiencia-modulo/experiencia-modulo.component';
@@ -30,25 +30,21 @@ import { SkillComponent } from './componentes/skill/skill.component';
 import { SkillModuloComponent } from './componentes/skill-modulo/skill-modulo.component';
 import { AddSkillComponent } from './componentes/add-skill/add-skill.component';
 import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.component';
-import { LogeoComponent } from './componentes/logeo/logeo.component';
+
 import { HomeComponent } from './componentes/home/home.component';
 import { interceptorProvider } from './servicios/interceptor-service';
-import { RegistroComponent } from './componentes/auth/registro/registro.component';
-
-
+import { RegistroComponent } from "./componentes/registro/registro.component";
 
 @NgModule({
   declarations: [
     AppComponent,    
-    
     HeaderComponent,
     AcercaDeComponent,
     CertificacionesComponent,
     ExperienciaComponent,
     FooterComponent,
     ProyectosComponent,
-    
-    LoginComponent,
+       
    // routingComponents,
     BtnEditComponent,
     ExperienciaModuloComponent,
@@ -63,7 +59,7 @@ import { RegistroComponent } from './componentes/auth/registro/registro.componen
     SkillModuloComponent,
     AddSkillComponent,
     BtnDeleteComponent,
-    LogeoComponent,
+    
     HomeComponent,
     RegistroComponent
     

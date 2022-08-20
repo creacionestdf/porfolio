@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from "src/app/servicios/auth.service";
+import { LoginUsuario } from 'src/app/modelos/login-usuario';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { TokenService } from 'src/app/servicios/token.service';
 import { Router } from '@angular/router';
-import { LoginUsuario } from 'src/app/modelos/login-usuario';
-
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegistroComponent implements OnInit {
 
   isLogeed=false;
   isLogginFail=false;
@@ -28,6 +26,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("ngOninp");
     if(this.tokenService.getToken()){
       this.isLogeed=true;
       this.isLogginFail=false;
@@ -36,6 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin():void{
+    console.log("onLogin");
     this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password); 
     this.authService.login(this.loginUsuario).subscribe(
       data => {

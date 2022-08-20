@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
+import { TokenService } from 'src/app/servicios/token.service';
 import { AcercadeService } from "../../servicios/acercade.service";
 import { Ace } from "../acerca-de/faceAcercade";
 
@@ -23,7 +25,8 @@ export class AcercaDeComponent implements OnInit {
   //Estado Visible Input(text) + Btn_Guardar
     inp_visible:boolean=false; 
   
-  constructor(
+  constructor( 
+    private tokenService:TokenService,
     private Servicio: AcercadeService,
     private formBuilder: FormBuilder) { 
       //creamos el grupo de controles para el formulario

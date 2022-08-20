@@ -22,4 +22,4 @@ const routes: Routes = [
 
 export class AppRoutingModule {}
 
-export const routingComponents=[LogeoComponent];
+//export const routingComponents=[LogeoComponent];

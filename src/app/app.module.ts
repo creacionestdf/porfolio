@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule, routingComponents} from './app-routing.module';
+//import { AppRoutingModule, routingComponents} from './app-routing.module';
+import { AppRoutingModule} from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
@@ -45,7 +47,7 @@ import { HomeComponent } from './componentes/home/home.component';
     ProyectosComponent,
     
     LoginComponent,
-    routingComponents,
+   // routingComponents,
     BtnEditComponent,
     ExperienciaModuloComponent,
     AddExperienciaComponent,

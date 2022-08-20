@@ -28,6 +28,7 @@ import { SkillComponent } from './componentes/skill/skill.component';
 import { SkillModuloComponent } from './componentes/skill-modulo/skill-modulo.component';
 import { AddSkillComponent } from './componentes/add-skill/add-skill.component';
 import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.component';
+import { LogeoComponent } from './componentes/logeo/logeo.component';
 
 
 
@@ -56,7 +57,8 @@ import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.componen
     SkillComponent,
     SkillModuloComponent,
     AddSkillComponent,
-    BtnDeleteComponent
+    BtnDeleteComponent,
+    LogeoComponent
     
     
   ],

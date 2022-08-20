@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './componentes/about/about.component';
-import { LoginComponent } from './componentes/login/login.component';
+import { LogeoComponent } from './componentes/logeo/logeo.component';
 
 
 
 const routes: Routes = [
   
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LogeoComponent },
   { path: 'about', component: AboutComponent, pathMatch:"full"}
   
 ];
@@ -20,4 +20,4 @@ const routes: Routes = [
 
 export class AppRoutingModule {}
 
-export const routingComponents=[LoginComponent];
+export const routingComponents=[LogeoComponent];

@@ -17,12 +17,12 @@ export class AcercadeService {
   constructor(private http: HttpClient) {}
 
   //OBTENEMOS todos los registros...
-  getAll(): Observable<Ace[]> {
+  public getAll(): Observable<Ace[]> {
     return this.http.get<Ace[]>(`${this.url}/traer`);
   }
 
   //GUARDAMOS cambios realizados
-  actualizar(obj: Ace): Observable<Object> {
+  public actualizar(obj: Ace): Observable<Object> {
     return this.http.put<Ace>(`${this.UrlSave}/${obj.id}`, obj);
   }
 }

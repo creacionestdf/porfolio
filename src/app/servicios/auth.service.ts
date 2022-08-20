@@ -7,14 +7,12 @@ import { environment } from "../../environments/environment";
 import { NuevoUsuario } from '../modelos/nuevo-usuario';
 import { LoginUsuario } from '../modelos/login-usuario';
 import { JwtDto } from '../modelos/jwt-dto';
-
-
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
   
-  authURL = 'https://porfolioweb-backend.herokuapp.com/auth/';
+  authURL = 'https://porfolioweb-backend.herokuapp.com/auth';
 
     constructor(private httpClient: HttpClient) {}
 
@@ -23,7 +21,8 @@ export class AuthService {
     }
 
     public login(loginUsuario: LoginUsuario): Observable<JwtDto>{
-      return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUsuario);
+      console.log("en auth serv")
+      return this.httpClient.post<JwtDto>(this.authURL + '/login', loginUsuario);
     }
 
 

@@ -34,6 +34,7 @@ import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.componen
 import { HomeComponent } from './componentes/home/home.component';
 import { interceptorProvider } from './servicios/interceptor-service';
 import { RegistroComponent } from "./componentes/registro/registro.component";
+import { AuthService } from './servicios/auth.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { RegistroComponent } from "./componentes/registro/registro.component";
     FormsModule
   ],
   providers: [
-    interceptorProvider
+    interceptorProvider,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

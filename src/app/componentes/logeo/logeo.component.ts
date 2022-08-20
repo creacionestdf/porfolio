@@ -21,16 +21,11 @@ export class LogeoComponent implements OnInit {
   roles: string[] = [];
   errMsj!:string;
   
-  loginForm!: FormGroup;
+  
   
   constructor(private tokenService:TokenService, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-    });
-
     if(this.tokenService.getToken()){
       this.isLogeed=true;
       this.isLogginFail=false;
@@ -47,13 +42,13 @@ export class LogeoComponent implements OnInit {
             this.tokenService.setUserName(data.nombreUsuario);
             this.tokenService.setAuthorities(data.authorities);
             this.roles=data.authorities;
-            this.router.navigate([''])
+            this.router.navigate(['home']);
           }, err => {
             this.isLogeed=false;
             this.isLogginFail=true;
             this.errMsj= err.error.mensaje;
             console.log(this.errMsj);
-           } );
+           })
     }
 
     

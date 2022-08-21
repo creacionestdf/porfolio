@@ -15,7 +15,8 @@ import { Ace } from "../acerca-de/faceAcercade";
 export class AcercaDeComponent implements OnInit {
   titulo:string="Acerca de";
   List: Ace[]=[];
-  
+  roles!: string[];
+  isAdmin = false;
 
   form:FormGroup;
   
@@ -37,6 +38,12 @@ export class AcercaDeComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerAcercade();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
  
   //LISTA ...

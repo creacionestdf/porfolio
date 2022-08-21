@@ -16,7 +16,7 @@ export class AcercadeService {
 
   //OBTENEMOS todos los registros...
   public getAll(): Observable<Ace[]> {
-    return this.http.get<Ace[]>(this.url + '/traer');
+    return this.http.get<Ace[]>('https://porfolioweb-backend.herokuapp.com/acercade/traer');
   }
 
   //GUARDAMOS cambios realizados

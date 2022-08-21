@@ -18,6 +18,9 @@ export class RegistroComponent implements OnInit {
   password!:string;
   roles: string[] = [];
   errMsj!:string;
+  us:string="admin";
+  ps:string="admin";
+  LoginUsuario!: LoginUsuario;
 
   constructor(
     private tokenService: TokenService,
@@ -36,8 +39,9 @@ export class RegistroComponent implements OnInit {
 
   onLogin():void{
     
-    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password); 
     
+    /*
+    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password); 
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.isLogeed=true;
@@ -55,6 +59,15 @@ export class RegistroComponent implements OnInit {
         this.errMsj= err.error.Mensaje;
         console.log(this.errMsj.length);
        })
-}
+*/
+      
+this.LoginUsuario  = new LoginUsuario(this.us, this.ps);
 
+       this.authService
+       .login(this.LoginUsuario)
+       .subscribe((data)=>{ 
+        console.log(data); 
+      });
+
+    }
 }

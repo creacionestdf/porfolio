@@ -20,9 +20,9 @@ export class AuthService {
       return this.httpClient.post<any>(this.authURL + 'nuevo', nuevoUsuario);
     }
 
-    public login(loginUsuario: LoginUsuario): Observable<JwtDto>{
+    public login(LoginUsuario: LoginUsuario): Observable<JwtDto>{
       console.log("en auth serv")
-      return this.httpClient.post<JwtDto>(this.authURL + '/login', loginUsuario);
+      return this.httpClient.post<JwtDto>('https://porfolioweb-backend.herokuapp.com/auth/login', LoginUsuario);
     }
 
 

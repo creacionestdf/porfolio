@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   List: hd[] = [];
 
-  isLogeed:boolean=false;
+  isLogeed: boolean = false;
 
   form: FormGroup;
 
@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   inp_visible: boolean = false;
 
   constructor(
-    private tokenService:TokenService,
+    private tokenService: TokenService,
     private Servicio: HeaderService,
     private formBuilder: FormBuilder,
     private router: Router
@@ -40,16 +40,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.tokenService.getToken()){
-      this.isLogeed=true;
-      
-    }else{
-      this.isLogeed=false;
-      
+    if (this.tokenService.getToken()) {
+      this.isLogeed = true;
+    } else {
+      this.isLogeed = false;
     }
     this.obtenerHeader();
-
-    
   }
 
   //LISTA ...
@@ -73,13 +69,13 @@ export class HeaderComponent implements OnInit {
     this.inp_visible = e;
   }
 
-  onLogOut():void{
+  onLogOut(): void {
     this.tokenService.logOut();
     window.location.reload();
     this.login();
   }
 
-  login(): void{
-    this.router.navigate(['']);
+  login(): void {
+    this.router.navigate(['/login']);
   }
 }

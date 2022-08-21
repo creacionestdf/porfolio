@@ -8,5 +8,5 @@ export class LoginService {
   uri = 'http://localhost:3000/api';
   token!:String;
 
-  constructor(private http: HttpClient, private router: ) { }
+  constructor( ) { }
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ace } from '../componentes/acerca-de/faceAcercade';
 import { environment } from '../../environments/environment';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class AcercadeService {
   private url: String = environment.BaseUrl + '/acercade';
   private UrlSave = this.url + '/actualizar';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService:TokenService ) {}
 
   //OBTENEMOS todos los registros...
   public getAll(): Observable<Ace[]> {

@@ -32,7 +32,7 @@ import { AddSkillComponent } from './componentes/add-skill/add-skill.component';
 import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.component';
 
 import { HomeComponent } from './componentes/home/home.component';
-import { interceptorProvider } from './servicios/interceptor-service';
+import { ProdInterceptorService } from './interceptors/prod-interceptor.service';
 import { RegistroComponent } from "./componentes/registro/registro.component";
 import { AuthService } from './servicios/auth.service';
 
@@ -73,10 +73,7 @@ import { AuthService } from './servicios/auth.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [
-    interceptorProvider,
-    AuthService
-  ],
+  providers: [ ProdInterceptorService ],
   bootstrap: [AppComponent]
 })
 

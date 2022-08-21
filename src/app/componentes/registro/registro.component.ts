@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
 import { TokenService } from 'src/app/servicios/token.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -25,8 +26,7 @@ export class RegistroComponent implements OnInit {
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router) { }
 
   ngOnInit() {
     if(this.tokenService.getToken()){
@@ -38,20 +38,19 @@ export class RegistroComponent implements OnInit {
   }
 
   onLogin():void{
-    
-    
-    /*
     this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password); 
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.isLogeed=true;
-        this.isLoginFail=false;
+        //this.isLoginFail=false;
         
         this.tokenService.setToken(data.token);
         this.tokenService.setUserName(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
         this.roles=data.authorities;
-        //this.router.navigate(['']);
+        
+        this.router.navigate(['/']);
+        
       }, 
       err => {
         this.isLogeed=false;
@@ -59,8 +58,8 @@ export class RegistroComponent implements OnInit {
         this.errMsj= err.error.Mensaje;
         console.log(this.errMsj.length);
        })
-*/
-      
+      }
+/*      
 this.LoginUsuario  = new LoginUsuario(this.us, this.ps);
 
        this.authService
@@ -70,4 +69,5 @@ this.LoginUsuario  = new LoginUsuario(this.us, this.ps);
       });
 
     }
-}
+    */
+  }

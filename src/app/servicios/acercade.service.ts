@@ -4,12 +4,10 @@ import { Observable } from 'rxjs';
 import { Ace } from '../componentes/acerca-de/faceAcercade';
 import { environment } from '../../environments/environment';
 
-
 @Injectable({
   providedIn: 'root',
 })
-export class AcercadeService { 
-  
+export class AcercadeService {
   //URL s
   private url: String = environment.BaseUrl + '/acercade';
   private UrlSave = this.url + '/actualizar';
@@ -18,7 +16,7 @@ export class AcercadeService {
 
   //OBTENEMOS todos los registros...
   public getAll(): Observable<Ace[]> {
-    return this.http.get<Ace[]>(`${this.url}/traer`);
+    return this.http.get<Ace[]>(this.url + '/traer');
   }
 
   //GUARDAMOS cambios realizados

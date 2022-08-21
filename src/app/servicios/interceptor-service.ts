@@ -9,6 +9,7 @@ export class InterceptorService {
     constructor(private tokenService:TokenService){}
 
     interceptor(req: HttpRequest<any>, next:HttpHandler): Observable<HttpEvent<any>>{
+        console.log("Interceptor");
         let intReq=req;
         const token = this.tokenService.getToken();
         if(token != null){

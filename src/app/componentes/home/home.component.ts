@@ -8,14 +8,18 @@ import { TokenService } from 'src/app/servicios/token.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  isLogeed=false;
+  
+  isLogeed:boolean=false;
+  nombreUsuario = '';
   constructor(private tokenService:TokenService, private router: Router) { }
 
   ngOnInit(): void {
     if(this.tokenService.getToken()){
       this.isLogeed=true;
+      this.nombreUsuario = this.tokenService.getUserName();
     }else{
       this.isLogeed=false;
+      this.nombreUsuario = '';
     }
   }
 
@@ -25,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.login();
   }
 
-  login(){
+  login(): void{
     this.router.navigate(['']);
   }
 }

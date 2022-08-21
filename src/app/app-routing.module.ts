@@ -5,11 +5,12 @@ import { AboutComponent } from './componentes/about/about.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { RegistroComponent } from "./componentes/registro/registro.component";
 
+
 const routes: Routes = [
    
   { path: '', component: HomeComponent},
   { path: 'login', component: RegistroComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'about', component: AboutComponent}
   
 ];
 

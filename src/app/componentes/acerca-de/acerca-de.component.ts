@@ -47,10 +47,10 @@ export class AcercaDeComponent implements OnInit {
   }
  
   //LISTA ...
-  private obtenerAcercade() {
+  public obtenerAcercade() {
     this.Servicio.getAll().subscribe((e) => {
       this.List = e;
-      console.log("resultado: " + e);
+      console.log("resultado acerca-de: " + e);
     });
   }
 

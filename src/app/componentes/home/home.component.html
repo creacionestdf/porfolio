@@ -1,4 +1,5 @@
 <div *ngIf="isLogeed; else loggedOut"><h2>Bienvenido {{nombreUsuario}}</h2></div>
+<button *ngIf="isLogeed" (click)="onLogOut()">cerrar</button>
 <ng-template #loggedOut><h2>No has iniciado sesión</h2></ng-template>
 
 <app-header></app-header>

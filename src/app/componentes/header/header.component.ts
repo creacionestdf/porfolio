@@ -71,8 +71,9 @@ export class HeaderComponent implements OnInit {
 
   onLogOut(): void {
     this.tokenService.logOut();
-    window.location.reload();
-    this.login();
+
+    //window.location.reload();
+    //this.login();
   }
 
   login(): void {

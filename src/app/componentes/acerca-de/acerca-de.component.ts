@@ -18,6 +18,9 @@ export class AcercaDeComponent implements OnInit {
   roles!: string[];
   isAdmin = false;
 
+  isLogeed:boolean=false;
+  nombreUsuario = '';
+
   form:FormGroup;
   
   //ID Btn_Edit
@@ -37,7 +40,16 @@ export class AcercaDeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.tokenService.getToken()){
+      this.isLogeed=true;
+      this.nombreUsuario = this.tokenService.getUserName();
+    }else{
+      this.isLogeed=false;
+      this.nombreUsuario = '';
+    }
+
     this.obtenerAcercade();
+    
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol === 'ROLE_ADMIN') {

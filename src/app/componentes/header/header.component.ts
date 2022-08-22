@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
 
   isLogeed: boolean = false;
 
-
   form: FormGroup;
 
   //ID Btn_Edit
@@ -41,11 +40,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
+   if (this.tokenService.getToken()) {
       this.isLogeed = true;
     } else {
       this.isLogeed = false;
     }
+    
     this.obtenerHeader();
   }
 

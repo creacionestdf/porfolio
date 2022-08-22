@@ -8,9 +8,9 @@
       <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
       <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
       <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-      <a class="nav-link" routerLink="/login"><i class="fas fa-door-open"></i></a>
-      <a *ngIf="!isLogeed" class="nav-link" routerLink="/login" ><i class="fa-solid fa-user" ></i></a>
-      <button *ngIf="isLogeed" (click)="onLogOut()"><i class="fa-solid fa-user" ></i></button>
+      <a *ngIf="!isLogeed" class="nav-link" routerLink="/login"><i class="fas fa-door-open"></i>L</a>
+      <a *ngIf="isLogeed" class="nav-link" (click)="onLogOut()" ><i class="fa-solid fa-user" ></i>X</a>
+      <button *ngIf="isLogeed" class="social-icon" (click)="onLogOut()"><i class="fa-solid fa-user" ></i>B</button>
     </div>
   </div>
   <!-- Banner -->

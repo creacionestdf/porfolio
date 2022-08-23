@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Ace } from '../componentes/acerca-de/faceAcercade';
 import { environment } from '../../environments/environment';
 import { TokenService } from './token.service';
+import { InterceptorService } from './interceptor-service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,10 @@ export class AcercadeService {
   private url: String = environment.BaseUrl + '/acercade';
   private UrlSave = this.url + '/actualizar';
 
-  constructor(private http: HttpClient, private tokenService:TokenService ) {}
+  constructor(
+    private http: HttpClient,  
+    private tokenService:TokenService, 
+    private inter:InterceptorService) {}
 
   //OBTENEMOS todos los registros...
   public getAll(): Observable<Ace[]> {

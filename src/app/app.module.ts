@@ -34,7 +34,7 @@ import { BtnDeleteComponent } from './componentes/btn-delete/btn-delete.componen
 import { HomeComponent } from './componentes/home/home.component';
 import { ProdInterceptorService } from './interceptors/prod-interceptor.service';
 import { RegistroComponent } from "./componentes/registro/registro.component";
-import { AuthService } from './servicios/auth.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @NgModule({
   declarations: [
@@ -71,9 +71,10 @@ import { AuthService } from './servicios/auth.service';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    
   ],
-  providers: [ ProdInterceptorService ],
+  providers: [ ProdInterceptorService,TokenService ],
   bootstrap: [AppComponent]
 })
 

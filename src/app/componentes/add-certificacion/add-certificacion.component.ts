@@ -1,6 +1,6 @@
 import { Component,EventEmitter, OnInit, Output } from '@angular/core';
-import { UiService} from "../../servicios/ui.service";
-import { Subscription } from 'rxjs';
+import { FormBuilder, FormControl } from '@angular/forms'; 
+import { Cert } from '../certificaciones/faceCertificacion';
 
 @Component({
   selector: 'app-add-certificacion',
@@ -9,25 +9,20 @@ import { Subscription } from 'rxjs';
 })
 
 export class AddCertificacionComponent implements OnInit {
-  @Output() onAddCert: EventEmitter<any> = new EventEmitter();
   
-  id: string = '';
-  logo: string = '';
-  titulo: string = '';
-  entidad: string = '';
-  fecha: string = '';
-  descripcion: string = '';
-
-  subscription?:Subscription;
-  showAddCert:boolean=false;
-
-  constructor( private uiService:UiService ) {
-    this.subscription=this.uiService.onToggle()
-          .subscribe(value => this.showAddCert=value)
-   }
-
-  ngOnInit(): void {}
-
+  @Output() onAddCert: EventEmitter<Cert> = new EventEmitter();
+  
+  id: any;
+  logo: any;
+  titulo: any;
+  entidad:any;
+  fecha: any;
+  descripcion: any;
+   
+  constructor() { }
+  
+  ngOnInit(): void {  }
+  
   onSubmit(){
     const {
       id,
@@ -46,9 +41,10 @@ export class AddCertificacionComponent implements OnInit {
       fecha,
       descripcion,
     };
-
+        
     this.onAddCert.emit(newCert);
   }
+
+ 
+
 }
-
-

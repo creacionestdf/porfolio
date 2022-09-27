@@ -20,13 +20,11 @@ export class ExperienciaService {
 
   //obtener experiencias
   getAll(): Observable<Exp[]> {
-    //return this.http.get<Exp[]>(`${this.urlExp + 'traer'}`);
     return this.http.get<Exp[]>(this.urlExp + "/traer");
   }
 
   //crear nueva experiencia
   create(new_exp: Exp): Observable<Exp> {
-    console.log("Se recibio ex:"+new_exp);
     return this.http.post<Exp>(`${this.urlExpcrea}`, new_exp);
   }
 

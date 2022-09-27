@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import { Pro } from '../proyectos/faceProyecto';
 import { UiService } from '../../servicios/ui.service';
 import { Subscription } from "rxjs";
 import { ProyectoService } from "../../servicios/proyecto.service";
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -12,46 +12,52 @@ import { ProyectoService } from "../../servicios/proyecto.service";
 })
 
 export class ProyectosComponent implements OnInit {
+  
   titulo:string="Proyectos";
   List: Pro[] = [];
-    id: number = 0;
+ 
+  roles: any[]=[];
+  isAdmin = false;
   showAddPro:boolean=false;
   subscription?:Subscription;
+
+  id: number = 0;
 
   //Estado Visible Input(text) + Btn_Guardar
   inp_visible: boolean = false;
   
   constructor(
     private Servicio: ProyectoService,
-    private porfolioservice: PorfolioService, 
-    private uiService:UiService) {
+    private uiService:UiService,
+    private tokenService:TokenService) {
       this.subscription=this.uiService
       .onToggle()
       .subscribe(value => this.showAddPro=value);
     }
 
   ngOnInit(): void {
+    this.getIsAdmin();
     this.obtenerProyectos();
-    
-    /*this.porfolioservice.getProyecto().subscribe((getListPro) => {
-      this.proyectoList = getListPro;
-    });*/
   }
   
+  //VALIDA QUE SEA "ADMIN"
+  public getIsAdmin(){
+    this.roles = this.tokenService.getAuthorities();
+      for (var i = 0; i < this.roles.length; i++) {
+        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
+      }
+  }
 
   //LISTA ...
   private obtenerProyectos() {
     this.Servicio.getAll().subscribe((e) => {
-      this.List = e;
-    });
+      this.List = e; });
   }
 
   //NUEVA ...
   public addPro(obj: Pro) {
-    console.log('Pro a enviar:' + obj);
     this.Servicio.create(obj).subscribe(
       (data) => {
-        console.log(data);
         this.obtenerProyectos();
       },
       (error) => console.log(error)
@@ -62,24 +68,18 @@ export class ProyectosComponent implements OnInit {
   //GUARDA cont del input + OCULTA input
   public saveProyecto(obj: Pro) {
     this.Servicio.actualizar(obj).subscribe((dato) => {
-      console.log(dato);
-      this.obtenerProyectos();
-      //this.mostrar(false);
-    });
-    
+      this.obtenerProyectos(); });
   }
 
   //BORRA ...
   public borrarProyecto(obj: Pro) {
     this.Servicio.eliminar(obj.id).subscribe((dato) => {
-      console.log(dato);
       this.obtenerProyectos();
     });
   }
 
-  //GUARDA cont del input + OCULTA input
+  //GUARDA OCULTA input
   guardar() {
-    //Guarda contenido del input( HACER )
     this.mostrar(false);
   }
 
@@ -88,36 +88,9 @@ export class ProyectosComponent implements OnInit {
     this.inp_visible = e;
   }
 
-
   toggleAddPro(){
     //this.showAddExp=!this.showAddExp;
     this.uiService.toogleAddPro();
   }
-
-
-
-
-  /*
-  deleteProyecto(pr: Pro) {
-    this.porfolioservice.deleteProyecto(pr).subscribe(() => {
-      this.proyectoList = this.proyectoList.filter((p) => p.id !== pr.id);
-    });
-  }
-
-  addPro(pr: Pro) {
-    this.porfolioservice.addProyecto(pr).subscribe((pr) => {
-      this.proyectoList.push(pr);
-    });
-  }
-
-  toggleAddPro(){
-    //this.showAddExp=!this.showAddExp;
-    this.uiService.toogleAddPro();
-  }
-
-  guardar(pr:Pro){
-    this.porfolioservice.updateProyecto(pr).subscribe();
-  }
-*/
  
 }

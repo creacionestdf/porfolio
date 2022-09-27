@@ -1,11 +1,18 @@
-<div *ngIf="isLogeed; else loggedOut"><h2>Bienvenido {{nombreUsuario}}</h2></div>
-<button *ngIf="isLogeed" (click)="onLogOut()">cerrar</button>
+<!--
+<div *ngIf="isLogeed; else loggedOut"><h2>Bienvenido {{nombre}}</h2></div>
 <ng-template #loggedOut><h2>No has iniciado sesión</h2></ng-template>
-
+-->
 <app-header></app-header>
-<app-acerca-de></app-acerca-de>
-<app-experiencia> </app-experiencia>
-<app-certificaciones> </app-certificaciones>
-<app-proyectos> </app-proyectos>
-<app-skill></app-skill>
-<app-footer> </app-footer>
+<!--
+<div *ngIf="isLogeed; else loggedOut"><h2>Bienvenido {{nombre}}</h2></div>
+<ng-template #loggedOut><h2>No has iniciado sesión</h2></ng-template>
+-->
+
+<div *ngIf="!isLogeed" class="bor" id="div-login">
+    <h2>Para ver Porfolio</h2>
+    <p>1-Click en "Login"</p>
+    <p>2-Click en "Iniciar Sesión"</p>
+</div>
+
+<app-body *ngIf="isLogeed"></app-body>
+

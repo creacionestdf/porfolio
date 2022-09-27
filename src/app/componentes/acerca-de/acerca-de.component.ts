@@ -1,85 +1,87 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from 'src/app/servicios/auth.service';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
-import { AcercadeService } from "../../servicios/acercade.service";
-import { Ace } from "../acerca-de/faceAcercade";
+import { AcercadeService } from '../../servicios/acercade.service';
+import { Ace } from '../acerca-de/faceAcercade';
 
 @Component({
   selector: 'app-acerca-de',
   templateUrl: './acerca-de.component.html',
   styleUrls: ['./acerca-de.component.css'],
-  providers:[AcercadeService]
+  providers: [AcercadeService],
 })
 
 export class AcercaDeComponent implements OnInit {
-  titulo:string="Acerca de";
-  List: Ace[]=[];
-  roles!: string[];
+  titulo: string = 'Acerca de';
+  List: Ace[] = [];
+  isLogeed: boolean = false;
+  notLogin: boolean = true;
+  roles: any[] = [];
   isAdmin = false;
+  rolAdmin: boolean = false;
 
-  isLogeed:boolean=false;
-  nombreUsuario = '';
+  //Control_Input
+  inp_acercade: any;
 
-  form:FormGroup;
-  
   //ID Btn_Edit
-    id:string="obj";
+  id: string = 'obj';
 
   //Estado Visible Input(text) + Btn_Guardar
-    inp_visible:boolean=false; 
-  
-  constructor( 
-    private tokenService:TokenService,
-    private Servicio: AcercadeService,
-    private formBuilder: FormBuilder) { 
-      //creamos el grupo de controles para el formulario
-      this.form=this.formBuilder.group({
-        inp_acercade:['',[]]
-    });
-  }
+  //inp_visible:boolean=false;
+
+  constructor(
+    private tokenService: TokenService,
+    private Servicio: AcercadeService
+  ) {}
 
   ngOnInit(): void {
-    if(this.tokenService.getToken()){
-      this.isLogeed=true;
-      this.nombreUsuario = this.tokenService.getUserName();
-    }else{
-      this.isLogeed=false;
-      this.nombreUsuario = '';
-    }
-
+    this.estadoLogin();
     this.obtenerAcercade();
-    
+  }
+
+  //VALIDA QUE SEA "ADMIN"
+  public getIsAdmin() {
     this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if (rol === 'ROLE_ADMIN') {
+    for (var i = 0; i < this.roles.length; i++) {
+      if ('ROLE_ADMIN' == this.roles[i]) {
         this.isAdmin = true;
       }
-    });
+    }
   }
- 
+
+  //GRABA VARIABLES LOGIN
+  public estadoLogin() {
+    if (this.tokenService.getToken()) {
+      this.isLogeed = true;
+      this.notLogin = false;
+      this.getIsAdmin();
+    } else {
+      this.isLogeed = false;
+      this.notLogin = true;
+      this.isAdmin = false;
+    }
+  }
+
   //LISTA ...
   public obtenerAcercade() {
     this.Servicio.getAll().subscribe((e) => {
-      this.List = e;
-      console.log("resultado acerca-de: " + e);
-    });
+      this.List = e; });
   }
 
   //GUARDA cont del input + OCULTA input
   public save(obj: Ace) {
+    obj.objetivo = this.inp_acercade.value;
     this.Servicio.actualizar(obj).subscribe((dato) => {
-      console.log(dato);
-      this.obtenerAcercade();
-      this.mostrar(false);
-    });
+      this.obtenerAcercade(); });
   }
 
-   
-  //MUESTRA & OCULTA input para editar campos
-  mostrar(e: boolean) {
-    this.inp_visible = e;
+  //CANCELAR formulario
+  cancelar() {
+    this.crea();
   }
 
+  //CARGA VALORES AL INPUT
+  crea() {
+    this.inp_acercade = new FormControl(this.List[0].objetivo, []);
+  }
 }
-

@@ -2,10 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from '../servicios/token.service';
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ProdInterceptorService implements HttpInterceptor{
 
   constructor(private tokenService: TokenService) { }
@@ -13,6 +10,7 @@ export class ProdInterceptorService implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let intReq = req;
     const token = this.tokenService.getToken();
+
     if (token != null) {
       intReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token)});
     }

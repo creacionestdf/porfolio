@@ -12,8 +12,8 @@ import { JwtDto } from '../modelos/jwt-dto';
 })
 export class AuthService {
   
-  authURL = 'https://porfolioweb-backend.herokuapp.com/auth';
-
+  //authURL = 'https://porfolioweb-backend.herokuapp.com/auth/';
+    authURL= environment.BaseUrl+'/auth/';
     constructor(private httpClient: HttpClient) {}
 
     public nuevo(nuevoUsuario: NuevoUsuario): Observable<any>{
@@ -21,8 +21,8 @@ export class AuthService {
     }
 
     public login(LoginUsuario: LoginUsuario): Observable<JwtDto>{
-      console.log("en auth serv")
-      return this.httpClient.post<JwtDto>('https://porfolioweb-backend.herokuapp.com/auth/login', LoginUsuario);
+      console.log("llamamos metodo login: ");
+      return this.httpClient.post<JwtDto>(this.authURL + 'login', LoginUsuario);
     }
 
 

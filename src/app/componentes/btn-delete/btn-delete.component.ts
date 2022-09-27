@@ -9,7 +9,7 @@ import { Exp } from "../experiencia/faceExperiencia";
 export class BtnDeleteComponent implements OnInit {
   @Input() id?:Exp;
 
-  @Input() btnColor:string="red";
+  @Input() btnColor:string="";
   @Input() texto:string="";
 
   @Output() set_inpvisible = new EventEmitter();

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TokenService } from 'src/app/servicios/token.service';
 import { Pro } from '../proyectos/faceProyecto';
 
 @Component({
@@ -13,31 +14,49 @@ export class ProyectoModuloComponent implements OnInit {
   @Output() onDelete: EventEmitter<Pro>= new EventEmitter();
   @Output() onSave: EventEmitter<Pro>= new EventEmitter();
 
-  form:FormGroup;
+  roles: any[]=[];
+  isAdmin = false;
 
+  inptitulo:any;
+  inpfecha:any;
+  inpdescripcion:any;
+  inplink:any;
+  inplogo:any;
+ 
   //Estado Visible Input(text) + Btn_Guardar
   inp_visible:boolean=false;
 
-  constructor( private formBuilder: FormBuilder) { 
-    //creamos el grupo de controles para el formulario
-    this.form=this.formBuilder.group({
-      inptitulo:['',[]],
-      inpfecha:['',[]],
-      inpdescripcion:['',[]],
-      inplink:['',[]],
-      inplogo:['',[]],
-     
-    })
+  constructor(private tokenService:TokenService) { }
+  
+  ngOnInit(): void { 
+    this.getIsAdmin();
+    this.obj_pro; 
+    this.crea();
   }
-
-  ngOnInit(): void {  this.obj_pro;}
 
   //GUARDA cont del input + OCULTA input
   guardar(obj:Pro){
-    //Guarda contenido del input( HACER)
     this.mostrar(false);
-    console.log(obj);
+    obj.titulo=this.inptitulo.value;
+    obj.fecha=this.inpfecha.value;
+    obj.descripcion=this.inpdescripcion.value;
+    obj.link=this.inplink.value;
+    obj.logo=this.inplogo.value;
     this.onSave.emit(obj);
+  }
+
+  //CANCELAR formulario
+  cancelar(){
+    this.mostrar(false);
+    this.crea();
+  }
+
+  //VALIDA QUE SEA "ADMIN"
+   public getIsAdmin(){
+    this.roles = this.tokenService.getAuthorities();
+      for (var i = 0; i < this.roles.length; i++) {
+        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
+      }
   }
 
   //INGRESA estado a mostrar
@@ -47,27 +66,19 @@ export class ProyectoModuloComponent implements OnInit {
 
   //Envia el id del registro a borrar
   tranferIdDelete(obj:Pro){
-    console.log("click Proyecto modulo id: "+obj.id);
     this.onDelete.emit(obj);
   }
 
-
-
-
-  /*
-  guardar(pr:Pro){
-    //Guarda contenido del input( HACER)
-    this.mostrar(false);
-    this.onGuardarPro.emit(pr);
-  }
-
-  onDelete(objBorrar:Pro){
-    this.onDeletePro.emit(objBorrar);
-  }
-
-  mostrar(e:boolean){
-    this.inp_visible=e;
-  }
-  */
+  crea(){
+    this.inptitulo=new FormControl(this.obj_pro.titulo,[Validators.required, Validators.maxLength(10)]);
+    this.inpfecha=new FormControl(this.obj_pro.fecha,[]);
+    this.inpdescripcion=new FormControl(this.obj_pro.descripcion,[]);
+    this.inplink=new FormControl(this.obj_pro.link,[]);
+    this.inplogo=new FormControl(this.obj_pro.logo,[]);
+    
+ 
+    
+    
+}
 
 }

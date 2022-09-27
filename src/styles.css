@@ -10,7 +10,7 @@ body{
 
 /*HEADER*/
 #header {
-  border-radius: 20px 20px 0 0;
+  border-radius: 15px;
   background-color: rgb(242, 242, 242);
 }
 
@@ -205,18 +205,24 @@ div#skills div ul li {
 }
 
 div#skills div ul li div {
-  height: 21px;
+  /* height: 21px; */
 }
 
-div#skills div ul li div.Skill-Titulo {
-  display: inline-block;
-  min-width: 35%;
+.Skill-Titulo {
+    min-width: 35%;
+    height:30px;
 }
 
-div#skills div ul li div.Skill-Barra {
+.Skill-Barra {
   display: inline-block;
   width: 60%;
 }
+
+.Skill-Barra-Alto {
+  height:30px;
+  
+}
+
 
 /* LICENCIAS*/
 div#Licencias

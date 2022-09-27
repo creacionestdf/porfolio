@@ -2,14 +2,14 @@
 <div class="card mat-card">
   <div id="Licencias">
     <div class="card-titles">
-      <h2>{{ titulo }}</h2>
-
-      <!-- BTN AGREGAR-->
-      <app-btn-add
-        text="{{ showAddCert ? 'Close' : 'Add' }}"
-        color="{{ showAddCert ? 'red' : 'green' }}"
-        (btnClick)="toggleAddCert()"
-      ></app-btn-add>
+      <h2>{{ titulo }}
+        <!-- BTN AGREGAR-->
+        <app-btn-add 
+          *ngIf="isAdmin" 
+          data-bs-toggle="modal" 
+          data-bs-target="#newCert">
+        </app-btn-add>
+      </h2>
     </div>
 
     <!-- FORMULARIO para agregar... -->
@@ -23,8 +23,7 @@
           [obj_cert]="cert"
           (onDelete)="borrarCertificacion(cert)"
           (onSave)="saveCertificacion(cert)"
-        >
-        </app-certificacion-modulo>
+        ></app-certificacion-modulo>
       </ul>
     </div>
   </div>

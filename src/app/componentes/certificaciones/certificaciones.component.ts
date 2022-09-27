@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import { Cert } from '../certificaciones/faceCertificacion';
 import { UiService } from '../../servicios/ui.service';
 import {Subscription } from "rxjs";
 import { CertificacionService } from "../../servicios/certificacion.service";
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-certificaciones',
@@ -12,32 +12,42 @@ import { CertificacionService } from "../../servicios/certificacion.service";
 })
 
 export class CertificacionesComponent implements OnInit {
+
   titulo:string="Licencias y certificaciones";
   certificacionList: Cert[] =[];
-    id: number = 0;
+
+  roles: any[]=[];
+  isAdmin = false;
   showAddCert:boolean=false;
   subscription?:Subscription;
-    certificacion:any;
-    edit:any="hola";
+  
+  id: number = 0;
+  certificacion:any;
+  edit:any="hola";
 
   //Estado Visible Input(text) + Btn_Guardar
   inp_visible: boolean = false;
 
   constructor(
     private ServCert: CertificacionService,
-    private porfolioservice: PorfolioService, 
-    private uiService:UiService) {
+    private uiService:UiService,
+    private tokenService:TokenService) {
       this.subscription = this.uiService
       .onToggle()
       .subscribe((value) => (this.showAddCert = value));
     }
 
   ngOnInit(): void {
+    this.getIsAdmin();
     this.obtenerCertificaciones();
-    /*
-    this.porfolioservice.getCertificacion().subscribe((getListCert) => {
-      this.certificacionList = getListCert;
-    });*/
+  }
+
+  //VALIDA QUE SEA "ADMIN"
+  public getIsAdmin(){
+    this.roles = this.tokenService.getAuthorities();
+      for (var i = 0; i < this.roles.length; i++) {
+        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
+      }
   }
 
   //LISTA ...
@@ -46,13 +56,11 @@ export class CertificacionesComponent implements OnInit {
       this.certificacionList = e;
     });
   }
-
+  
   //NUEVA ...
   public addCert(cert: Cert) {
-    console.log('Cert a enviar:' + cert);
     this.ServCert.create(cert).subscribe(
       (data) => {
-        console.log(data);
         this.obtenerCertificaciones();
       },
       (error) => console.log(error)
@@ -63,24 +71,17 @@ export class CertificacionesComponent implements OnInit {
   //GUARDA cont del input + OCULTA input
   public saveCertificacion(cert: Cert) {
     this.ServCert.actualiz(cert).subscribe((dato) => {
-      console.log(dato);
-      this.obtenerCertificaciones();
-      //this.mostrar(false);
-    });
-    
+      this.obtenerCertificaciones();});
   }
 
-  //BORRA una experiencia
+  //BORRA ...
   public borrarCertificacion(obj: Cert) {
     this.ServCert.eliminar(obj.id).subscribe((dato) => {
-      console.log(dato);
-      this.obtenerCertificaciones();
-    });
+      this.obtenerCertificaciones(); });
   }
 
-  //GUARDA cont del input + OCULTA input
+  //OCULTA input
   guardar() {
-    //Guarda contenido del input( HACER )
     this.mostrar(false);
   }
 
@@ -88,7 +89,7 @@ export class CertificacionesComponent implements OnInit {
   mostrar(e: boolean) {
     this.inp_visible = e;
   }
-  
+    
   toogleBorde(cert: Cert) {
     /*
     ex.reminder = !ex.reminder;
@@ -101,26 +102,4 @@ export class CertificacionesComponent implements OnInit {
     this.uiService.toogleAddCert();
   }
   
-
-
-  /*
-  deleteCertificacion(ce: Cert) {
-    this.porfolioservice.deleteCertificacion(ce).subscribe(() => {
-      this.certificacionList = this.certificacionList.filter((t) => t.id !== ce.id);
-    });
-  }
-
-  addCert(ce: Cert) {
-    this.porfolioservice.addCertificacion(ce).subscribe((ce) => {
-      this.certificacionList.push(ce);
-    });
-  }
-
-  
-
-  guardar(ce:Cert){
-    this.porfolioservice.updateCertificacion(ce).subscribe();
-  }
-  */
-
 }

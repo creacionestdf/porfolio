@@ -14,7 +14,7 @@ export class ProyectoService {
   private url:String = environment.BaseUrl+"/proyectos";
   private UrlNew = this.url +'/crear/';
   private UrlSave = this.url +'/actualizar';
-  private UrlDelete = this.url +'/proyectos/borrar';
+  private UrlDelete = this.url +'/borrar';
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +25,6 @@ export class ProyectoService {
 
   //CREAMOS una nueva...
   create(nuevo: Pro): Observable<Pro> {
-    console.log("Se recibio proyecto:"+nuevo);
     return this.http.post<Pro>(`${this.UrlNew}`, nuevo);
   }
 

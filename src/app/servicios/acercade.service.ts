@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Ace } from '../componentes/acerca-de/faceAcercade';
 import { environment } from '../../environments/environment';
 import { TokenService } from './token.service';
-import { InterceptorService } from './interceptor-service';
+//import { InterceptorService } from './interceptor-service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,14 +14,11 @@ export class AcercadeService {
   private url: String = environment.BaseUrl + '/acercade';
   private UrlSave = this.url + '/actualizar';
 
-  constructor(
-    private http: HttpClient,  
-    private tokenService:TokenService, 
-    private inter:InterceptorService) {}
+  constructor( private http: HttpClient) {}
 
   //OBTENEMOS todos los registros...
   public getAll(): Observable<Ace[]> {
-    return this.http.get<Ace[]>('https://porfolioweb-backend.herokuapp.com/acercade/traer');
+    return this.http.get<Ace[]>(this.url+'/traer');
   }
 
   //GUARDAMOS cambios realizados

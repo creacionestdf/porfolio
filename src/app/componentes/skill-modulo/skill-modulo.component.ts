@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { TokenService } from 'src/app/servicios/token.service';
 import { Skl } from "../skill/faceSkill";
 
 @Component({
@@ -13,27 +14,43 @@ export class SkillModuloComponent implements OnInit {
   @Output() onDelete: EventEmitter<Skl>= new EventEmitter();
   @Output() onSave: EventEmitter<Skl>= new EventEmitter();
 
-  form:FormGroup;
-
+  roles: any[]=[];
+  isAdmin = false;
+  
+  inptitulo:any;
+  inpvalor:any;
+  
   //Estado Visible Input(text) + Btn_Guardar
-  inp_visible:boolean=false;
+    inp_visible:boolean=false;
 
-  constructor(private formBuilder: FormBuilder) { 
-    //creamos el grupo de controles para el formulario
-    this.form=this.formBuilder.group({
-      inptitulo:['',[]],
-      inpvalor:['',[]]
-     })
+  constructor( private tokenService:TokenService) { }
+
+  ngOnInit(): void { 
+    this.getIsAdmin();
+    this.obj_sk; 
+    this.crea(); 
   }
-
-  ngOnInit(): void { this.obj_sk; }
 
   //GUARDA cont del input + OCULTA input
   guardar(obj:Skl){
-    //Guarda contenido del input( HACER)
     this.mostrar(false);
-    console.log(obj);
+    obj.titulo=this.inptitulo.value;
+    obj.val=this.inpvalor.value;
     this.onSave.emit(obj);
+  }
+
+  //CANCELAR formulario
+  cancelar(){
+    this.mostrar(false);
+    this.crea();
+  }
+
+  //VALIDA QUE SEA "ADMIN"
+  public getIsAdmin(){
+    this.roles = this.tokenService.getAuthorities();
+      for (var i = 0; i < this.roles.length; i++) {
+        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
+      }
   }
 
   //INGRESA estado a mostrar
@@ -47,22 +64,9 @@ export class SkillModuloComponent implements OnInit {
     this.onDelete.emit(obj);
   }
 
-  
-  
-  
-  /*
-  guardar(sk:Skl){
-    //Guarda contenido del input( HACER)
-    this.mostrar(false);
-    this.onGuardarSkl.emit(sk);
+  crea(){
+    this.inptitulo=new FormControl(this.obj_sk.titulo,[]);
+    this.inpvalor=new FormControl(this.obj_sk.val,[]);
   }
-
-  onDelete(objBorrar:Skl){
-    this.onDeleteSkl.emit(objBorrar);
-  }
-
-  mostrar(e:boolean){
-    this.inp_visible=e;
-  }
-  */
+  
 }

@@ -1,13 +1,11 @@
-<div 
-  class="btn-edit" 
-  id="btn_edit" 
-  >
-    <a 
-      href="#{{set_link}}" 
-      class="btn-right" 
-      (click)="inp_mostrar()" 
-      [ngStyle]="{'background-color':btnColor}">
-        <i class="fa fa-pen"></i>
-        {{texto}}
+<div id="btn_edit" >
+  <a 
+    href="#{{set_link}}" 
+    class="btn btn-outline-dark btn-sm" 
+    (click)="inp_mostrar()" 
+    [ngStyle]="{'background-color':btnColor}">
+      <i class="fa fa-pen"></i>
+      {{texto}}
     </a>
 </div>
+

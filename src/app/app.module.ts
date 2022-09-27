@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule} from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './componentes/header/header.component';
@@ -21,7 +21,7 @@ import { BtnEditComponent } from './componentes/btn-edit/btn-edit.component';
 import { ExperienciaModuloComponent } from './componentes/experiencia-modulo/experiencia-modulo.component';
 import { AddExperienciaComponent } from './componentes/add-experiencia/add-experiencia.component';
 import { BtnAddComponent } from './componentes/btn-add/btn-add.component';
-import { AboutComponent } from './componentes/about/about.component';
+
 import { AddCertificacionComponent } from './componentes/add-certificacion/add-certificacion.component';
 import { CertificacionModuloComponent } from './componentes/certificacion-modulo/certificacion-modulo.component';
 import { ProyectoModuloComponent } from './componentes/proyecto-modulo/proyecto-modulo.component';
@@ -35,6 +35,10 @@ import { HomeComponent } from './componentes/home/home.component';
 import { ProdInterceptorService } from './interceptors/prod-interceptor.service';
 import { RegistroComponent } from "./componentes/registro/registro.component";
 import { TokenService } from 'src/app/servicios/token.service';
+import { BtnLoginComponent } from './componentes/btn-login/btn-login.component';
+import { BtnLogoutComponent } from './componentes/btn-logout/btn-logout.component';
+import { BodyComponent } from './componentes/body/body.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -45,13 +49,10 @@ import { TokenService } from 'src/app/servicios/token.service';
     ExperienciaComponent,
     FooterComponent,
     ProyectosComponent,
-       
-   // routingComponents,
     BtnEditComponent,
     ExperienciaModuloComponent,
     AddExperienciaComponent,
     BtnAddComponent,
-    AboutComponent,
     AddCertificacionComponent,
     CertificacionModuloComponent,
     ProyectoModuloComponent,
@@ -62,7 +63,11 @@ import { TokenService } from 'src/app/servicios/token.service';
     BtnDeleteComponent,
     
     HomeComponent,
-    RegistroComponent
+    RegistroComponent,
+    BtnLoginComponent,
+    BtnLogoutComponent,
+    BodyComponent,
+    PerfilComponent
     
     
   ],
@@ -74,7 +79,13 @@ import { TokenService } from 'src/app/servicios/token.service';
     FormsModule,
     
   ],
-  providers: [ ProdInterceptorService,TokenService ],
+  providers: [ 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ProdInterceptorService,
+      multi:true
+  }
+],
   bootstrap: [AppComponent]
 })
 

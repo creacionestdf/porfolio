@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginUsuario } from 'src/app/modelos/login-usuario';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
@@ -10,26 +12,28 @@ import { TokenService } from 'src/app/servicios/token.service';
 export class HomeComponent implements OnInit {
   
   isLogeed:boolean=false;
-  nombreUsuario = '';
-  constructor(private tokenService:TokenService, private router: Router) { }
+  isLoginFail = false;
+  nombre!:string;
+
+  constructor(
+    private tokenService:TokenService,
+    //private authService: AuthService, 
+    //private router: Router
+    ) { }
 
   ngOnInit(): void {
     if(this.tokenService.getToken()){
       this.isLogeed=true;
-      this.nombreUsuario = this.tokenService.getUserName();
+      this.isLoginFail=false;
+      this.nombre = this.tokenService.getUserName();
     }else{
-      this.isLogeed=false;
-      this.nombreUsuario = '';
+      //this.isLogeed=false;
+      //this.nombre= '';
     }
+   
   }
 
-  onLogOut():void{
-    this.tokenService.logOut();
-    window.location.reload();
-    this.login();
-  }
+  
 
-  login(): void{
-    this.router.navigate(['/login']);
-  }
+  
 }

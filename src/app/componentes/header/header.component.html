@@ -1,102 +1,17 @@
 <!-- HEADER-->
 <div class="card mat-card" id="first-card">
   <div id="header">
-    <div id="logo"><img [src]="List[0].logo" alt="Logo" /></div>
+    <div id="logo">
+      <img src="assets/img/logo.jpg" alt="Logo" />
+    </div>
     <!-- Iconos Redes -->
     <div id="redes">
       <a class="social-icon" href="#!"><i class="fab fa-linkedin-in"></i></a>
       <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
       <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
       <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-      <a class="nav-link" routerLink="/login"><i class="fa-solid fa-user"></i></a>
-      <a *ngIf="isLogeed" class="nav-link" (click)="onLogOut()" routerLink="/login"><i class="fas fa-door-open"></i></a>
+       <app-btn-login *ngIf="!isLogeed"></app-btn-login> 
+       <app-btn-logout *ngIf="isLogeed"></app-btn-logout>
     </div>
   </div>
-  <!-- Banner -->
-  <div id="profile-background">
-    <img [src]="List[0].banner" alt="banner" />
-  </div>
-  <!-- Foto + Info_Personal -->
-  <div id="info" style="padding: 16px">
-    
-    
-    
-      <div id="info-img">
-      <img
-        class="profile-image"
-        id="foto"
-        [src]="List[0].foto"
-        alt="foto"
-      />
-      <!-- Btn_edit -->
-      <app-btn-edit
-        [set_link]="id"
-        (set_inpvisible)="mostrar($event)"
-      ></app-btn-edit>
-    </div>
-    <form [formGroup]="form">
-    <div id="info-data">
-      <div>
-        <input
-        *ngIf="inp_visible"
-        id="edit-foto"
-        type="text"
-        formControlName="inp_foto"
-        [(ngModel)]="List[0].foto"
-        />
-        <div>
-          <h1 id="Nombre">{{ List[0].nombre }}</h1>
-        </div>
-        <div>
-          <input
-            *ngIf="inp_visible"
-            id="edit-nombre"
-            type="text"
-            formControlName="inp_nombre"
-            [(ngModel)]="List[0].nombre"
-          />
-        </div>
-        <div id="Info-company">{{ List[0].compania }}</div>
-        <div>
-          <input
-            *ngIf="inp_visible"
-            id="edit-company"
-            type="text"
-            
-            formControlName="inp_compania"
-            [(ngModel)]="List[0].compania"
-          />
-        </div>
-        <div id="info-contact">
-          <p id="residencia">{{ List[0].residencia }}</p>
-          <input
-            *ngIf="inp_visible"
-            id="edit-residencia"
-            type="text"
-            
-            formControlName="inp_residencia"
-            [(ngModel)]="List[0].residencia"
-          />
-          <p>{{ List[0].email }}</p>
-          <input
-            *ngIf="inp_visible"
-            id="edit-email"
-            type="text"
-            
-            formControlName="inp_email"
-            [(ngModel)]="List[0].email"
-          />
-          
-        </div>
-      </div>
-    </div>
-    <button 
-      *ngIf="inp_visible" 
-      id="guarda_DatosPersonales" 
-      (click)="save(List[0])">
-      Guardar Cambios
-    </button>
-  </form>
-  </div>
-
 </div>

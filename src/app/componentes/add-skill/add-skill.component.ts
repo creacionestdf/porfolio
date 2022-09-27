@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './add-skill.component.html',
   styleUrls: ['./add-skill.component.css']
 })
+
 export class AddSkillComponent implements OnInit {
   @Output() onAddSkl: EventEmitter<any> = new EventEmitter();
 
@@ -21,7 +22,6 @@ export class AddSkillComponent implements OnInit {
     this.subscription=this.uiService.onToggle()
           .subscribe(value => this.showAddSkl=value)
    }
-
 
   ngOnInit(): void {  }
 

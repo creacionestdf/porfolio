@@ -9,10 +9,9 @@ import { environment } from "src/environments/environment";
   providedIn: 'root'
 })
 export class SkillService {
-
   
  //URL de Experiencias
-  private url:String = environment.BaseUrl+"/skills";
+  private url: String = environment.BaseUrl + '/skills';
   private UrlNew = this.url+'/crear/';
   private UrlSave = this.url+'/actualizar';
   private UrlDelete = this.url+'/borrar';
@@ -21,12 +20,11 @@ export class SkillService {
 
   //OBTENEMOS todos los registros...
   getAll(): Observable<Skl[]> {
-    return this.http.get<Skl[]>(this.url + "/traer");
+    return this.http.get<Skl[]>(this.url + '/traer');
   }
 
   //CREAMOS una nueva...
   create(nuevo: Skl): Observable<Skl> {
-    console.log("Se recibio Skl:"+nuevo);
     return this.http.post<Skl>(`${this.UrlNew}`, nuevo);
   }
 

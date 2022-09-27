@@ -2,14 +2,14 @@
 <div class="card mat-card">
   <div id="experience">
     <div class="card-titles">
-      <h2>{{ titulo }}</h2>
-
-      <!-- BTN AGREGAR-->
-      <app-btn-add
-        text="{{ showAddExp ? 'Close' : 'Add' }}"
-        color="{{ showAddExp ? 'red' : 'green' }}"
-        (btnClick)="toggleAddExp()"
-      ></app-btn-add>
+      <h2>{{ titulo }}
+        <!-- BTN AGREGAR-->
+        <app-btn-add 
+          *ngIf="isAdmin" 
+          data-bs-toggle="modal" 
+          data-bs-target="#addexp">
+        </app-btn-add>
+      </h2>
     </div>
 
     <!-- FORMULARIO para agregar... -->
@@ -24,8 +24,7 @@
           (onDelete)="borrarExperiencia(exx)"
           (onSave)="saveExperiencia(exx)"
           (onToggleBorde)="toogleBorde(exx)"
-        >
-        </app-experiencia-modulo>
+        ></app-experiencia-modulo>
       </ul>
     </div>
   </div>

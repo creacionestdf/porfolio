@@ -3,36 +3,50 @@
   <div class="card-titles">
     <h2>{{ titulo }}</h2>
 
-    <!-- Btn_edit -->
-    <app-btn-edit
-      [set_link]="id"
-      (set_inpvisible)="mostrar($event)"
-      btnColor="lightblue"
-      texto="EDITAR"
-    ></app-btn-edit>
-  </div>
+  <!-- Btn_edit -->
+  <app-btn-edit  
+  *ngIf="isAdmin"
+  [set_link]="id"
+  btnColor=""
+  texto=""
+  data-bs-toggle="modal"
+  data-bs-target="#editAcerca"
+  (click)="crea()">
+</app-btn-edit>
 
+  <!-- Modal   -->
+  <div class="modal fade" id="editAcerca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Acerca de: </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <form>
+            <textarea 
+              class="form-control" 
+              id="edit-acercade"
+              type="text"
+              rows="10"
+              
+              [formControl]="inp_acercade"
+              
+              ></textarea>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="save(List[0])">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div>
     <p id="objetivo">{{ List[0].objetivo }}</p>
   </div>
-  <div>
-    <form [formGroup]="form" *ngIf="inp_visible">
-      <input
-        id="edit-acercade"
-        type="text"
-        placeholder="Objetivo"
-        formControlName="inp_acercade"
-        [(ngModel)]="List[0].objetivo"
-      />
-      <button 
-        id="guarda_Experiencia" 
-        (click)="save(List[0])">
-        Guardar Cambios
-      </button>
-    </form>
-  </div>
-</div>
-
+ 
 <!-- 
 
 <ul>

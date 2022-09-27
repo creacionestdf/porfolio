@@ -1,110 +1,88 @@
-<li
-  class="bor tarea"
-  [ngClass]="{ borde: obj_exp.reminder }"
-  (click)="onToggle(obj_exp)"
->
-  <!-- Btn_edit -->
-  <app-btn-edit
-    [set_link]="obj_exp.id"
-    (set_inpvisible)="mostrar($event)"
-  ></app-btn-edit>
+<li class="bor tarea">
+  <div class="container">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <!-- Btn_edit -->
+    <app-btn-edit
+      *ngIf="isAdmin"
+      [set_link]="obj_exp.id"
+      (set_inpvisible)="mostrar($event)"
+    ></app-btn-edit>
   
-  <!-- Btn_delete -->
-  <button 
-  *ngIf="mostrar" 
-  class="btn-right" 
-  [ngStyle]="{ color: 'red' }"
-  (click)="tranferIdDelete(obj_exp)">
-    <i class="fa-solid fa-rectangle-xmark"></i>
-  </button>
+    <!-- Btn_delete -->
+    <app-btn-delete
+      *ngIf="isAdmin"
+      (click)="tranferIdDelete(obj_exp)">
+    </app-btn-delete>
+  </div>
 
   <div class="container">
-    <form [formGroup]="form">
-      <div class="row">
+    <div class="row">
         <div class="col-xs-12 col-sm-4 logo-exp">
           <div class="logo-image-container centrado-porcentual">
             <img [src]="obj_exp.imagen" />
           </div>
-          <div>
-            <input
-            *ngIf="inp_visible"
-            id="inp_img"
-            type="text"
-            placeholder="Imagen"
-            formControlName="inpimagen"
-            [(ngModel)]="obj_exp.imagen"
-          /></div>
-          
         </div>
         <div class="col-xs-12 col-sm-8 list-info">
           <div>
             <h3>{{ obj_exp.titulo }}</h3>
-
-            <input
-              *ngIf="inp_visible"
-              id="inp_tit0"
-              type="text"
-              placeholder="Titulo"
-              formControlName="inptitulo"
-              [(ngModel)]="obj_exp.titulo"
-            />
           </div>
           <div class="cargo">
-            <p>
-              {{ obj_exp.cargo }} - <span>{{ obj_exp.jornada }}</span>
-            </p>
-          </div>
-          <div>
-            <input
-              *ngIf="inp_visible"
-              type="text"
-              placeholder="Cargo"
-              formControlName="inpcargo"
-              [(ngModel)]="obj_exp.cargo"
-            />
-            <input
-              *ngIf="inp_visible"
-              type="text"
-              placeholder="Jornada"
-              formControlName="inpjornada"
-              [(ngModel)]="obj_exp.jornada"
-            />
+            <p>{{ obj_exp.cargo }} - <span>{{ obj_exp.jornada }}</span></p>
           </div>
           <div class="tiempo">
             <p>{{ obj_exp.tiempo }}</p>
           </div>
           <div class="direccion">
             <p>{{ obj_exp.direccion }}</p>
-            <input
-              *ngIf="inp_visible"
-              id="inp_dir0"
-              type="text"
-              placeholder="Direccion"
-              formControlName="inpdire"
-              [(ngModel)]="obj_exp.direccion"
-            />
           </div>
           <div class="descripcion">
             <p>{{ obj_exp.descripcion }}</p>
-            <input
-              *ngIf="inp_visible"
-              id="inp_des0"
-              type="text"
-              placeholder="Descripcion"
-              formControlName="inpdesc"
-              [(ngModel)]="obj_exp.descripcion"
-            />
           </div>
-          <button
-            *ngIf="inp_visible"
-            id="guarda_Experiencia"
-            placeholder="Guardar Cambios"
-            (click)="guardar(obj_exp)"
-          >
-            GUARDAR
-          </button>
         </div>
+        
+        <!--Formulario para editar Certificaciones-->
+        <form>
+            <div class="card" *ngIf="inp_visible">
+              <div class="card-body">
+                <div class="mb-3">
+                  <label for="inpimagen" class="form-label">Imagen:</label>
+                  <input class="form-control" id="inpimagen" type="text" [formControl]="inpimagen"  />
+                </div>
+                <div class="mb-3">
+                  <label for="inptitulo" class="form-label">Titulo:</label>
+                  <input class="form-control" id="inptitulo" type="text" [formControl]="inptitulo"  />
+                </div>
+                <div class="mb-3">
+                  <label for="inpcargo" class="form-label">Cargo:</label>
+                  <input class="form-control" id="inpcargo" type="text" [formControl]="inpcargo"  />
+                </div>
+                <div class="mb-3">
+                  <label for="inpjornada" class="form-label">Jornada:</label>
+                  <input class="form-control" id="inpjornada" type="text" [formControl]="inpjornada"  />
+                </div>
+                <div class="mb-3">
+                  <label for="inpdire" class="form-label" >Direccion:</label>
+                  <input class="form-control" id="inpdire" type="text" [formControl]="inpdire"  />
+                </div>
+                <div class="mb-3">
+                  <label for="inpdesc" class="form-label" >Direccion:</label>
+                  <input class="form-control" id="inpdesc" type="text" [formControl]="inpdesc"  />
+                </div>
+
+                <button [disabled]="inptitulo.invalid" class="btn btn-success" (click)="guardar(obj_exp)">GUARDAR</button>
+                <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+              </div>
+            </div>
+          </form>
+          
+        
       </div>
-    </form>
+  </div>
+
+
+
+
+
+
   </div>
 </li>

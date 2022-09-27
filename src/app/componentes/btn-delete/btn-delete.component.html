@@ -1,9 +1,8 @@
-<button
-  *ngIf="mostrar"
-  class="btn-right"
-  [ngStyle]="{ 'background-color': btnColor }"
-  (click)="onDelete()"
->
-  <i class="fa-solid fa-rectangle-xmark"></i>
-  {{ texto }}
-</button>
+<div >
+  <a 
+    class="btn btn-outline-dark btn-sm"
+    [ngStyle]="{'background-color':btnColor}">
+    <i class="fa-solid fa-rectangle-xmark"></i>
+    {{texto}}
+  </a>
+</div>

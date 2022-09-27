@@ -1,0 +1,117 @@
+<div class="card mat-card" id="first-card">
+  <!-- Banner -->
+  <div id="profile-background">
+    <img id="banner_perfil" [src]="List[0].banner" alt="banner" />
+  </div>
+  <!-- Foto + Info_Personal -->
+  <div id="info" style="padding: 16px">
+    <div id="info-img">
+      <img class="profile-image" id="foto" [src]="List[0].foto" alt="foto" />
+    </div>
+
+    <!-- Btn_edit -->
+    <app-btn-edit 
+      *ngIf="isAdmin" 
+      [set_link]="id" 
+      btnColor="" 
+      texto="" 
+      data-bs-toggle="modal"
+      data-bs-target="#editPerfil"
+      (click)="crea()">
+    </app-btn-edit>
+
+    <div id="info-data">
+      <div>
+        <div><h1 id="Nombre">{{ List[0].nombre }}</h1></div>
+        <div id="Info-company">{{ List[0].compania }}</div>
+        <div id="info-contact">
+          <p id="residencia">{{ List[0].residencia }}</p>
+          <p>{{ List[0].email }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal
+    <div class="modal fade" id="editPerfil" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Editar Perfil:</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="form">
+              <div class="mb-3">
+                <label for="edit-foto" class="form-label">Foto: </label>
+                <input type="text" class="form-control" id="edit-foto" formControlName="inp_foto" [(ngModel)]="List[0].foto" />
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="edit-nombre" formControlName="inp_nombre" [(ngModel)]="List[0].nombre" />
+                <label for="edit-nombre">Nombre y Apellido: </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input id="edit-company" type="text" class="form-control" formControlName="inp_compania" [(ngModel)]="List[0].compania" />
+                <label for="edit-company">Compania: </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input id="edit-residencia" type="text" class="form-control" formControlName="inp_residencia" [(ngModel)]="List[0].residencia" />
+                <label for="edit-residencia">Residencia: </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input id="edit-email" type="text" class="form-control" formControlName="inp_email" [(ngModel)]="List[0].email" />
+                <label for="edit-email">Email: </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close </button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="save(List[0])">Guardar Cambios</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+
+    <div class="modal fade" id="editPerfil" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Editar Perfil:</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="edit-foto" class="form-label">Foto: </label>
+                <input type="text" class="form-control" id="edit-foto" [formControl]="inp_foto"  />
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="edit-nombre" [formControl]="inp_nombre"  />
+                <label for="edit-nombre">Nombre y Apellido: </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input id="edit-company" type="text" class="form-control" [formControl]="inp_compania"  />
+                <label for="edit-company">Compania: </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input id="edit-residencia" type="text" class="form-control" [formControl]="inp_residencia"  />
+                <label for="edit-residencia">Residencia: </label>
+              </div>
+              <div class="form-floating mb-3">
+                <input id="edit-email" type="text" class="form-control" [formControl]="inp_email"  />
+                <label for="edit-email">Email: </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelar()">Cancelar </button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="save(List[0])">Guardar Cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

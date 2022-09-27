@@ -25,7 +25,6 @@ export class CertificacionService {
 
   //CREAMOS nueva certificacion
   create(new_Cert: Cert): Observable<Cert> {
-    console.log("Se recibio cert:"+new_Cert);
     return this.http.post<Cert>(`${this.urlCertcrea}`, new_Cert);
   }
 

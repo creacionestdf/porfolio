@@ -1,15 +1,17 @@
 <div class="card mat-card">
   <div id="skills">
     <div class="card-titles">
-      <h2>{{titulo}}</h2>
-
-      <!-- BTN AGREGAR-->
-      <app-btn-add
-        text="{{ showAddSkl ? 'Close' : 'Add' }}"
-        color="{{ showAddSkl ? 'red' : 'green' }}"
-        (btnClick)="toggleAddSkl()"
-      >
-      </app-btn-add>
+      <h2>{{titulo}}
+        <!-- BTN AGREGAR-->
+        <app-btn-add
+          *ngIf="isAdmin"
+          text="{{ showAddSkl ? 'Close' : 'Add' }}"
+          color="{{ showAddSkl ? 'red' : 'green' }}"
+          (btnClick)="toggleAddSkl()"
+          data-bs-toggle="modal" 
+          data-bs-target="#newSkill">
+        </app-btn-add>
+      </h2>
     </div>
 
     <!-- FORMULARIO para agregar... -->
@@ -17,12 +19,13 @@
 
     <div>
       <ul id="ulSkill">
+        <!-- Modulo Skill-->
         <app-skill-modulo 
-            *ngFor="let sk of List"
-            [obj_sk]="sk"
-            (onDelete)="borrarSkill(sk)"
-            (onSave)="saveSkill(sk)"
-            ></app-skill-modulo>
+          *ngFor="let sk of List"
+          [obj_sk]="sk"
+          (onDelete)="borrarSkill(sk)"
+          (onSave)="saveSkill(sk)">
+        </app-skill-modulo>
       </ul>
     </div>
   </div>

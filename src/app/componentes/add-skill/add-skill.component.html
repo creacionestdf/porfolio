@@ -1,3 +1,4 @@
+<!-- 
 <form 
     *ngIf="showAddSkl"
     (ngSubmit)="onSubmit()">
@@ -23,3 +24,34 @@
           
     <input type="submit" value="Guardar Skill" class="btn btn-block" >
   </form>
+-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="newSkill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nuevo Skill:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="titulo" placeholder="Skill:" [(ngModel)]="titulo">
+              <label for="titulo">Skill:</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="val" placeholder="Porcentaje:" [(ngModel)]="val">
+              <label for="val">Porcentaje:</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>

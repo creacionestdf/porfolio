@@ -1,86 +1,59 @@
 <li class="card mat-card bor">
   <div class="container">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <!-- Btn_edit -->
+      <app-btn-edit
+        *ngIf="isAdmin"
+        [set_link]="obj_pro.id"
+        (set_inpvisible)="mostrar($event)"  >
+      </app-btn-edit>
 
-  <!-- Btn_edit -->
-  <app-btn-edit
-    [set_link]="obj_pro.id"
-    (set_inpvisible)="mostrar($event)"
-  ></app-btn-edit>
+      <!-- Btn_delete -->
+      <app-btn-delete
+        *ngIf="isAdmin"
+        (click)="tranferIdDelete(obj_pro)">
+      </app-btn-delete>
+    </div>
 
-  <!-- Btn_delete -->
-  <button [ngStyle]="{ color: 'red' }" 
-  (click)="tranferIdDelete(obj_pro)">
-    <i class="fa-solid fa-rectangle-xmark"></i>
-  </button>
-
-  <div class="data-container">
-    <form [formGroup]="form">
+    <div class="data-container">
       <div class="list-info" style="display: inline; text-align: center">
-        <div>
-          <h3>{{ obj_pro.titulo }}</h3>
-          <input
-              *ngIf="inp_visible"
-              type="text"
-              placeholder="Titulo"
-              formControlName="inptitulo"
-              [(ngModel)]="obj_pro.titulo"
-            />
-        </div>
-        <div>
-          <p>{{ obj_pro.fecha }}</p>
-          <input
-              *ngIf="inp_visible"
-              type="text"
-              placeholder="Fecha"
-              formControlName="inpfecha"
-              [(ngModel)]="obj_pro.fecha"
-            />
-        </div>
-        <div>
-          <p>{{ obj_pro.descripcion }}</p>
-          <input
-              *ngIf="inp_visible"
-              type="text"
-              placeholder="Descripcion"
-              formControlName="inpdescripcion"
-              [(ngModel)]="obj_pro.descripcion"
-            />
-        </div>
-        <div>
-          <a href="">{{ obj_pro.link }}</a>
-          <input
-              *ngIf="inp_visible"
-              type="text"
-              placeholder="Link"
-              formControlName="inplink"
-              [(ngModel)]="obj_pro.link"
-            />
-        </div>
+        <div><h3>{{ obj_pro.titulo }}</h3></div>
+        <div><p>{{ obj_pro.fecha }}</p></div>
+        <div><p>{{ obj_pro.descripcion }}</p></div>
+        <div><a href="">{{ obj_pro.link }}</a></div>
       </div>
       <div class="logo-image-container">
-        <div>
-          <img [src]="obj_pro.logo" alt="proyecto1" />
-        </div>
-        <div>
-          <input
-              *ngIf="inp_visible"
-              type="text"
-              placeholder="Logo"
-              formControlName="inplogo"
-              [(ngModel)]="obj_pro.logo"
-            />
-        </div>
-        
+        <div><img [src]="obj_pro.logo" alt="proyecto1"/></div>
       </div>
-      <button
-          *ngIf="inp_visible"
-          id="guarda_Proyecto"
-          placeholder="Guardar Cambios"
-          (click)="guardar(obj_pro)"
-        >
-          GUARDAR CAMBIOS
-        </button>
+    </div>
+    <!--Formulario para editar Certificaciones-->
+    <form>
+    <div class="card" *ngIf="inp_visible">
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="inptitulo" class="form-label">Titulo:</label>
+          <input class="form-control" id="inptitulo" type="text" [formControl]="inptitulo"  />
+        </div>
+        <div class="mb-3">
+          <label for="inpfecha" class="form-label">Fecha:</label>
+          <input class="form-control" id="inpfecha" type="text" [formControl]="inpfecha"  />
+        </div>
+        <div class="mb-3">
+          <label for="inpdescripcion" class="form-label">Descripcion:</label>
+          <input class="form-control" id="inpdescripcion" type="text" [formControl]="inpdescripcion"  />
+        </div>
+        <div class="mb-3">
+          <label for="inplink" class="form-label" >Link:</label>
+          <input class="form-control" id="inplink" type="text" [formControl]="inplink"  />
+        </div>
+        <div class="mb-3">
+          <label for="inplogo" class="form-label" >Logo:</label>
+          <input class="form-control" id="inplogo" type="text" [formControl]="inplogo"  />
+        </div>
+        <button [disabled]="inptitulo.invalid" class="btn btn-success" (click)="guardar(obj_pro)">GUARDAR</button>
+        <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
     </form>
   </div>
-</div>
 </li>

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
 import { Skl } from "../skill/faceSkill";
 
@@ -14,35 +13,27 @@ export class SkillModuloComponent implements OnInit {
   @Output() onDelete: EventEmitter<Skl>= new EventEmitter();
   @Output() onSave: EventEmitter<Skl>= new EventEmitter();
 
-  roles: any[]=[];
-  isAdmin = false;
-  
-  inptitulo:any;
-  inpvalor:any;
-  
-  //Estado Visible Input(text) + Btn_Guardar
-    inp_visible:boolean=false;
+  //Variables de autenticacion
+    roles: any[]=[];
+    isAdmin = false;
+ 
+  //Variable del MODAL
+    modalSwitch!:boolean;
+    titulo:string="Editar Skill";
 
-  constructor( private tokenService:TokenService) { }
+  constructor( private tokenService:TokenService) {  }
 
   ngOnInit(): void { 
     this.getIsAdmin();
     this.obj_sk; 
-    this.crea(); 
   }
 
-  //GUARDA cont del input + OCULTA input
-  guardar(obj:Skl){
-    this.mostrar(false);
-    obj.titulo=this.inptitulo.value;
-    obj.val=this.inpvalor.value;
-    this.onSave.emit(obj);
-  }
-
-  //CANCELAR formulario
-  cancelar(){
-    this.mostrar(false);
-    this.crea();
+  //GUARDA cont de los input´s
+  guardar(setObj:Skl){
+    this.cerrarModal();
+    this.obj_sk.titulo=setObj.titulo;
+    this.obj_sk.val=setObj.val;
+    this.onSave.emit(this.obj_sk);
   }
 
   //VALIDA QUE SEA "ADMIN"
@@ -53,20 +44,10 @@ export class SkillModuloComponent implements OnInit {
       }
   }
 
-  //INGRESA estado a mostrar
-  mostrar(e:boolean){
-    this.inp_visible=e;
-  }
-
   //Envia el id del registro a borrar
-  tranferIdDelete(obj:Skl){
-    console.log("click Skill modulo id: "+ obj.id);
-    this.onDelete.emit(obj);
-  }
+    tranferIdDelete(obj:Skl){ this.onDelete.emit(obj); }
 
-  crea(){
-    this.inptitulo=new FormControl(this.obj_sk.titulo,[]);
-    this.inpvalor=new FormControl(this.obj_sk.val,[]);
-  }
-  
+  //Visibilidad del MODAL
+    openModal(){ this.modalSwitch=true; }
+    cerrarModal(){ this.modalSwitch=false; }
 }

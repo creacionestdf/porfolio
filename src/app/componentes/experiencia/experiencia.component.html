@@ -1,20 +1,12 @@
-<!-- Seccion Experiencia-->
+<!-- MODULO PRINCIPAL -->
 <div class="card mat-card">
   <div id="experience">
-    <div class="card-titles">
-      <h2>{{ titulo }}
-        <!-- BTN AGREGAR-->
-        <app-btn-add 
-          *ngIf="isAdmin" 
-          data-bs-toggle="modal" 
-          data-bs-target="#addexp">
-        </app-btn-add>
-      </h2>
-    </div>
+    <div class="card-titles"><h2>{{ titulo }}</h2></div>
 
-    <!-- FORMULARIO para agregar... -->
+    <!-- AGREGAR NUEVO MODULO -->
     <app-add-experiencia (onAddExp)="addExper($event)"></app-add-experiencia>
 
+    <!-- LISTA MODULOS -->
     <div>
       <ul id="ulExp" class="items-list">
         <!-- Modulo Experiencia-->
@@ -22,9 +14,8 @@
           *ngFor="let exx of experienciaList"
           [obj_exp]="exx"
           (onDelete)="borrarExperiencia(exx)"
-          (onSave)="saveExperiencia(exx)"
-          (onToggleBorde)="toogleBorde(exx)"
-        ></app-experiencia-modulo>
+          (onSave)="saveExperiencia($event)">
+        </app-experiencia-modulo>
       </ul>
     </div>
   </div>

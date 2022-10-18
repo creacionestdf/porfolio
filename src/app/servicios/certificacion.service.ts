@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cert } from "../componentes/certificaciones/faceCertificacion";
+import { Cert } from "../componentes/certificacion/faceCertificacion";
 import { environment } from "src/environments/environment";
 
 

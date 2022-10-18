@@ -2,67 +2,40 @@
 <div id="a-objetivo" class="card mat-card">
   <div class="card-titles">
     <h2>{{ titulo }}</h2>
-
-  <!-- Btn_edit -->
-  <app-btn-edit  
-  *ngIf="isAdmin"
-  [set_link]="id"
-  btnColor=""
-  texto=""
-  data-bs-toggle="modal"
-  data-bs-target="#editAcerca"
-  (click)="crea()">
-</app-btn-edit>
-
-  <!-- Modal   -->
-  <div class="modal fade" id="editAcerca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Acerca de: </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-           <form>
-            <textarea 
-              class="form-control" 
-              id="edit-acercade"
-              type="text"
-              rows="10"
-              
-              [formControl]="inp_acercade"
-              
-              ></textarea>
-          </form>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="save(List[0])">Guardar Cambios</button>
+    <!-- Btn_edit -->
+    <app-btn-edit  
+      *ngIf="isAdmin"
+      [set_link]="id"
+      btnColor=""
+      texto=""
+      data-bs-toggle="modal"
+      data-bs-target="#editAcerca"
+      (click)="crea()">
+    </app-btn-edit>
+    <!-- Modal   -->
+    <div class="modal fade" id="editAcerca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Acerca de: </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <textarea 
+                class="form-control" id="edit-acercade" type="text" rows="10" 
+                [formControl]="inp_acercade">
+              </textarea>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="save(List[0])">Guardar Cambios</button>
+          </div>
         </div>
       </div>
     </div>
+    <!--Muestra Informacion AcercaDe-->
+    <div><p id="objetivo">{{ List[0].objetivo }}</p></div>
   </div>
-  <div>
-    <p id="objetivo">{{ List[0].objetivo }}</p>
-  </div>
- 
-<!-- 
-
-<ul>
-  <li *ngFor="let lista of arrayDatos">
-      <p>el valor{{lista}}</p>
-  </li>
-  <li [ngSwitch]="evaluacion">
-      <p *ngSwitchCase="1">Opcion 1</p>
-      <p *ngSwitchCase="2">Opcion 2</p>
-      <p *ngSwitchDefault>Parrafo por fefault</p>
-  </li>
-  <li>
-    <div *ngIf="revelar_identidad;then no_secreto else secreto"></div>
-    <ng-template #secreto><p>¿Quien es IronMan?...</p></ng-template>
-    <ng-template #no_secreto><p>{{ironman}}</p></ng-template>
-  </li>
-  
-</ul>
--->
+</div>

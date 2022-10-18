@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TokenService } from 'src/app/servicios/token.service';
 import { Exp } from '../experiencia/faceExperiencia';
-import { FormBuilder } from '@angular/forms'; 
 
 @Component({
   selector: 'app-add-experiencia',
@@ -9,49 +9,50 @@ import { FormBuilder } from '@angular/forms';
 })
 
 export class AddExperienciaComponent implements OnInit {
-
+  
   @Output() onAddExp: EventEmitter<Exp> = new EventEmitter();
 
-  id: number=0;
-  imagen: string = '';
-  titulo: string = '';
-  cargo: string = '';
-  jornada: string = '';
-  tiempo: string = '';
-  direccion: string = '';
-  descripcion: string = '';
-  reminder: boolean = false;
-
-  constructor(private formBuilder: FormBuilder) {  }
-
-  ngOnInit(): void {}
-
-  onSubmit() {
-    
-    let {
-      id,
-      imagen,
-      titulo,
-      cargo,
-      jornada,
-      tiempo,
-      direccion,
-      descripcion,
-      reminder,
-    } = this;
-
-    let newExper = {
-      id,
-      imagen,
-      titulo,
-      cargo,
-      jornada,
-      tiempo,
-      direccion,
-      descripcion,
-      reminder,
+  //Variables de Autenticacion
+    roles: any[]=[];
+    isAdmin = false;
+   
+  //Objeto Nuevo
+    newObject:Exp={ 
+      id:0,
+      imagen:'',
+      titulo: '',
+      cargo: '',
+      jornada: '',
+      tiempo: '',
+      direccion:  '',
+      descripcion:'',
+      reminder: false
     };
+   
+  //Variable del MODAL
+    modalSwitch!:boolean;
+    titulo:string="Nueva Experiencia";
+    
+  constructor( private tokenService:TokenService) {  }
 
-    this.onAddExp.emit(newExper);
+  ngOnInit(): void { this.getIsAdmin(); }
+
+  //ENVIA OBJETO skill a MODULO: SKILL
+  public get_obj(obj:Exp){
+    this.onAddExp.emit(obj);
+    this.cerrarModal();
+  }  
+
+  //VALIDA QUE SEA "ADMIN" 
+  public getIsAdmin(){
+    this.roles = this.tokenService.getAuthorities();
+      for (var i = 0; i < this.roles.length; i++) {
+        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
+      }
   }
+
+  //Visibilidad del MODAL
+  openModal(){ this.modalSwitch=true; }
+  cerrarModal(){ this.modalSwitch=false; }
+ 
 }

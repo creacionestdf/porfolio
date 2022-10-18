@@ -1,0 +1,50 @@
+<!-- FORMULARIO Proyecto -->
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{form_titulo}}:</h5>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="proyectoForm">
+        <!-- Campo TITULO -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control"  formControlName="titulo" id="titulo" placeholder="Titulo:">
+          <label for="titulo">Titulo:</label>
+          <span *ngIf="this.proyectoForm.get('titulo')?.errors?.['required']">(* Campo obligatorio)</span>
+        </div>
+        <!-- Campo FECHA -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control"  formControlName="fecha" id="fecha" placeholder="Fecha:">
+          <label for="fecha">Fecha:</label>
+          <span *ngIf="this.proyectoForm.get('fecha')?.errors?.['required']">(* Campo obligatorio)</span>
+        </div>
+        <!-- Campo DESCRIPCION -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control"  formControlName="descripcion" id="descripcion" placeholder="Descripcion:">
+          <label for="descripcion">Descripcion:</label>
+          <span *ngIf="this.proyectoForm.get('descripcion')?.errors?.['required']">(* Campo obligatorio)</span>
+        </div>
+        <!-- Campo LINK de proyecto -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control"  formControlName="link" id="link" placeholder="Link:">
+          <label for="link">Link:</label>
+        </div>
+        <!-- Campo url del LOGO  -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control"  formControlName="logo" id="logo" placeholder="Logo:">
+          <label for="logo">Logo:</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="offSubmit()">Cerrar</button>
+      <button type="button" class="btn btn-primary" 
+        [disabled]="
+          this.proyectoForm.get('titulo')?.errors?.['required'] || 
+          this.proyectoForm.get('fecha')?.errors?.['required'] || 
+          this.proyectoForm.get('descripcion')?.errors?.['required'] "  
+        (click)="onSubmit()">Guardar
+      </button>
+    </div>
+  </div>
+</div>

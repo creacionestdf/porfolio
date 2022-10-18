@@ -1,30 +1,20 @@
+<!-- MODULO PRINCIPAL -->
 <div class="card mat-card">
   <div id="skills">
-    <div class="card-titles">
-      <h2>{{titulo}}
-        <!-- BTN AGREGAR-->
-        <app-btn-add
-          *ngIf="isAdmin"
-          text="{{ showAddSkl ? 'Close' : 'Add' }}"
-          color="{{ showAddSkl ? 'red' : 'green' }}"
-          (btnClick)="toggleAddSkl()"
-          data-bs-toggle="modal" 
-          data-bs-target="#newSkill">
-        </app-btn-add>
-      </h2>
-    </div>
-
-    <!-- FORMULARIO para agregar... -->
+    <div class="card-titles"><h2>{{titulo}}</h2></div>
+    
+    <!-- AGREGAR NUEVO MODULO -->
     <app-add-skill (onAddSkl)="addSkl($event)"></app-add-skill>
-
+    
+    <!-- LISTA MODULOS -->
     <div>
-      <ul id="ulSkill">
+      <ul id="ulSkill" class="container-skill">
         <!-- Modulo Skill-->
         <app-skill-modulo 
           *ngFor="let sk of List"
           [obj_sk]="sk"
           (onDelete)="borrarSkill(sk)"
-          (onSave)="saveSkill(sk)">
+          (onSave)="saveSkill($event)">
         </app-skill-modulo>
       </ul>
     </div>

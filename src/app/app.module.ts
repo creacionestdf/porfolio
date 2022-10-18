@@ -10,7 +10,6 @@ import { FormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './componentes/header/header.component';
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
-import { CertificacionesComponent } from './componentes/certificaciones/certificaciones.component';
 import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
@@ -39,13 +38,17 @@ import { BtnLoginComponent } from './componentes/btn-login/btn-login.component';
 import { BtnLogoutComponent } from './componentes/btn-logout/btn-logout.component';
 import { BodyComponent } from './componentes/body/body.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { SkillFormComponent } from './componentes/skill-form/skill-form.component';
+import { ProyectoFormComponent } from './componentes/proyecto-form/proyecto-form.component';
+import { ExperienciaFormComponent } from './componentes/experiencia-form/experiencia-form.component';
+import { CertificacionFormComponent } from './componentes/certificacion-form/certificacion-form.component';
+import { CertificacionComponent } from './componentes/certificacion/certificacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
     HeaderComponent,
     AcercaDeComponent,
-    CertificacionesComponent,
     ExperienciaComponent,
     FooterComponent,
     ProyectosComponent,
@@ -67,7 +70,12 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
     BtnLoginComponent,
     BtnLogoutComponent,
     BodyComponent,
-    PerfilComponent
+    PerfilComponent,
+    SkillFormComponent,
+    ProyectoFormComponent,
+    ExperienciaFormComponent,
+    CertificacionFormComponent,
+    CertificacionComponent
     
     
   ],

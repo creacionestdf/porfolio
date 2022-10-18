@@ -1,0 +1,55 @@
+<!-- FORMULARIO EXPERIENCIA -->
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{ form_titulo }}:</h5>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="ExpForm">
+        <!-- Campo TITULO -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" formControlName="titulo" id="titulo" placeholder="Skill:"/>
+          <label for="titulo">Titulo:</label>
+          <span *ngIf="this.ExpForm.get('titulo')?.errors?.['required']">(* Campo obligatorio)</span>
+        </div>
+        <!-- Campo CARGO -->
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="cargo" id="cargo" placeholder="Cargo:"/>
+            <label for="cargo">Cargo:</label>
+            <span *ngIf="this.ExpForm.get('cargo')?.errors?.['required']">(* Campo obligatorio)</span>
+        </div>
+        <!-- Campo JORNADA -->
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="jornada" id="jornada" placeholder="Jornada:"/>
+            <label for="jornada">Jornada:</label>
+        </div>
+        <!-- Campo DIRECCION -->
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="direccion" id="direccion" placeholder="Direccion:"/>
+            <label for="direccion">Direccion:</label>
+        </div>
+        <!-- Campo DESCRIPCION -->
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="descripcion" id="descripcion" placeholder="descripcion:"/>
+            <label for="descripcion">Descripcion:</label>
+            <span *ngIf="this.ExpForm.get('descripcion')?.errors?.['required']">(* Campo obligatorio)</span>
+        </div>
+        <!-- Campo IMAGEN -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" formControlName="imagen" id="imagen" placeholder="imagen:"/>
+          <label for="imagen">Imagen(URL):</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="offSubmit()">Cerrar</button>
+        <button type="button" class="btn btn-primary" 
+          [disabled]="
+            this.ExpForm.get('titulo')?.errors?.['required'] || 
+            this.ExpForm.get('cargo')?.errors?.['required'] || 
+            this.ExpForm.get('descripcion')?.errors?.['required']"  
+          (click)="onSubmit()">Guardar
+        </button>
+      </div>
+  </div>
+</div>

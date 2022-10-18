@@ -1,0 +1,23 @@
+<!-- MODULO PRINCIPAL -->
+<div class="card mat-card">
+    <div id="Licencias">
+      <div class="card-titles"><h2>{{ titulo }}</h2></div>
+      
+      <!-- AGREGAR NUEVO MODULO -->
+      <app-add-certificacion (onAddCert)="addCert($event)"></app-add-certificacion>
+      
+      <!-- LISTA MODULOS -->
+      <div>
+        <ul id="ulLic" class="items-list">
+          <!-- Modulo Certificacion-->
+          <app-certificacion-modulo
+            *ngFor="let cert of certificacionList"
+            [obj_cert]="cert"
+            (onDelete)="borrarCertificacion(cert)"
+            (onSave)="saveCertificacion($event)">
+          </app-certificacion-modulo>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

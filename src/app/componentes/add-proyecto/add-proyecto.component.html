@@ -1,93 +1,10 @@
-<!--
-<form 
-    *ngIf="showAddPro"
-    (ngSubmit)="onSubmit()">
-    
-    <div class="form-control">
-        <label for="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo" [(ngModel)]="titulo"/>
-    </div>
+<!-- BTN AGREGAR Nuevo... -->
+<app-btn-add *ngIf="isAdmin" (click)="openModal()"></app-btn-add>
 
-    <div class="form-control">
-        <label for="fecha">Fecha</label>
-        <input 
-        type="text" 
-        name="fecha" 
-        id="fecha" 
-        [(ngModel)]="fecha"/>
-    </div>
-
-    <div class="form-control">
-        <label for="descripcion">Descripcion</label>
-        <input 
-        type="text" 
-        name="descripcion" 
-        id="descripcion" 
-        [(ngModel)]="descripcion"/>
-    </div>
-
-    <div class="form-control">
-        <label for="link">Link</label>
-        <input 
-        type="text" 
-        name="link" 
-        id="link" 
-        [(ngModel)]="link"/>
-    </div>
-    
-    <div class="form-control">
-        <label for="foto">Foto</label>
-        <input
-          type="file"
-          id="file1"
-        />
-    </div>
-       
-       
-    <input type="submit" value="Guardar Proyectos" class="btn btn-block" >
-  </form>-->
-
-
-<!-- Modal -->
-<div class="modal fade" id="newProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nueva Certificacion:</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo:" [(ngModel)]="titulo">
-                        <label for="titulo">Titulo:</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="fecha" name="fecha" placeholder="Fecha:" [(ngModel)]="fecha">
-                        <label for="fecha">Fecha:</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion:" [(ngModel)]="descripcion">
-                        <label for="descripcion">Descripcion:</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="link" name="link" placeholder="Link:" [(ngModel)]="link">
-                        <label for="link">Link:</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="logo" name="logo" placeholder="Logo:" [(ngModel)]="logo">
-                        <label for="logo">Logo:</label>
-                    </div>
-                </form>
-            </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Guardar Cambios</button>
-        </div>
-      </div>
-    </div>
-</div>            
+<!-- FORMULARIO MODAL Nuevo... -->
+<app-proyecto-form
+  *ngIf="modalSwitch"
+  [form_titulo]="titulo"
+  [obj_in]="newObject" 
+  (obj_out)="get_obj($event)">
+</app-proyecto-form>

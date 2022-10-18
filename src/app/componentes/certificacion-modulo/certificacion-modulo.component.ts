@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Validators, FormControl } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
-import { Cert } from '../certificaciones/faceCertificacion';
+import { Cert } from '../certificacion/faceCertificacion';
 
 @Component({
   selector: 'app-certificacion-modulo',
@@ -14,41 +14,30 @@ export class CertificacionModuloComponent implements OnInit {
   @Output() onDelete: EventEmitter<Cert>= new EventEmitter();
   @Output() onSave: EventEmitter<Cert>= new EventEmitter();
 
-  roles: any[]=[];
-  isAdmin = false;
+  //variables de autenticacion
+    roles: any[]=[];
+    isAdmin = false;
   
-  inplogo:any;
-  inptitulo:any;
-  inpentidad:any;
-  inpfecha:any;
-  inpdescripcion:any;
-
-  //Estado Visible Input(text) + Btn_Guardar
-    inp_visible:boolean=false;
-
-  constructor(private tokenService:TokenService ) { }
+  //Variable del MODAL
+    modalSwitch!:boolean;
+    titulo:string="Editar Licencia/Certificacion";
+  
+  constructor( private tokenService:TokenService ) { }
 
   ngOnInit(): void { 
     this.getIsAdmin();
-    this.obj_cert;
-    this.crea(); 
+    this.obj_cert;   
   }
   
-  //GUARDA cont del input + OCULTA input
-  guardar(obj:Cert){
-    this.mostrar(false);
-    obj.logo=this.inplogo.value;
-    obj.titulo=this.inptitulo.value;
-    obj.entidad=this.inpentidad.value;
-    obj.fecha=this.inpfecha.value;
-    obj.descripcion=this.inpdescripcion.value;
-    this.onSave.emit(obj);
-  }
-
-  //CANCELAR formulario
-  cancelar(){
-    this.mostrar(false);
-    this.crea();
+  //GUARDA cont de los input´s 
+  guardar(setObj:Cert){
+    this.cerrarModal();
+    this.obj_cert.logo=setObj.logo;
+    this.obj_cert.titulo=setObj.titulo;
+    this.obj_cert.entidad=setObj.entidad;
+    this.obj_cert.fecha=setObj.fecha;
+    this.obj_cert.descripcion=setObj.descripcion;
+    this.onSave.emit(this.obj_cert);
   }
 
   //VALIDA QUE SEA "ADMIN"
@@ -59,22 +48,10 @@ export class CertificacionModuloComponent implements OnInit {
       }
   }
   
-  //INGRESA estado a mostrar
-  mostrar(e:boolean){
-    this.inp_visible=e;
-  }
-
   //Envia el id del registro a borrar
-  tranferIdDelete(obj:Cert){
-    this.onDelete.emit(obj);
-  }
+    tranferIdDelete(obj:Cert){ this.onDelete.emit(obj); }
  
-  crea(){
-      this.inplogo=new FormControl(this.obj_cert.logo,[]);
-      this.inptitulo=new FormControl(this.obj_cert.titulo,[Validators.required, Validators.maxLength(10)]);
-      this.inpentidad=new FormControl(this.obj_cert.entidad,[]);
-      this.inpfecha=new FormControl(this.obj_cert.fecha,[]);
-      this.inpdescripcion=new FormControl(this.obj_cert.descripcion,[]);
-  }
- 
+  //Visibilidad del MODAL
+    openModal(){ this.modalSwitch=true; }
+    cerrarModal(){ this.modalSwitch=false; }
 }

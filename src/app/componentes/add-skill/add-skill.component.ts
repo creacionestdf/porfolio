@@ -1,6 +1,6 @@
 import { Component,EventEmitter, OnInit, Output } from '@angular/core';
-import { UiService} from "../../servicios/ui.service";
-import { Subscription } from 'rxjs';
+import { TokenService } from 'src/app/servicios/token.service';
+import { Skl } from '../skill/faceSkill';
 
 @Component({
   selector: 'app-add-skill',
@@ -9,35 +9,39 @@ import { Subscription } from 'rxjs';
 })
 
 export class AddSkillComponent implements OnInit {
-  @Output() onAddSkl: EventEmitter<any> = new EventEmitter();
+  @Output() onAddSkl: EventEmitter<Skl> = new EventEmitter();
 
-  id: string="";
-  titulo: string="";
-  val: string="";
-
-  subscription?:Subscription;
-  showAddSkl:boolean=false;
+  //Variables de Autenticacion
+    roles: any[]=[];
+    isAdmin = false;
   
-  constructor( private uiService:UiService ) {
-    this.subscription=this.uiService.onToggle()
-          .subscribe(value => this.showAddSkl=value)
-   }
+  //Objeto Nuevo
+    newObject:Skl={ id:0,titulo:'',val:''};
+  
+  //Variable del MODAL
+  modalSwitch!:boolean;
+  titulo:string="Nuevo Skill";
+  
+  constructor( private tokenService:TokenService ) { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { this.getIsAdmin(); }
 
-  onSubmit(){
-    const {
-      id,
-      titulo,
-      val,
-    } = this;
+  //ENVIA OBJETO skill a MODULO: SKILL
+  public get_obj(obj:Skl){
+    this.onAddSkl.emit(obj);
+    this.cerrarModal();
+  }  
 
-    const newSkl = {
-      id,
-      titulo,
-      val,
-    };
-
-    this.onAddSkl.emit(newSkl);
+  //VALIDA QUE SEA "ADMIN" 
+  public getIsAdmin(){
+    this.roles = this.tokenService.getAuthorities();
+      for (var i = 0; i < this.roles.length; i++) {
+        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
+      }
   }
+
+  //Visibilidad del MODAL
+  openModal(){ this.modalSwitch=true; }
+  cerrarModal(){ this.modalSwitch=false; }
+
 }

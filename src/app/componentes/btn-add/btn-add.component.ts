@@ -7,17 +7,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class BtnAddComponent implements OnInit {
 
-@Input() text:string="";
-@Input() color:string="";
-@Output() btnClick=new EventEmitter();
+  @Input() text:string="";
+  @Input() color:string="";
+  @Output() btnClick=new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  onClick(){
-    this.btnClick.emit();
-  }
+  onClick(){ this.btnClick.emit(); }
 
 }

@@ -1,88 +1,37 @@
 <li class="bor tarea">
   <div class="container">
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <!-- Btn_edit -->
-    <app-btn-edit
-      *ngIf="isAdmin"
-      [set_link]="obj_exp.id"
-      (set_inpvisible)="mostrar($event)"
-    ></app-btn-edit>
-  
-    <!-- Btn_delete -->
-    <app-btn-delete
-      *ngIf="isAdmin"
-      (click)="tranferIdDelete(obj_exp)">
-    </app-btn-delete>
-  </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <!-- BTN EDITAR... -->
+      <app-btn-edit *ngIf="isAdmin" [set_link]="obj_exp.id" (click)="openModal()"></app-btn-edit>
+      
+      <!-- BTN BORRAR... -->
+      <app-btn-delete *ngIf="isAdmin" (click)="tranferIdDelete(obj_exp)"></app-btn-delete>
+    </div>
 
-  <div class="container">
-    <div class="row">
+    <!-- LISTA MODULOS (Imprime) -->
+    <div class="container">
+      <div class="row">
         <div class="col-xs-12 col-sm-4 logo-exp">
           <div class="logo-image-container centrado-porcentual">
             <img [src]="obj_exp.imagen" />
           </div>
         </div>
         <div class="col-xs-12 col-sm-8 list-info">
-          <div>
-            <h3>{{ obj_exp.titulo }}</h3>
-          </div>
-          <div class="cargo">
-            <p>{{ obj_exp.cargo }} - <span>{{ obj_exp.jornada }}</span></p>
-          </div>
-          <div class="tiempo">
-            <p>{{ obj_exp.tiempo }}</p>
-          </div>
-          <div class="direccion">
-            <p>{{ obj_exp.direccion }}</p>
-          </div>
-          <div class="descripcion">
-            <p>{{ obj_exp.descripcion }}</p>
-          </div>
+          <div><h3>{{ obj_exp.titulo }}</h3></div>
+          <div class="cargo"><p>{{ obj_exp.cargo }} - <span>{{ obj_exp.jornada }}</span></p></div>
+          <div class="tiempo"><p>{{ obj_exp.tiempo }}</p></div>
+          <div class="direccion"><p>{{ obj_exp.direccion }}</p></div>
+          <div class="descripcion"><p>{{ obj_exp.descripcion }}</p></div>
         </div>
-        
-        <!--Formulario para editar Certificaciones-->
-        <form>
-            <div class="card" *ngIf="inp_visible">
-              <div class="card-body">
-                <div class="mb-3">
-                  <label for="inpimagen" class="form-label">Imagen:</label>
-                  <input class="form-control" id="inpimagen" type="text" [formControl]="inpimagen"  />
-                </div>
-                <div class="mb-3">
-                  <label for="inptitulo" class="form-label">Titulo:</label>
-                  <input class="form-control" id="inptitulo" type="text" [formControl]="inptitulo"  />
-                </div>
-                <div class="mb-3">
-                  <label for="inpcargo" class="form-label">Cargo:</label>
-                  <input class="form-control" id="inpcargo" type="text" [formControl]="inpcargo"  />
-                </div>
-                <div class="mb-3">
-                  <label for="inpjornada" class="form-label">Jornada:</label>
-                  <input class="form-control" id="inpjornada" type="text" [formControl]="inpjornada"  />
-                </div>
-                <div class="mb-3">
-                  <label for="inpdire" class="form-label" >Direccion:</label>
-                  <input class="form-control" id="inpdire" type="text" [formControl]="inpdire"  />
-                </div>
-                <div class="mb-3">
-                  <label for="inpdesc" class="form-label" >Direccion:</label>
-                  <input class="form-control" id="inpdesc" type="text" [formControl]="inpdesc"  />
-                </div>
-
-                <button [disabled]="inptitulo.invalid" class="btn btn-success" (click)="guardar(obj_exp)">GUARDAR</button>
-                <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
-              </div>
-            </div>
-          </form>
-          
-        
       </div>
-  </div>
+    </div>
 
-
-
-
-
-
+    <!--FORMULARIO MODAL Editar... -->     
+    <app-experiencia-form
+      *ngIf="modalSwitch"
+      [form_titulo]="titulo"
+      [obj_in]="obj_exp"
+      (obj_out)="guardar($event)">
+    </app-experiencia-form>
   </div>
 </li>

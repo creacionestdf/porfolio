@@ -1,0 +1,42 @@
+<!-- FORMULARIO SKILL -->
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{form_titulo}}:</h5>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="skillForm">
+        <!-- Campo TITULO -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control"  formControlName="titulo" id="titulo" placeholder="Skill:">
+          <label for="titulo">Skill:</label>
+          <span *ngIf="this.skillForm.get('titulo')?.errors?.['required']">
+            (* Campo obligatorio)
+          </span>
+        </div>
+        <!-- Campo VALOR -->
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control"  formControlName="val" id="val" placeholder="Porcentaje:">
+          <label for="val">Porcentaje:</label>
+          <span *ngIf="this.skillForm.get('val')?.errors?.['required']">
+            (* Campo obligatorio)
+          </span>
+          <span *ngIf="this.skillForm.get('val')?.errors?.['min'] || this.skillForm.get('val')?.errors?.['max']">
+            ( Valor admitido [1 - 100] )
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="offSubmit()">Cerrar</button>
+      <button type="button" class="btn btn-primary" 
+        [disabled]="
+          this.skillForm.get('titulo')?.errors?.['required'] || 
+          this.skillForm.get('val')?.errors?.['required'] || 
+          this.skillForm.get('val')?.errors?.['min'] ||
+          this.skillForm.get('val')?.errors?.['max']"  
+        (click)="onSubmit()">Guardar
+      </button>
+    </div>
+  </div>
+</div>

@@ -15,38 +15,34 @@ export class ProyectosComponent implements OnInit {
   
   titulo:string="Proyectos";
   List: Pro[] = [];
- 
+
+  //Variables de Autenticacion
   roles: any[]=[];
   isAdmin = false;
-  showAddPro:boolean=false;
-  subscription?:Subscription;
-
-  id: number = 0;
+  
+  //id: number = 0;
 
   //Estado Visible Input(text) + Btn_Guardar
-  inp_visible: boolean = false;
+  //inp_visible: boolean = false;
   
   constructor(
     private Servicio: ProyectoService,
-    private uiService:UiService,
-    private tokenService:TokenService) {
-      this.subscription=this.uiService
-      .onToggle()
-      .subscribe(value => this.showAddPro=value);
-    }
+    //private tokenService:TokenService
+    ) {  }
 
   ngOnInit(): void {
-    this.getIsAdmin();
+    //this.getIsAdmin();
     this.obtenerProyectos();
   }
   
   //VALIDA QUE SEA "ADMIN"
+  /*
   public getIsAdmin(){
     this.roles = this.tokenService.getAuthorities();
       for (var i = 0; i < this.roles.length; i++) {
         if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
       }
-  }
+  }*/
 
   //LISTA ...
   private obtenerProyectos() {
@@ -56,16 +52,15 @@ export class ProyectosComponent implements OnInit {
 
   //NUEVA ...
   public addPro(obj: Pro) {
-    this.Servicio.create(obj).subscribe(
-      (data) => {
-        this.obtenerProyectos();
-      },
-      (error) => console.log(error)
-    );
-    this.mostrar(false);
+    if (obj!=null){
+      this.Servicio.create(obj).subscribe(
+        (data) => { this.obtenerProyectos(); },
+        (error) => console.log(error)
+      );
+    }
   }
 
-  //GUARDA cont del input + OCULTA input
+  //GUARDA cont del input 
   public saveProyecto(obj: Pro) {
     this.Servicio.actualizar(obj).subscribe((dato) => {
       this.obtenerProyectos(); });
@@ -77,20 +72,4 @@ export class ProyectosComponent implements OnInit {
       this.obtenerProyectos();
     });
   }
-
-  //GUARDA OCULTA input
-  guardar() {
-    this.mostrar(false);
-  }
-
-  //MUESTRA & OCULTA input para editar campos
-  mostrar(e: boolean) {
-    this.inp_visible = e;
-  }
-
-  toggleAddPro(){
-    //this.showAddExp=!this.showAddExp;
-    this.uiService.toogleAddPro();
-  }
- 
 }

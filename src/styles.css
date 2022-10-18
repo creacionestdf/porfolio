@@ -193,13 +193,14 @@ ul.items-list li div.data-container div.list-info div {
 .progress-bar{
    border-radius:0.25rem;
 }
-
+/* ANCHO DE LA BARRA SKILL*/
 div#skills div ul{
-    width:90%;
+    /* width:90%; */
 }
 
 div#skills div ul li {
-  text-align: center;
+ 
+  /* text-align: right;*/
   list-style: none;
   margin-bottom: 5px;
 }
@@ -208,6 +209,7 @@ div#skills div ul li div {
   /* height: 21px; */
 }
 
+/**ANCHO Y ALTO DEL TITULO SKILL*/
 .Skill-Titulo {
     min-width: 35%;
     height:30px;
@@ -219,7 +221,7 @@ div#skills div ul li div {
 }
 
 .Skill-Barra-Alto {
-  height:30px;
+  height:40px;
   
 }
 

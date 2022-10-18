@@ -1,20 +1,14 @@
 <li class="card mat-card bor">
   <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <!-- Btn_edit -->
-      <app-btn-edit
-        *ngIf="isAdmin"
-        [set_link]="obj_pro.id"
-        (set_inpvisible)="mostrar($event)"  >
-      </app-btn-edit>
-
-      <!-- Btn_delete -->
-      <app-btn-delete
-        *ngIf="isAdmin"
-        (click)="tranferIdDelete(obj_pro)">
-      </app-btn-delete>
+      <!-- BTN EDITAR... -->
+      <app-btn-edit *ngIf="isAdmin" [set_link]="obj_pro.id" (click)="openModal()"></app-btn-edit>
+      
+      <!-- BTN BORRAR... -->
+      <app-btn-delete *ngIf="isAdmin" (click)="tranferIdDelete(obj_pro)"></app-btn-delete>
     </div>
 
+    <!-- LISTA MODULOS (Imprime) -->
     <div class="data-container">
       <div class="list-info" style="display: inline; text-align: center">
         <div><h3>{{ obj_pro.titulo }}</h3></div>
@@ -26,34 +20,13 @@
         <div><img [src]="obj_pro.logo" alt="proyecto1"/></div>
       </div>
     </div>
-    <!--Formulario para editar Certificaciones-->
-    <form>
-    <div class="card" *ngIf="inp_visible">
-      <div class="card-body">
-        <div class="mb-3">
-          <label for="inptitulo" class="form-label">Titulo:</label>
-          <input class="form-control" id="inptitulo" type="text" [formControl]="inptitulo"  />
-        </div>
-        <div class="mb-3">
-          <label for="inpfecha" class="form-label">Fecha:</label>
-          <input class="form-control" id="inpfecha" type="text" [formControl]="inpfecha"  />
-        </div>
-        <div class="mb-3">
-          <label for="inpdescripcion" class="form-label">Descripcion:</label>
-          <input class="form-control" id="inpdescripcion" type="text" [formControl]="inpdescripcion"  />
-        </div>
-        <div class="mb-3">
-          <label for="inplink" class="form-label" >Link:</label>
-          <input class="form-control" id="inplink" type="text" [formControl]="inplink"  />
-        </div>
-        <div class="mb-3">
-          <label for="inplogo" class="form-label" >Logo:</label>
-          <input class="form-control" id="inplogo" type="text" [formControl]="inplogo"  />
-        </div>
-        <button [disabled]="inptitulo.invalid" class="btn btn-success" (click)="guardar(obj_pro)">GUARDAR</button>
-        <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
-      </div>
-    </div>
-    </form>
+
+    <!--FORMULARIO MODAL Editar... -->
+    <app-proyecto-form
+      *ngIf="modalSwitch"
+      [form_titulo]="titulo"
+      [obj_in]="obj_pro" 
+      (obj_out)="guardar($event)">
+    </app-proyecto-form>
   </div>
 </li>

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
 import {Exp} from '../experiencia/faceExperiencia';
 
@@ -14,76 +13,45 @@ export class ExperienciaModuloComponent implements OnInit {
   @Output() onDelete: EventEmitter<Exp> = new EventEmitter();
   @Output() onSave: EventEmitter<Exp> = new EventEmitter();
 
-  //@Output() onToggleBorde: EventEmitter<Exp> = new EventEmitter();
+  //Variables de autenticacion
+    roles: any[]=[];
+    isAdmin = false;
 
-  roles: any[]=[];
-  isAdmin = false;
+  //Variable del MODAL
+    modalSwitch!:boolean;
+    titulo:string="Editar Experiencia";
 
-  inpimagen:any;
-  inptitulo:any;
-  inpcargo:any;
-  inpjornada:any;
-  inpdire:any;
-  inpdesc:any;
-  
-  //Estado Visible Input(text) + Btn_Guardar
-    inp_visible:boolean=false;
-
-  constructor(private tokenService:TokenService ) { }
+  constructor( private tokenService:TokenService ) { }
 
   ngOnInit(): void {
     this.getIsAdmin();
     this.obj_exp;
-    this.crea();
   }
     
-  //GUARDA cont del input + OCULTA input
-  guardar(obj:Exp){
-    this.mostrar(false);
-    obj.imagen=this.inpimagen.value;
-    obj.titulo=this.inptitulo.value;
-    obj.cargo=this.inpcargo.value;
-    obj.jornada=this.inpjornada.value;
-    obj.direccion=this.inpdire.value;
-    obj.descripcion=this.inpdesc.value;
-    this.onSave.emit(obj);
-  }
-
-   //CANCELAR formulario
-   cancelar(){
-    this.mostrar(false);
-    this.crea();
+  //GUARDA cont de los input´s 
+  guardar(setObj:Exp){
+    this.cerrarModal();
+    this.obj_exp.imagen=setObj.imagen;
+    this.obj_exp.titulo=setObj.titulo;
+    this.obj_exp.cargo=setObj.cargo;
+    this.obj_exp.jornada=setObj.jornada;
+    this.obj_exp.direccion=setObj.direccion;
+    this.obj_exp.descripcion=setObj.descripcion;
+    this.onSave.emit(this.obj_exp);
   }
 
   //VALIDA QUE SEA "ADMIN"
   public getIsAdmin(){
     this.roles = this.tokenService.getAuthorities();
-      for (var i = 0; i < this.roles.length; i++) {
-        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
-      }
+    for (var i = 0; i < this.roles.length; i++) {
+      if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
+    }
   }
-
-  //INGRESA estado a mostrar
-  mostrar(e:boolean){
-    this.inp_visible=e;
-  }
-
+  
   //Envia el id del registro a borrar
-  tranferIdDelete(exp:Exp){
-    this.onDelete.emit(exp);
-  }
+    tranferIdDelete(obj:Exp){ this.onDelete.emit(obj); }
 
-  crea(){
-    this.inpimagen=new FormControl(this.obj_exp.imagen,[]);
-    this.inptitulo=new FormControl(this.obj_exp.titulo,[Validators.required, Validators.maxLength(10)]);
-    this.inpcargo=new FormControl(this.obj_exp.cargo,[]);
-    this.inpjornada=new FormControl(this.obj_exp.jornada,[]);
-    this.inpdire=new FormControl(this.obj_exp.direccion,[]);
-    this.inpdesc=new FormControl(this.obj_exp.descripcion,[]);
-  }
-
-  /*
-  onToggle(obj:Exp){
-    this.onToggleBorde.emit(obj);
-  }*/
+  //Visibilidad del MODAL
+    openModal(){ this.modalSwitch=true; }
+    cerrarModal(){ this.modalSwitch=false; }
 }

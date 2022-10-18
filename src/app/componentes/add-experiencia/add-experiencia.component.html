@@ -1,39 +1,13 @@
-<!-- Modal -->
-<div class="modal fade" id="addexp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nueva Experiencia:</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="titulo" placeholder="Titulo:" [(ngModel)]="titulo">
-            <label for="titulo">Titulo:</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="cargo" placeholder="Cargo:" [(ngModel)]="cargo">
-            <label for="cargo">Cargo:</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="jornada" placeholder="Jornada:" [(ngModel)]="jornada">
-            <label for="jornada">Jornada:</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="direccion" placeholder="Direccion:" [(ngModel)]="direccion">
-            <label for="direccion">Direccion:</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="descripcion" placeholder="Descripcion:" [(ngModel)]="descripcion">
-            <label for="descripcion">Descripcion:</label>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- BTN AGREGAR Nuevo... -->
+<app-btn-add *ngIf="isAdmin" (click)="openModal()"></app-btn-add>
+
+<!-- FORMULARIO MODAL Nuevo... -->
+<app-experiencia-form
+  *ngIf="modalSwitch"
+  [form_titulo]="titulo"
+  [obj_in]="newObject" 
+  (obj_out)="get_obj($event)">
+</app-experiencia-form>
+
+
+

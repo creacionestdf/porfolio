@@ -1,62 +1,27 @@
 <li class="bor">
   <div class="container">
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <!-- Btn_edit -->
-      <app-btn-edit
-        *ngIf="isAdmin"
-        [set_link]="obj_sk.id"
-        (set_inpvisible)="mostrar($event)">
-      </app-btn-edit>
+      <!-- BTN EDITAR... -->
+      <app-btn-edit *ngIf="isAdmin" [set_link]="obj_sk.id" (click)="openModal()"></app-btn-edit>
+      
+      <!-- BTN BORRAR... -->
+      <app-btn-delete *ngIf="isAdmin" (click)="tranferIdDelete(obj_sk)"></app-btn-delete>
+    </div>
+
+    <!-- LISTA MODULOS (Imprime) -->
+    <div class="box">
+      <div class="text-skill">{{ obj_sk.titulo | uppercase }}</div>
+      <div class="container-skilll">
+        <div class="skilll" [ngStyle]="{ width: obj_sk.val + '%', minWidth:'10%'}"> {{obj_sk.val + '%'}} </div>
+      </div>
+    </div>
     
-      <!-- Btn_delete -->
-      <app-btn-delete 
-        *ngIf="isAdmin"
-        (click)="tranferIdDelete(obj_sk)">
-      </app-btn-delete>
-    </div>
-
-<div class="container">
-  <div class="Skill-Barra">
-    <p class="Skill-Titulo">{{ obj_sk.titulo }}</p>
+    <!--FORMULARIO MODAL Editar... -->
+    <app-skill-form 
+      *ngIf="modalSwitch"
+      [form_titulo]="titulo"
+      [obj_in]="obj_sk"
+      (obj_out)="guardar($event)">
+    </app-skill-form>
   </div>
-  <div class="progress Skill-Barra">  
-    <div class="progress Skill-Barra-Alto">
-      <div 
-        class="progress-bar" 
-        role="progressbar" 
-                 
-        aria-valuenow="skl.val" 
-        aria-valuemin="0" 
-        aria-valuemax="100"
-        [ngStyle]="{ width: obj_sk.val + '%' }">
-        {{ obj_sk.val }}%
-      </div>
-    </div>
-   
-  </div>
-  
-  
-
-  <!--Formulario para editar Certificaciones-->
-  <form>
-    <div class="card" *ngIf="inp_visible">
-      <div class="card-body">
-        <div class="mb-3">
-          <label for="inptitulo" class="form-label">Nombre Skill:</label>
-          <input class="form-control" id="inptitulo" type="text" [formControl]="inptitulo"  />
-        </div>
-        <div class="mb-3">
-          <label for="inpvalor" class="form-label">Porcentaje:</label>
-          <input class="form-control" id="inpvalor" type="text" [formControl]="inpvalor"  />
-        </div>
-        <button class="btn btn-success" (click)="guardar(obj_sk)">GUARDAR</button>
-        <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-
-</div>
 </li>

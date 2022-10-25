@@ -35,6 +35,7 @@ export class ExperienciaModuloComponent implements OnInit {
     this.obj_exp.titulo=setObj.titulo;
     this.obj_exp.cargo=setObj.cargo;
     this.obj_exp.jornada=setObj.jornada;
+    this.obj_exp.tiempo=setObj.tiempo;
     this.obj_exp.direccion=setObj.direccion;
     this.obj_exp.descripcion=setObj.descripcion;
     this.onSave.emit(this.obj_exp);

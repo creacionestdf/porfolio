@@ -1,6 +1,6 @@
 <li class="bor tarea">
   <div class="container">
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <div class="d-grid gap-2 d-flex justify-content-md-end">
       <!-- BTN EDITAR... -->
       <app-btn-edit *ngIf="isAdmin" [set_link]="obj_exp.id" (click)="openModal()"></app-btn-edit>
       
@@ -18,7 +18,11 @@
         </div>
         <div class="col-xs-12 col-sm-8 list-info">
           <div><h3>{{ obj_exp.titulo }}</h3></div>
-          <div class="cargo"><p>{{ obj_exp.cargo }} - <span>{{ obj_exp.jornada }}</span></p></div>
+          <div class="cargo">
+            <p>{{ obj_exp.cargo }}</p> 
+            <p>{{ obj_exp.jornada }}</p>
+          </div>
+          
           <div class="tiempo"><p>{{ obj_exp.tiempo }}</p></div>
           <div class="direccion"><p>{{ obj_exp.direccion }}</p></div>
           <div class="descripcion"><p>{{ obj_exp.descripcion }}</p></div>

@@ -23,6 +23,7 @@ export class ExperienciaFormComponent implements OnInit {
       titulo: [ this.obj_in.titulo, [Validators.required] ],
       cargo: [ this.obj_in.cargo, [Validators.required] ] ,
       jornada: [ this.obj_in.jornada, [] ],
+      tiempo: [ this.obj_in.tiempo, [] ],
       direccion: [ this.obj_in.direccion, [] ],
       descripcion: [ this.obj_in.descripcion, [Validators.required] ],
       imagen: [ this.obj_in.imagen, [] ]    
@@ -45,7 +46,7 @@ export class ExperienciaFormComponent implements OnInit {
 
 //VACIA el contenido de los inputs
   vacia_inputs(){  
-    this.ExpForm.setValue( { titulo: null, cargo: null, jornada:null, direccion:null, descripcion:null }); 
+    this.ExpForm.setValue( { titulo: null, cargo: null, jornada:null, tiempo:null, direccion:null, descripcion:null }); 
   }
 
 //VALIDA que los inputs requeridos no esten vacios

@@ -9,7 +9,7 @@ import { CertificacionService } from "../../servicios/certificacion.service";
 })
 export class CertificacionComponent implements OnInit {
 
-  titulo:string="Licencias y ertificaciones";
+  titulo:string="Licencias y Certificaciones";
   certificacionList: Cert[] =[];
 
   //Variables de Autenticacion

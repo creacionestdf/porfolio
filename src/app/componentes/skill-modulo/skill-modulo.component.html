@@ -1,6 +1,6 @@
 <li class="bor">
   <div class="container">
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <div class="d-grid gap-2 d-flex justify-content-md-end">
       <!-- BTN EDITAR... -->
       <app-btn-edit *ngIf="isAdmin" [set_link]="obj_sk.id" (click)="openModal()"></app-btn-edit>
       
@@ -10,8 +10,8 @@
 
     <!-- LISTA MODULOS (Imprime) -->
     <div class="box">
-      <div class="text-skill">{{ obj_sk.titulo | uppercase }}</div>
-      <div class="container-skilll">
+      <div class="text-skill col-sm-3 col-4">{{ obj_sk.titulo | uppercase }}</div>
+      <div class="container-skilll col-sm-8 col-8">
         <div class="skilll" [ngStyle]="{ width: obj_sk.val + '%', minWidth:'10%'}"> {{obj_sk.val + '%'}} </div>
       </div>
     </div>

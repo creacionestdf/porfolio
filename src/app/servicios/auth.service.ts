@@ -21,7 +21,6 @@ export class AuthService {
     }
 
     public login(LoginUsuario: LoginUsuario): Observable<JwtDto>{
-      console.log("llamamos metodo login: ");
       return this.httpClient.post<JwtDto>(this.authURL + 'login', LoginUsuario);
     }
 

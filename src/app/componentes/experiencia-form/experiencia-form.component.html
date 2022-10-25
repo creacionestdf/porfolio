@@ -23,16 +23,21 @@
             <input type="text" class="form-control" formControlName="jornada" id="jornada" placeholder="Jornada:"/>
             <label for="jornada">Jornada:</label>
         </div>
+        <!-- Campo TIEMPO -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" formControlName="tiempo" id="tiempo" placeholder="Periodo:"/>
+          <label for="tiempo">Periodo:</label>
+        </div>
         <!-- Campo DIRECCION -->
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" formControlName="direccion" id="direccion" placeholder="Direccion:"/>
-            <label for="direccion">Direccion:</label>
+          <input type="text" class="form-control" formControlName="direccion" id="direccion" placeholder="Direccion:"/>
+          <label for="direccion">Direccion:</label>
         </div>
         <!-- Campo DESCRIPCION -->
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" formControlName="descripcion" id="descripcion" placeholder="descripcion:"/>
-            <label for="descripcion">Descripcion:</label>
-            <span *ngIf="this.ExpForm.get('descripcion')?.errors?.['required']">(* Campo obligatorio)</span>
+          <input type="text" class="form-control" formControlName="descripcion" id="descripcion" placeholder="descripcion:"/>
+          <label for="descripcion">Descripcion:</label>
+          <span *ngIf="this.ExpForm.get('descripcion')?.errors?.['required']">(* Campo obligatorio)</span>
         </div>
         <!-- Campo IMAGEN -->
         <div class="form-floating mb-3">

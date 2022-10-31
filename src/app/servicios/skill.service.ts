@@ -9,13 +9,7 @@ import { environment } from "src/environments/environment";
 })
 export class SkillService {
 
-  /*
-  //Variable que muestra u oculta Form para Editar
-    private showHideFormEdit:boolean=false;
-    private subjet = new Subject<any>()
-  */
-
- //URL de Experiencias
+  //URL de Experiencias
     private url: String = environment.BaseUrl + '/skills';
     private UrlNew = this.url+'/crear/';
     private UrlSave = this.url+'/actualizar';
@@ -42,16 +36,5 @@ export class SkillService {
   eliminar(id:number){
     return this.http.delete<Skl>(`${this.UrlDelete}/${id}`);
   }
-
-  /*
-  //Cambia es estado de visivilidad del Form
-  toogleEditForm():void{
-    this.showHideFormEdit=!this.showHideFormEdit;
-    this.subjet.next(this.showHideFormEdit);
-  }
-
-  onToggle():Observable<any>{
-    return this.subjet.asObservable()
-  }
-  */
+  
 }

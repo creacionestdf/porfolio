@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ace } from '../componentes/acerca-de/faceAcercade';
 import { environment } from '../../environments/environment';
-import { TokenService } from './token.service';
+//import { TokenService } from './token.service';
 //import { InterceptorService } from './interceptor-service';
 
 @Injectable({

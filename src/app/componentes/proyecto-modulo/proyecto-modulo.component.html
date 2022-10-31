@@ -14,10 +14,12 @@
         <div><h3>{{ obj_pro.titulo }}</h3></div>
         <div><p>{{ obj_pro.fecha }}</p></div>
         <div><p>{{ obj_pro.descripcion }}</p></div>
-        <div><a href="">{{ obj_pro.link }}</a></div>
+        <div><a href="{{ obj_pro.link }}">{{ obj_pro.link }}</a></div>
       </div>
       <div class="logo-image-container">
-        <div><img [src]="obj_pro.logo" alt="proyecto1"/></div>
+        <div *ngIf=retrievedImage>
+          <img [src]="retrievedImage">
+        </div>
       </div>
     </div>
 

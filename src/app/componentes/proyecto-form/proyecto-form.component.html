@@ -30,10 +30,8 @@
           <label for="link">Link:</label>
         </div>
         <!-- Campo url del LOGO  -->
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control"  formControlName="logo" id="logo" placeholder="Logo:">
-          <label for="logo">Logo:</label>
-        </div>
+        <app-subir-archivo (getLogo)="guardarLogo($event)"></app-subir-archivo>
+        <input type="hidden" class="form-control" formControlName="logo" id="logo" placeholder="Logo:" [ngModel]="varLogo">
       </form>
     </div>
     <div class="modal-footer">

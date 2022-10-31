@@ -55,13 +55,4 @@ export class RegistroComponent implements OnInit {
       }
     );
   }
-
-/*
-  cargar(): void {
-    this.LoginUsuario = new LoginUsuario(this.us, this.ps);
-
-    this.authService.login(this.LoginUsuario).subscribe((data) => {
-      console.log(data);
-    });
-  }*/
 }

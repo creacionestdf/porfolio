@@ -43,6 +43,11 @@ import { ProyectoFormComponent } from './componentes/proyecto-form/proyecto-form
 import { ExperienciaFormComponent } from './componentes/experiencia-form/experiencia-form.component';
 import { CertificacionFormComponent } from './componentes/certificacion-form/certificacion-form.component';
 import { CertificacionComponent } from './componentes/certificacion/certificacion.component';
+import { UploadFilesComponentComponent } from './componentes/upload-files-component/upload-files-component.component';
+import { SubirArchivoComponent } from './componentes/subir-archivo/subir-archivo.component';
+import { PerfilFotoComponent } from './componentes/perfil-foto/perfil-foto.component';
+
+
 
 @NgModule({
   declarations: [
@@ -75,9 +80,11 @@ import { CertificacionComponent } from './componentes/certificacion/certificacio
     ProyectoFormComponent,
     ExperienciaFormComponent,
     CertificacionFormComponent,
-    CertificacionComponent
-    
-    
+    CertificacionComponent,
+    UploadFilesComponentComponent,
+    SubirArchivoComponent,
+    PerfilFotoComponent
+      
   ],
   imports: [
     BrowserModule,

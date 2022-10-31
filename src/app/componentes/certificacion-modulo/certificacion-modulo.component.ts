@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
 import { Cert } from '../certificacion/faceCertificacion';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-certificacion-modulo',
@@ -22,11 +24,20 @@ export class CertificacionModuloComponent implements OnInit {
     modalSwitch!:boolean;
     titulo:string="Editar Licencia/Certificacion";
   
-  constructor( private tokenService:TokenService ) { }
+   //IMAGEN
+   retrievedImage: any;
+   base64Data: any;
+   retrieveResonse: any;
+   
+   urlImg:String = environment.BaseUrl+"/image";
+   urlImgGet = this.urlImg + "/get/";
+
+  constructor( private tokenService:TokenService, private httpClient: HttpClient) { }
 
   ngOnInit(): void { 
     this.getIsAdmin();
-    this.obj_cert;   
+    this.obj_cert;
+    if(this.obj_cert.logo){ this.getImage(); }   
   }
   
   //GUARDA cont de los input´s 
@@ -54,4 +65,17 @@ export class CertificacionModuloComponent implements OnInit {
   //Visibilidad del MODAL
     openModal(){ this.modalSwitch=true; }
     cerrarModal(){ this.modalSwitch=false; }
+
+    //Muestra Img
+    getImage() {
+      //Make a call to Sprinf Boot to get the Image Bytes.
+      this.httpClient.get(this.urlImgGet + this.obj_cert.logo)
+        .subscribe(
+          res => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          }
+        );
+      }
 }

@@ -12,8 +12,6 @@ export class ExperienciaComponent implements OnInit {
   titulo: string = 'Experiencias';
   experienciaList: Exp[] = [];
   
-  //id: number = 0;
-
   //Variables de Autenticacion
     roles: any[]=[];
     isAdmin = false;

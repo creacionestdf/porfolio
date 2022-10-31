@@ -1,23 +1,15 @@
 <div class="card mat-card" id="first-card">
   <!-- Banner -->
-  <div id="profile-background">
-    <img id="banner_perfil" [src]="List[0].banner" alt="banner" />
-  </div>
-  <!-- Foto + Info_Personal -->
-  <div id="info" style="padding: 16px">
-    <div id="info-img">
-      <img class="profile-image" id="foto" [src]="List[0].foto" alt="foto" />
-    </div>
-    <!-- Btn_edit -->
-    <app-btn-edit 
-      *ngIf="isAdmin" 
-      [set_link]="id" 
-      btnColor="" 
-      texto="" 
-      data-bs-toggle="modal"
-      data-bs-target="#editPerfil"
-      (click)="crea()">
-    </app-btn-edit>
+  <div id="profile-background"><img id="banner_perfil" [src]="List[0].banner" alt="banner" /></div>
+    <!-- Bloque (Foto + Info_Personal) -->
+    <div id="info" style="padding: 16px">
+      <!--Muestra Foto Perfil-->
+      <app-perfil-foto *ngFor="let item of List" [obj_perfil]="item"></app-perfil-foto>
+      <!-- Btn_edit -->
+      <app-btn-edit 
+        *ngIf="isAdmin" [set_link]="id" data-bs-toggle="modal" 
+        data-bs-target="#editPerfil" (click)="crea()">
+      </app-btn-edit>
     <!--Muestra Informacion Perfil-->
     <div id="info-data">
       <div>
@@ -39,10 +31,8 @@
           </div>
           <div class="modal-body">
             <form>
-              <div class="mb-3">
-                <label for="edit-foto" class="form-label">Foto: </label>
-                <input type="text" class="form-control" id="edit-foto" [formControl]="inp_foto"  />
-              </div>
+              <app-subir-archivo (getLogo)="guardarLogo($event)"></app-subir-archivo>
+              <input type="hidden" class="form-control" id="edit-foto" [formControl]="inp_foto" [ngModel]="varLogo">
               <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="edit-nombre" [formControl]="inp_nombre"  />
                 <label for="edit-nombre">Nombre y Apellido: </label>

@@ -12,8 +12,8 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-4 logo-exp">
-          <div class="logo-image-container centrado-porcentual">
-            <img [src]="obj_exp.imagen" />
+          <div *ngIf=retrievedImage class="logo-image-container centrado-porcentual">
+            <img [src]="retrievedImage" />
           </div>
         </div>
         <div class="col-xs-12 col-sm-8 list-info">

@@ -12,13 +12,16 @@ export class ExperienciaFormComponent implements OnInit {
   @Input()  obj_in!: Exp;
   @Input()  form_titulo!:string;
   @Output() obj_out:EventEmitter<Exp>=new EventEmitter();
-  
+  obj_aux!:Exp;
+
   //Nombre del Formulario
     ExpForm!: FormGroup;
+    varLogo! :string;
 
   constructor(  private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
+    this.varLogo=this.obj_in.imagen;
     this.ExpForm = this.formBuilder.group({
       titulo: [ this.obj_in.titulo, [Validators.required] ],
       cargo: [ this.obj_in.cargo, [Validators.required] ] ,
@@ -26,7 +29,7 @@ export class ExperienciaFormComponent implements OnInit {
       tiempo: [ this.obj_in.tiempo, [] ],
       direccion: [ this.obj_in.direccion, [] ],
       descripcion: [ this.obj_in.descripcion, [Validators.required] ],
-      imagen: [ this.obj_in.imagen, [] ]    
+      imagen: [ this.varLogo, [] ]    
     });
   }
 
@@ -52,4 +55,6 @@ export class ExperienciaFormComponent implements OnInit {
 //VALIDA que los inputs requeridos no esten vacios
   public valida_inputs():boolean{ return this.ExpForm.valid; }
 
+//Guarda Logo
+  guardarLogo(nom:string){ this.varLogo=nom; }
 }

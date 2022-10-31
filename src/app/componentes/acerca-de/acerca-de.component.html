@@ -4,13 +4,7 @@
     <h2>{{ titulo }}</h2>
     <!-- Btn_edit -->
     <app-btn-edit  
-      *ngIf="isAdmin"
-      [set_link]="id"
-      btnColor=""
-      texto=""
-      data-bs-toggle="modal"
-      data-bs-target="#editAcerca"
-      (click)="crea()">
+      *ngIf="isAdmin" [set_link]="id" data-bs-toggle="modal" data-bs-target="#editAcerca" (click)="crea()">
     </app-btn-edit>
     <!-- Modal   -->
     <div class="modal fade" id="editAcerca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

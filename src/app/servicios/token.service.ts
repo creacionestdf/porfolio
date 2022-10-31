@@ -49,9 +49,6 @@ export class TokenService {
     return this.roles;
   }
 
-
-
-  
   //LOGOUT
   public logOut(): void {
     window.sessionStorage.clear();

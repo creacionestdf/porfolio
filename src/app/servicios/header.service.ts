@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class HeaderService {
-
+  
   //URLs
   private url:String = environment.BaseUrl+"/perfil";
   private UrlSave = environment.BaseUrl+'/perfil/actualizar';
@@ -24,5 +24,7 @@ export class HeaderService {
   //GUARDAMOS cambios realizados
   actualizar(obj:hd): Observable<Object> {
     return this.http.put<hd>(`${this.UrlSave}/${obj.id}`,obj);
+    
+
   }
 }

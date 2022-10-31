@@ -1,8 +1,12 @@
+
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
 import { HeaderService } from '../../servicios/header.service';
 import { hd } from '../header/faceHeader';
+import { environment } from "src/environments/environment";
+
 
 @Component({
   selector: 'app-perfil',
@@ -11,7 +15,7 @@ import { hd } from '../header/faceHeader';
 })
 export class PerfilComponent implements OnInit {
   
-  List: hd[] = [];
+  public List: hd[] = [];
 
  //Variables de autenticacion
   roles: any[]=[];
@@ -27,7 +31,16 @@ export class PerfilComponent implements OnInit {
   //ID Btn_Edit
   id: string = 'head';
 
-  constructor( private tokenService: TokenService, private Servicio: HeaderService) { }
+  //IMAGEN
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  varLogo! :string;
+
+  urlImg:String = environment.BaseUrl+"/image";
+  urlImgGet = this.urlImg + "/get/";
+
+  constructor( private tokenService: TokenService, private Servicio: HeaderService, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.getIsAdmin();
@@ -43,9 +56,10 @@ export class PerfilComponent implements OnInit {
   }
 
   //LISTA ...
-  private obtenerHeader() {
-    this.Servicio.getAll().subscribe((e) => {
-      this.List = e; });
+  public obtenerHeader() {
+    this.Servicio.getAll().subscribe(e => {
+      this.List = e; 
+    });
   }
 
   //GUARDA cont de los input´s
@@ -56,7 +70,8 @@ export class PerfilComponent implements OnInit {
     obj.residencia=this.inp_residencia.value;
     obj.email=this.inp_email.value;
     this.Servicio.actualizar(obj).subscribe((dato) => {
-      this.obtenerHeader(); });
+      this.obtenerHeader();
+    });
   }
 
   //CANCELAR formulario
@@ -70,4 +85,21 @@ export class PerfilComponent implements OnInit {
     this.inp_residencia= new FormControl(this.List[0].residencia, []);
     this.inp_email= new FormControl(this.List[0].email, []);
   }
+
+  //Muestra Img
+  public getImage(){
+    console.log("getImagen: "+this.List[0].apellido);
+    //Make a call to Sprinf Boot to get the Image Bytes.
+    this.httpClient.get(this.urlImgGet + this.List[0].foto)
+      .subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.picByte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+      );
+    }
+
+  //Guarda Logo
+  public guardarLogo(nom:string){ this.varLogo=nom; }
 }

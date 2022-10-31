@@ -8,23 +8,25 @@ import { Cert } from '../certificacion/faceCertificacion';
   styleUrls: ['./certificacion-form.component.css']
 })
 export class CertificacionFormComponent implements OnInit {
-
   @Input()  obj_in!: Cert;
   @Input()  form_titulo!:string;
   @Output() obj_out:EventEmitter<Cert>=new EventEmitter();
-  
+  obj_aux!:Cert;
+
   //Nombre del Formulario
     CertForm!: FormGroup;
+    varLogo! :string;
 
   constructor(  private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
+    this.varLogo=this.obj_in.logo;
     this.CertForm = this.formBuilder.group({
       titulo: [ this.obj_in.titulo, [Validators.required] ],
       entidad: [ this.obj_in.entidad, [Validators.required] ] ,
       fecha: [ this.obj_in.fecha, [] ],
       descripcion: [ this.obj_in.descripcion, [Validators.required] ],
-      logo: [ this.obj_in.logo, [] ]    
+      logo: [ this.varLogo, [] ]    
     });
   }
 
@@ -50,4 +52,6 @@ export class CertificacionFormComponent implements OnInit {
 //VALIDA que los inputs requeridos no esten vacios
   public valida_inputs():boolean{ return this.CertForm.valid; }
 
+//Guarda Logo
+  guardarLogo(nom:string){ this.varLogo=nom; }
 }

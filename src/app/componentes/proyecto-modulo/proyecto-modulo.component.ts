@@ -1,7 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { TokenService } from 'src/app/servicios/token.service';
 import { Pro } from '../proyectos/faceProyecto';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-proyecto-modulo',
@@ -22,11 +24,21 @@ export class ProyectoModuloComponent implements OnInit {
     modalSwitch!:boolean;
     titulo:string="Editar Proyecto";
 
-  constructor(private tokenService:TokenService) { }
+  //IMAGEN
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  
+  urlImg:String = environment.BaseUrl+"/image";
+  urlImgGet = this.urlImg + "/get/";
+
+  constructor(private tokenService:TokenService, private httpClient: HttpClient) { }
   
   ngOnInit(): void { 
     this.getIsAdmin();
-    this.obj_pro; 
+    this.obj_pro;
+    if(this.obj_pro.logo){ this.getImage(); } 
+    
   }
 
   //GUARDA cont de los input´s
@@ -54,4 +66,17 @@ export class ProyectoModuloComponent implements OnInit {
   //Visibilidad del MODAL
     openModal(){ this.modalSwitch=true; }
     cerrarModal(){ this.modalSwitch=false; }
+
+    //Muestra Img
+    getImage() {
+      //Make a call to Sprinf Boot to get the Image Bytes.
+      this.httpClient.get(this.urlImgGet + this.obj_pro.logo)
+        .subscribe(
+          res => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          }
+        );
+      }
 }

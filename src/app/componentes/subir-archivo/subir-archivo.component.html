@@ -1,0 +1,37 @@
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header" >
+            <div class="col-md-6">
+                <h5 class="modal-title" id="exampleModalLabel">Seleccionar Imagen:</h5>
+            </div>
+        </div>
+        <div class="modal-body">
+            <select name=listaimg (click)="getLista()" [(ngModel)]="imageName"> 
+                <option *ngFor="let item of Lista" [value]="item.name"> {{item.name}}
+            </select>
+            <input type="button" (click)="seleccionImg()" value="Seleccionar">
+            <div class="col-md-12">
+                <div *ngIf=retrievedImage>
+                    <img id="prev" [src]="retrievedImage">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Subir Nueva Imagen:</h5>
+        </div>
+        <div class="modal-body">
+            <p>(.jpg - resMax:700x700 - sizeMax:500KB)</p>
+            <div class="col-md-6">
+                <input type="file" (change)="onFileChanged($event)">
+            </div>
+            <div class="col-md-6">
+                <input type="button" (click)="onUpload()" value="Guardar">
+            </div>
+            <p>{{message}}</p>
+        </div>
+    </div>
+</div> 

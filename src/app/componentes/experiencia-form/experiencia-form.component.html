@@ -40,10 +40,8 @@
           <span *ngIf="this.ExpForm.get('descripcion')?.errors?.['required']">(* Campo obligatorio)</span>
         </div>
         <!-- Campo IMAGEN -->
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" formControlName="imagen" id="imagen" placeholder="imagen:"/>
-          <label for="imagen">Imagen(URL):</label>
-        </div>
+        <app-subir-archivo (getLogo)="guardarLogo($event)"></app-subir-archivo>
+        <input type="hidden" class="form-control" formControlName="imagen" id="imagen" placeholder="imagen:" [ngModel]="varLogo"/>
       </form>
     </div>
     <div class="modal-footer">

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Cert } from '../componentes/certificaciones/faceCertificacion';
+import { Cert } from '../componentes/certificacion/faceCertificacion';
 import { Exp } from '../componentes/experiencia/faceExperiencia';
 import { Pro } from '../componentes/proyectos/faceProyecto';
 import { Skl } from "../componentes/skill/faceSkill";
@@ -100,6 +100,7 @@ export class PorfolioService {
 
 
   //CERTIFICACIONES
+  
   getCertificacion(): Observable<Cert[]> {
     return this.http.get<Cert[]>(this.urlCert)
   }

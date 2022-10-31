@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pro } from '../proyectos/faceProyecto';
-import { UiService } from '../../servicios/ui.service';
 import { Subscription } from "rxjs";
 import { ProyectoService } from "../../servicios/proyecto.service";
-import { TokenService } from 'src/app/servicios/token.service';
+
 
 @Component({
   selector: 'app-proyectos',
@@ -19,31 +18,11 @@ export class ProyectosComponent implements OnInit {
   //Variables de Autenticacion
   roles: any[]=[];
   isAdmin = false;
-  
-  //id: number = 0;
+   
+  constructor( private Servicio: ProyectoService) {  }
 
-  //Estado Visible Input(text) + Btn_Guardar
-  //inp_visible: boolean = false;
+  ngOnInit(): void { this.obtenerProyectos(); }
   
-  constructor(
-    private Servicio: ProyectoService,
-    //private tokenService:TokenService
-    ) {  }
-
-  ngOnInit(): void {
-    //this.getIsAdmin();
-    this.obtenerProyectos();
-  }
-  
-  //VALIDA QUE SEA "ADMIN"
-  /*
-  public getIsAdmin(){
-    this.roles = this.tokenService.getAuthorities();
-      for (var i = 0; i < this.roles.length; i++) {
-        if("ROLE_ADMIN"== this.roles[i]){ this.isAdmin=true;}
-      }
-  }*/
-
   //LISTA ...
   private obtenerProyectos() {
     this.Servicio.getAll().subscribe((e) => {
